@@ -12,7 +12,7 @@ The idea is similar. [LiveContainer](https://github.com/LiveContainer/LiveContai
 
 ### Is RunContainer free?
 
-RunContainer is free and open source. Its source code is public at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). The repository README names the MIT licence, but the repository doesn't yet include a LICENSE file, so the exact licence terms are not yet confirmed.
+RunContainer is free and open source. Its source code is public at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). It is released under the MIT licence. The full text is in the [LICENSE file](https://github.com/RunContainer-7/runcontainer/blob/master/LICENSE).
 
 ### Is it available now?
 
