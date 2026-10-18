@@ -11,7 +11,7 @@ Before you start, make sure you have the following.
 
 ## From the source repository
 
-The [RunContainer README](https://github.com/RunContainer-7/runcontainer#provisioning-a-host-for-vm-isolation-do-this-on-your-windows-pc) lists these. They haven't been confirmed for an official release:
+The [RunContainer repository](https://github.com/RunContainer-7/runcontainer) describes these. They haven't been confirmed for an official release:
 
 - **Windows 10 or 11 Pro, Enterprise or Education.** Windows Home isn't listed as supported.
 - **Virtualisation turned on** in your PC's firmware settings.
