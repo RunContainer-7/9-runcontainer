@@ -18,6 +18,12 @@ The [RunContainer README](https://github.com/RunContainer-7/runcontainer#provisi
 - **Administrator rights** may be needed for some features.
 - **About 4 GB of memory per environment** by default, and about **20–40 GB of disk space** per environment as it grows.
 
+## Check your PC in the app
+
+Open the **Settings** tab and press **Check Hyper-V readiness**. RunContainer lists anything that's missing, such as the Windows edition.
+
+![The Hyper-V readiness result, showing not ready and the missing Windows 10/11 requirement](/screenshots/hyperv-readiness.png)
+
 ## Not yet confirmed
 
 | Requirement | Status |
