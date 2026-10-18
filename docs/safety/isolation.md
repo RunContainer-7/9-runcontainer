@@ -17,6 +17,14 @@ Isolation in RunContainer is intended to:
 - If an application causes a problem, the effect is **intended to be contained** to its environment. You can then [reset or remove](/user-guide/reset-remove) it.
 - Your everyday desktop stays **tidier**, because applications aren't installed into it directly.
 
+## What the settings say
+
+The **Settings** tab describes the isolation RunContainer uses:
+
+![The Settings tab, with the VM isolation card and the optional AppContainer card](/screenshots/settings-isolation.png)
+
+VM isolation is required by default. If it can't be set up, RunContainer refuses to launch the app rather than running it unprotected.
+
 ## What it doesn't mean
 
 Isolation **reduces** risk. It doesn't **remove** it. Read [Isolation is not a guarantee](/safety/not-a-guarantee) before relying on RunContainer for anything you're worried about.

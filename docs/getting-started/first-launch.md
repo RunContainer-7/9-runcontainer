@@ -9,17 +9,20 @@ Screens and wording in the application may differ from the descriptions here whi
 ## Before you open RunContainer
 
 - Close any installers you were running.
-- Make sure you have the installer for at least one application you'd like to try. A small, familiar, everyday application is a good first choice.
+- Make sure you have the installer (`.exe`) for at least one application you'd like to try. A small, familiar application is a good first choice.
+- Check [Prerequisites](/getting-started/prerequisites). Running an app needs Hyper-V unless you opt in to AppContainer for a compatible app.
 
 ## What you'll see
 
-On first launch you start with **no environments**. RunContainer manages environments and the applications inside them, so the first thing to do is create an environment.
+On first launch the **Apps** tab shows **My Apps** with no applications installed yet. The message reads "No apps installed yet. Use the + button to add your first EXE."
+
+![The Apps tab on first launch, with the empty My Apps state](/screenshots/apps-empty.png)
 
 ## Good first habits
 
-- **Name environments by purpose**, for example "Everyday", "Project X" or "Testing", so you can tell them apart later.
 - **Start with one application** so you can see how the workflow feels before you add more.
-- **Keep a separate environment for experiments.** Software you're unsure about shouldn't share an environment with tools you rely on.
+- **Check Settings first.** Open the **Settings** tab and press **Check Hyper-V readiness** before you try to run anything.
+- **Duplicate before experimenting.** Use **Duplicate** on an app to make a separate copy with its own data, and keep your working copy untouched.
 
 ## Next step
 

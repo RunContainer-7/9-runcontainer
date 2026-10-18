@@ -1,47 +1,46 @@
 # Beginner walkthrough
 
-This walkthrough covers the complete RunContainer workflow: create an environment, install an application into it, run it, and clean up afterwards.
+This walkthrough covers the basic RunContainer workflow: install an application, run it, and clean up afterwards.
 
 <WorkflowSteps />
 
 ::: info Pre-release
-Exact button names and screens may change before the first official release. The steps below describe the workflow, not a specific screen layout.
+Exact button names and screens may change before the first official release.
 :::
 
-## 1. Create an environment
+## 1. Check Hyper-V readiness
 
-Create a new environment in RunContainer and give it a descriptive name, such as **Everyday**.
-
-An environment is the managed space your application will live in. → [Managing environments](/user-guide/environments)
+Open the **Settings** tab and press **Check Hyper-V readiness**. Apps run in a Hyper-V virtual machine by default, so this check tells you whether your PC is ready. See [Prerequisites](/getting-started/prerequisites).
 
 ## 2. Install an application
 
-Choose to install an application into your new environment, then select the application's installer. Go through the installer as you normally would.
+On the **Apps** tab, press the **+** button, then choose **Install EXE**. In the file dialog, pick the installer and confirm.
 
-When the installer finishes, the application appears in RunContainer under the environment you chose. → [Installing applications](/user-guide/applications)
+![The + menu on the Apps tab, with Install EXE and Import from URL](/screenshots/apps-menu.png)
+
+RunContainer shows the **Installing into RunContainer** window while it validates the file, creates the app's sandbox and registers it. When it finishes, the app appears in **My Apps**.
 
 ::: tip
-If an installer asks to restart Windows, or to install drivers or system services, the application may not be suitable for a managed environment. See [Unsupported applications](/troubleshooting/unsupported-apps).
+If the installer asks to restart Windows, or to install drivers or system services, the application may not be suitable. See [Unsupported applications](/troubleshooting/unsupported-apps).
 :::
 
 ## 3. Run the application
 
-Start the application from RunContainer. It opens and behaves like a normal Windows application, but it's running inside its environment.
-
-When you're finished, close the application normally or stop it from RunContainer. → [Running & stopping](/user-guide/running)
+Press **Run** on the app. RunContainer starts it inside its isolated environment, and the app behaves like a normal Windows application. Press **Close** when you're finished. → [Running & stopping](/user-guide/running)
 
 ## 4. Keep it, or clean up
 
-- **Keep it** if you'll use the application again. It stays in its environment until you remove it.
-- **Reset or remove** the environment if you were only trying something out. → [Reset & remove](/user-guide/reset-remove)
+- **Keep it** if you'll use the application again. It stays installed until you delete it.
+- **Reset** restarts the app's environment and keeps its data. → [Reset & remove](/user-guide/reset-remove)
+- **Delete** removes the app and its folder.
 
-::: danger Removing deletes data
-Removing an environment also removes the applications and any files saved inside it. Copy anything you want to keep out of the environment first.
+::: danger Delete removes data
+Deleting an app also removes the files saved inside it. Copy anything you want to keep out first.
 :::
 
 ## You're done
 
-You've completed the full workflow. Next, you could:
+You've completed the basic workflow. Next, you could:
 
 - Learn what each [status](/user-guide/statuses) means.
 - Read [What isolation is for](/safety/isolation) before using RunContainer for unfamiliar software.

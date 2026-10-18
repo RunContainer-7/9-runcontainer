@@ -8,6 +8,12 @@ RunContainer installs each application into its own managed copy, rather than on
 - **Check compatibility notes.** Applications that need drivers, system services or system-wide installation may not work. See [Unsupported applications](/troubleshooting/unsupported-apps).
 - **Have the isolation requirements ready.** The default isolation mode uses a Hyper-V virtual machine. See [Prerequisites](/getting-started/prerequisites).
 
+## Installing from the Sources tab
+
+The **Sources** tab has the same two options as the **+** menu: a **Source URL** field with **Import from URL**, and **Install local EXE**.
+
+![The Sources tab with the Source URL field and the Import from URL and Install local EXE buttons](/screenshots/sources-panel.png)
+
 ## Installing an application from an EXE
 
 1. Open the **Apps** tab (My Apps).
