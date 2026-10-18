@@ -7,6 +7,8 @@ description: Official RunContainer project links.
 
 These are the **official** RunContainer project channels. Anything not listed here doesn't officially represent the project.
 
+<DiscordCard />
+
 <CommunityLinks />
 
 ## Source code

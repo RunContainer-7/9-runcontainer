@@ -7,6 +7,8 @@ description: How to get help with RunContainer.
 
 RunContainer is **free and open source**. Support comes from the community.
 
+<DiscordCard />
+
 <SupportPanel />
 
 ## Before you ask

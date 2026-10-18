@@ -7,6 +7,7 @@ import ProjectLink from './components/ProjectLink.vue'
 import ReleaseList from './components/ReleaseList.vue'
 import CommunityLinks from './components/CommunityLinks.vue'
 import SupportPanel from './components/SupportPanel.vue'
+import DiscordCard from './components/DiscordCard.vue'
 import './custom.css'
 
 export default {
@@ -19,5 +20,6 @@ export default {
     app.component('ReleaseList', ReleaseList)
     app.component('CommunityLinks', CommunityLinks)
     app.component('SupportPanel', SupportPanel)
+    app.component('DiscordCard', DiscordCard)
   }
 } satisfies Theme
