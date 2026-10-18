@@ -27,7 +27,7 @@ Remove usernames, licence keys and other personal details before sharing screens
 
 Use the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues) for bugs and feature requests. The [Contribution guide](/reference/contributing) explains what makes a good report.
 
-You can also join the Discord server to talk through a bug or feature idea before you file it. The link is at the top of this page.
+You can also join the Discord server to talk through a bug or feature idea before you file it. Join the [Discord server](https://discord.gg/UKTGRMMmC4) and see the [Contribution guide](/reference/contributing) for what to include in a report.
 
 ## Security issues
 

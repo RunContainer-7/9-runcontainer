@@ -11,9 +11,9 @@ RunContainer is free and open source. The [source repository](https://github.com
 - **Report bugs**, such as something that doesn't work as described here.
 - **Report compatibility**, letting others know which applications work or don't.
 - **Suggest features** that would make RunContainer more useful.
-
-Bugs and feature requests go to the issue tracker. You can also join the Discord server to discuss an idea first. See the [Support page](/support).
 - **Improve the documentation** by fixing mistakes, unclear wording or missing steps.
+
+Bugs and feature requests go to the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues). If you'd rather talk an idea or problem through first, you can also join the [Discord server](/support). Compatibility reports can go to the issue tracker too.
 
 ## Reporting bugs
 
@@ -24,6 +24,8 @@ A useful bug report includes:
 3. **What actually happened,** including the exact error message.
 4. **Your setup:** your Windows version and the RunContainer version.
 5. **Whether it happens every time**, and whether it happens in a fresh environment.
+
+File the report on the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues). Not sure it's a bug? Ask first on the [Discord server](/support).
 
 ::: warning Remove personal information
 Before posting, remove usernames, email addresses, file paths containing your name, licence keys and anything else private. See [Privacy & credentials](/safety/privacy#sharing-logs-and-screenshots).
@@ -43,6 +45,8 @@ When reporting how an application behaves in RunContainer, include:
 ## Suggesting features
 
 Describe **the problem you're trying to solve**, not just the solution. This makes it easier to find the best approach.
+
+Submit the request on the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues). To discuss an idea with others before you file it, join the [Discord server](/support).
 
 ## Improving this website
 
