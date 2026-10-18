@@ -16,7 +16,7 @@ RunContainer is free and open source. Its source code is public at [github.com/R
 
 ### Is it available now?
 
-Not yet. There's no official public release. See [Downloads](/downloads).
+Yes, as a preview. RunContainer 0.5.0 is a Windows installer for testing. There's no stable release yet. See [Downloads](/downloads).
 
 ## Using RunContainer
 

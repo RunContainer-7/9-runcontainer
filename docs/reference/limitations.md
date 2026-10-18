@@ -4,7 +4,7 @@ RunContainer is pre-release software. These are the known limits on what it does
 
 ## Availability
 
-- **No official public release yet.** See [Downloads](/downloads).
+- **Preview only.** The 0.5.0 preview installer is for testing. There's no stable release yet. See [Downloads](/downloads).
 - **System requirements aren't confirmed yet.** See [Prerequisites](/getting-started/prerequisites).
 - **Some features may not be in every build.** Pages note where a feature's availability isn't yet confirmed.
 

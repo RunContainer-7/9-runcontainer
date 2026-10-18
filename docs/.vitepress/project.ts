@@ -29,7 +29,19 @@ export const project = {
   community: [] as CommunityLink[],
 
   /** Published releases. Leave empty until a release is officially published. */
-  releases: [] as {
+  releases: [
+    {
+      version: '0.5.0',
+      date: '2026-10-18',
+      channel: 'preview',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.5.0',
+      notes: [
+        'First Windows setup wizard (preview). Choose the install folder and get a desktop shortcut.',
+        'The installer is not code-signed, so Windows may warn before it runs.',
+        'Windows only. Not every Windows application will work.',
+      ],
+    },
+  ] as {
     version: string
     date: string
     channel: 'stable' | 'preview'

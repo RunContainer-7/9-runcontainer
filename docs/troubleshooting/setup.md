@@ -4,7 +4,7 @@ Problems getting RunContainer itself installed or opened.
 
 ## I can't find an official download
 
-There's no official public release yet. See [Downloads](/downloads). Don't use copies from unofficial sources.
+The official download is the preview installer on the [Downloads](/downloads) page. Don't use copies from unofficial sources.
 
 ## Windows warns me about the file
 
