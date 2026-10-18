@@ -3,7 +3,7 @@
 Thanks for your interest in improving RunContainer. Bug reports, compatibility notes and documentation fixes are all valuable.
 
 ::: info Where to contribute
-RunContainer is free and open source. The [source repository](https://github.com/north-star-info/runcontainer) and [issue tracker](https://github.com/north-star-info/runcontainer/issues) are public. For questions, see the [Support page](/support). Please don't rely on unofficial channels claiming to represent the project. All official links are on [Community & links](/community).
+RunContainer is free and open source. The [source repository](https://github.com/RunContainer-7/runcontainer) and [issue tracker](https://github.com/RunContainer-7/runcontainer/issues) are public. For questions, see the [Support page](/support). Please don't rely on unofficial channels claiming to represent the project. All official links are on [Community & links](/community).
 :::
 
 ## Ways to contribute
@@ -11,6 +11,8 @@ RunContainer is free and open source. The [source repository](https://github.com
 - **Report bugs**, such as something that doesn't work as described here.
 - **Report compatibility**, letting others know which applications work or don't.
 - **Suggest features** that would make RunContainer more useful.
+
+Bugs and feature requests go to the issue tracker. You can also join the Discord server to discuss an idea first. See the [Support page](/support).
 - **Improve the documentation** by fixing mistakes, unclear wording or missing steps.
 
 ## Reporting bugs
@@ -44,7 +46,7 @@ Describe **the problem you're trying to solve**, not just the solution. This mak
 
 ## Improving this website
 
-This website is built with [VitePress](https://vitepress.dev/) from Markdown files. Once the website source is public, each documentation page will have a "Suggest a change to this page" link.
+This website is built with [VitePress](https://vitepress.dev/) from Markdown files. To suggest a correction to these pages, report it in the issue tracker.
 
 Writing guidelines:
 

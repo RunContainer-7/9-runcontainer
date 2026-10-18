@@ -16,11 +16,11 @@ export const project = {
   tagline: 'Run Windows applications inside managed environments.',
 
   /** Public source repository. RunContainer is free and open source. */
-  repoUrl: 'https://github.com/north-star-info/runcontainer',
+  repoUrl: 'https://github.com/RunContainer-7/runcontainer',
   /** Issue tracker for bug reports and feature requests. */
-  issuesUrl: 'https://github.com/north-star-info/runcontainer/issues',
+  issuesUrl: 'https://github.com/RunContainer-7/runcontainer/issues',
   /** Published releases page. */
-  releasesUrl: 'https://github.com/north-star-info/runcontainer/releases',
+  releasesUrl: 'https://github.com/RunContainer-7/runcontainer/releases',
   /** Community chat server for questions and support. */
   discordUrl: 'https://discord.gg/UKTGRMMmC4',
   /** Private vulnerability reporting channel (e.g. GitHub security advisories). */

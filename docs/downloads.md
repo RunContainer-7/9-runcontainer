@@ -6,7 +6,7 @@ aside: false
 
 # Downloads
 
-RunContainer is **free and open source**. Its source code is at [github.com/north-star-info/runcontainer](https://github.com/north-star-info/runcontainer). No official installer has been released yet.
+RunContainer is **free and open source**. Its source code is at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). No official installer has been released yet.
 
 <div class="rc-dl-status">
   <span class="rc-badge rc-badge--none">Unavailable</span>

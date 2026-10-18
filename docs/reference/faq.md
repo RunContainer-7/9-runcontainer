@@ -12,7 +12,7 @@ The idea is similar. [LiveContainer](https://github.com/LiveContainer/LiveContai
 
 ### Is RunContainer free?
 
-RunContainer is free and open source. Its source code is public at [github.com/north-star-info/runcontainer](https://github.com/north-star-info/runcontainer). The repository README names the MIT licence, but the repository doesn't yet include a LICENSE file, so the exact licence terms are not yet confirmed.
+RunContainer is free and open source. Its source code is public at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). The repository README names the MIT licence, but the repository doesn't yet include a LICENSE file, so the exact licence terms are not yet confirmed.
 
 ### Is it available now?
 
@@ -58,7 +58,7 @@ Only as safe as the application itself. The application can see whatever you typ
 
 ### Where's the source code?
 
-RunContainer is free and open source. The source code is at [github.com/north-star-info/runcontainer](https://github.com/north-star-info/runcontainer). → [Community & links](/community#source-code)
+RunContainer is free and open source. The source code is at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). → [Community & links](/community#source-code)
 
 ### Where can I get support?
 

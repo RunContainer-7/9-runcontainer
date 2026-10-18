@@ -14,9 +14,9 @@ Installation instructions will appear here once an official release is published
 
 ## Building from source
 
-RunContainer is free and open source. The source is at [github.com/north-star-info/runcontainer](https://github.com/north-star-info/runcontainer). The repository's README gives these steps (RunContainer is a Windows application):
+RunContainer is free and open source. The source is at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). The repository's README gives these steps (RunContainer is a Windows application):
 
-1. Clone the repository: `git clone https://github.com/north-star-info/runcontainer.git`
+1. Clone the repository: `git clone https://github.com/RunContainer-7/runcontainer.git`
 2. Open the folder and install dependencies: `npm install`
 3. Start the app: `npm start`
 

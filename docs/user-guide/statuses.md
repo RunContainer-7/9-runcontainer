@@ -38,3 +38,5 @@ Usually something inside it is still running. → [Recovery & cleanup issues](/t
 ## Reporting a problem
 
 If none of the troubleshooting pages help, please report the problem. See [Contributing](/reference/contributing#reporting-bugs) for what to include, and **remove any personal information** first.
+
+You can also ask for help on the Discord server. See the [Support page](/support).

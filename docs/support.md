@@ -13,7 +13,7 @@ RunContainer is **free and open source**. Support comes from the community.
 
 1. Read the [Troubleshooting](/troubleshooting/) pages. Many common problems are covered there.
 2. Check the [Known limitations](/reference/limitations) and the [FAQ](/reference/faq).
-3. Search the [issue tracker](https://github.com/north-star-info/runcontainer/issues) to see whether your problem has already been reported.
+3. Search the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues) to see whether your problem has already been reported.
 
 ## What to include
 
@@ -25,7 +25,9 @@ Remove usernames, licence keys and other personal details before sharing screens
 
 ## Bugs and feature requests
 
-Use the [issue tracker](https://github.com/north-star-info/runcontainer/issues) for bugs and feature requests. The [Contribution guide](/reference/contributing) explains what makes a good report.
+Use the [issue tracker](https://github.com/RunContainer-7/runcontainer/issues) for bugs and feature requests. The [Contribution guide](/reference/contributing) explains what makes a good report.
+
+You can also join the Discord server to talk through a bug or feature idea before you file it. The link is at the top of this page.
 
 ## Security issues
 
