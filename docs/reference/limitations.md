@@ -1,10 +1,10 @@
 # Known limitations
 
-RunContainer is pre-release software. These are the known limits on what it does and doesn't do.
+These are the known limits on what it does and doesn't do.
 
 ## Availability
 
-- **Preview only.** The 0.5.0 preview installer is for testing. There's no stable release yet. See [Downloads](/downloads).
+- **Unsigned installer.** The installer isn't code-signed, so Windows may show a warning before it runs. See [Downloads](/downloads).
 - **System requirements aren't confirmed yet.** See [Prerequisites](/getting-started/prerequisites).
 - **Some features may not be in every build.** Pages note where a feature's availability isn't yet confirmed.
 

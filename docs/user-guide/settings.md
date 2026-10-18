@@ -13,8 +13,8 @@ RunContainer's main window has six tabs: **Sources**, **Apps**, **Tweaks**, **Se
 
 ![The Sources tab, with a Source URL field and Import from URL and Install local EXE buttons](/screenshots/sources-panel.png)
 
-::: info Pre-release
-The source code is at an early version (0.5.0). Labels and options may change before an official release.
+::: info Labels may change
+Labels and options may change between releases. The pages in this guide describe the current version.
 :::
 
 ## Tweaks

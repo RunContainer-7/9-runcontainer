@@ -13,8 +13,6 @@ Before you start, make sure you have the following.
 
 The [RunContainer repository](https://github.com/RunContainer-7/runcontainer) describes these. They haven't been confirmed for an official release:
 
-- **Windows 10 or 11 Pro, Enterprise or Education.** Windows Home isn't listed as supported.
-- **Virtualisation turned on** in your PC's firmware settings.
 - **Administrator rights** may be needed for some features.
 - **About 4 GB of memory per environment** by default, and about **20–40 GB of disk space** per environment as it grows.
 
@@ -22,7 +20,7 @@ The [RunContainer repository](https://github.com/RunContainer-7/runcontainer) de
 
 | Requirement | Status |
 | --- | --- |
-| Official supported Windows versions and editions | Not yet confirmed |
+| Official supported Windows versions and editions | Not yet confirmed. Tested so far on Windows 10 Pro. |
 | Processor architecture | Not yet confirmed |
 | Minimum memory and disk space for RunContainer itself | Not yet confirmed |
 

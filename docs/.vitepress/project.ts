@@ -28,8 +28,31 @@ export const project = {
   /** Officially established community platforms only. */
   community: [] as CommunityLink[],
 
-  /** Published releases. Leave empty until a release is officially published. */
+  /** The current Stable installer. Used by the Downloads and Installation pages. */
+  latestDownload: {
+    version: '0.5.1',
+    filename: 'RunContainer-Setup-0.5.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.5.1/RunContainer-Setup-0.5.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.5.1',
+    sha256: 'ec9f3b38cd7e4c92fa4e088bfdafd6c10f0bd2376f4faf656bd285e0341b5af7',
+    sizeMb: 100,
+  },
+
+  /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.5.1',
+      date: '2026-10-18',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.5.1',
+      notes: [
+        'First Stable release for Windows.',
+        'Update notice: RunContainer tells you when a newer Stable release exists. It never installs updates for you.',
+        'Discord link in the app is clickable, and links open in your browser.',
+        'Removed Windows edition and firmware wording from the app.',
+        'The installer is not code-signed, so Windows may warn before it runs.',
+      ],
+    },
     {
       version: '0.5.0',
       date: '2026-10-18',

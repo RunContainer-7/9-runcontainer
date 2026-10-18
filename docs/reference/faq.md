@@ -16,7 +16,15 @@ RunContainer is free and open source. Its source code is public at [github.com/R
 
 ### Is it available now?
 
-Yes, as a preview. RunContainer 0.5.0 is a Windows installer for testing. There's no stable release yet. See [Downloads](/downloads).
+Yes. RunContainer 0.5.1 is a stable release for Windows. Download the installer from [Downloads](/downloads).
+
+### Will RunContainer update itself?
+
+No. When a newer release is published, RunContainer shows a notice at the top of the window. It never installs an update for you. To update, download the new installer from [Downloads](/downloads) and run it over the existing installation. Your environments and applications stay in place. You can dismiss the notice, and it returns when the next version is published.
+
+### How do I install RunContainer if I don't have it yet?
+
+Download the installer from [Downloads](/downloads) and follow [Installation](/getting-started/installation).
 
 ## Using RunContainer
 
