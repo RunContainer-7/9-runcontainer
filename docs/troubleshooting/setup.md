@@ -14,9 +14,6 @@ Windows may warn about files downloaded from the internet. Only continue if the 
 
 - Restart your PC and try again.
 - Check that your PC meets the [prerequisites](/getting-started/prerequisites). Detailed requirements will be published with the first release.
-- Open **Settings** and press **Check Hyper-V readiness**. It reports what's missing on your PC, for example:
-
-![Hyper-V readiness reporting not ready, with the missing Windows 10/11 requirement](/screenshots/hyperv-readiness.png)
 - On a managed work or school device, policies may block it. Ask your administrator.
 
 ## My security software blocks it

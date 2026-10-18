@@ -8,11 +8,7 @@ This walkthrough covers the basic RunContainer workflow: install an application,
 Exact button names and screens may change before the first official release.
 :::
 
-## 1. Check Hyper-V readiness
-
-Open the **Settings** tab and press **Check Hyper-V readiness**. Apps run in a Hyper-V virtual machine by default, so this check tells you whether your PC is ready. See [Prerequisites](/getting-started/prerequisites).
-
-## 2. Install an application
+## 1. Install an application
 
 On the **Apps** tab, press the **+** button, then choose **Install EXE**. In the file dialog, pick the installer and confirm.
 
@@ -24,11 +20,11 @@ RunContainer shows the **Installing into RunContainer** window while it validate
 If the installer asks to restart Windows, or to install drivers or system services, the application may not be suitable. See [Unsupported applications](/troubleshooting/unsupported-apps).
 :::
 
-## 3. Run the application
+## 2. Run the application
 
 Press **Run** on the app. RunContainer starts it inside its isolated environment, and the app behaves like a normal Windows application. Press **Close** when you're finished. → [Running & stopping](/user-guide/running)
 
-## 4. Keep it, or clean up
+## 3. Keep it, or clean up
 
 - **Keep it** if you'll use the application again. It stays installed until you delete it.
 - **Reset** restarts the app's environment and keeps its data. → [Reset & remove](/user-guide/reset-remove)

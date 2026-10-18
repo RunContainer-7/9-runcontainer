@@ -7,7 +7,7 @@ RunContainer's main window has six tabs: **Sources**, **Apps**, **Tweaks**, **Se
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
 | **Tweaks** | Per-application options: launch arguments, VM memory, processors and networking |
-| **Settings** | How each app is isolated, plus the Hyper-V readiness check and guest credential setup |
+| **Settings** | How each app is isolated |
 | **Profiles** | Isolation presets (default, relaxed or locked), assigned per application |
 | **Info** | What RunContainer is, how it works, and its current limits |
 
@@ -44,13 +44,9 @@ Each profile is a preset for an application's network and container capabilities
 
 The **Info** tab explains how RunContainer works. Its "How it works" and "What isolation you actually get" sections match the limits described in [Isolation](/safety/isolation).
 
-![The Info tab, showing the What RunContainer is summary and How it works section](/screenshots/info-panel.png)
-
 ## Isolation in Settings
 
 The **Settings** tab explains how each app is isolated. VM isolation is required and is the default. Optional AppContainer mode is available only when you opt in per app, and is never used as a fallback for VM isolation.
-
-![The Settings tab, showing the VM isolation card and the optional AppContainer mode card](/screenshots/settings-isolation.png)
 
 ## Application settings vs. RunContainer settings
 

@@ -21,9 +21,7 @@ Isolation in RunContainer is intended to:
 
 The **Settings** tab describes the isolation RunContainer uses:
 
-![The Settings tab, with the VM isolation card and the optional AppContainer card](/screenshots/settings-isolation.png)
-
-VM isolation is required by default. If it can't be set up, RunContainer refuses to launch the app rather than running it unprotected.
+Apps run inside a virtual machine. If that isolation can't be set up, RunContainer refuses to launch the app rather than running it unprotected.
 
 ## What it doesn't mean
 

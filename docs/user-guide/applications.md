@@ -6,7 +6,7 @@ RunContainer installs each application into its own managed copy, rather than on
 
 - **Get the installer from the official source.** RunContainer doesn't check whether an installer is genuine or safe. See [Testing unfamiliar software](/safety/responsible-testing).
 - **Check compatibility notes.** Applications that need drivers, system services or system-wide installation may not work. See [Unsupported applications](/troubleshooting/unsupported-apps).
-- **Have the isolation requirements ready.** The default isolation mode uses a Hyper-V virtual machine. See [Prerequisites](/getting-started/prerequisites).
+- **Check the prerequisites.** See [Prerequisites](/getting-started/prerequisites).
 
 ## Installing from the Sources tab
 
