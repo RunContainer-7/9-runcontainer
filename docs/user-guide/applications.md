@@ -1,44 +1,68 @@
 # Installing and managing applications
 
-Applications are installed **into** an environment, rather than directly onto your PC.
+RunContainer installs each application into its own managed copy, rather than onto your PC directly. The app then runs from that copy.
 
 ## Before you install
 
 - **Get the installer from the official source.** RunContainer doesn't check whether an installer is genuine or safe. See [Testing unfamiliar software](/safety/responsible-testing).
-- **Pick the environment first.** Decide which environment the application belongs in. See [Managing environments](/user-guide/environments).
 - **Check compatibility notes.** Applications that need drivers, system services or system-wide installation may not work. See [Unsupported applications](/troubleshooting/unsupported-apps).
+- **Have the isolation requirements ready.** The default isolation mode uses a Hyper-V virtual machine. See [Prerequisites](/getting-started/prerequisites).
 
-## Installing an application
+## Installing an application from an EXE
 
-1. In RunContainer, choose the environment you want to install into.
-2. Choose to install an application and select its installer.
-3. Go through the installer as you normally would.
-4. When it finishes, the application appears under that environment in RunContainer.
+1. Open the **Apps** tab (My Apps).
+2. Press the **+** button in the top-right corner. A menu opens with **Install EXE** and **Import from URL**.
+3. Choose **Install EXE**. A file dialog opens, showing `.exe` files.
+4. Select the installer and confirm.
+5. The **Installing into RunContainer** window shows three steps: validate the app, create its sandbox, and register it in the launcher. Close it with **×** or by clicking outside it when the steps are done.
+6. The app appears in **My Apps** under *Managed apps*.
+
+![The + menu on the Apps tab, showing Install EXE and Import from URL](/screenshots/apps-menu.png)
+
+RunContainer checks that the file is an `.exe` with a valid Windows program header before it copies anything. Files that fail the check aren't installed.
 
 ::: info Pre-release
-The exact steps and labels may change before the first official release.
+The exact steps and labels may change before the first official release. The screenshots above are from a pre-release build.
 :::
+
+## Installing from a URL
+
+Choose **Import from URL** from the same **+** menu, then enter the address of the installer. Only `https://` addresses are accepted. RunContainer downloads the file, then installs it the same way as an EXE you picked yourself.
+
+## Running the installer
+
+The app's installer runs inside the app's isolated environment, not on your host. In the default mode that is a virtual machine. Installer prompts to watch for are listed below.
+
+If the installer finishes but the environment needs a reboot, RunContainer tells you. Use **Reset** on the app, then **Run** it.
 
 ## Installer prompts to watch for
 
 | The installer asks to… | What it may mean |
 | --- | --- |
-| Restart Windows | The application may depend on system-level changes that a managed environment can't provide. |
+| Restart Windows | The application may depend on system-level changes that RunContainer can't provide. |
 | Install a driver or system service | This kind of application is often unsupported. See [Known limitations](/reference/limitations). |
 | Run with administrator rights | Think about why it needs them, especially for software you don't know. |
 | Install extra bundled software | Decline offers you didn't ask for, just as you would outside RunContainer. |
 
 ## Managing installed applications
 
-For each installed application, RunContainer shows which environment it belongs to and whether it's running. From there you can [run or stop it](/user-guide/running).
+Each app in **My Apps** has these actions:
+
+- **Manage**: open the app's settings, including launch arguments, memory, CPUs and networking. See [Settings](/user-guide/settings).
+- **Run** and **Close**: start the app, or stop it. See [Running & stopping](/user-guide/running).
+- **Reset**: restart the app's environment, keeping its data. See [Reset or remove](/user-guide/reset-remove).
+- **Duplicate**: create a separate copy with separate data.
+- **Export info**: export the app's details.
+- **Logs**: view the app's logs.
+- **Delete**: remove the app's folder.
 
 ## Updating applications
 
-Many applications update themselves. If an application updates from inside its environment, the update applies to that environment's copy only. Copies in other environments, or on the host, aren't affected.
+Many applications update themselves. An update applies only to the RunContainer copy of the app. The installed copy on your PC isn't affected, and neither is any other app.
 
 ## Uninstalling applications
 
-To get rid of an application, you can either use its own uninstaller inside the environment or, where supported, [reset or remove the environment](/user-guide/reset-remove) it lives in.
+To remove an app, use **Delete** in its entry under **My Apps**. You can also use the app's own uninstaller inside RunContainer first, then delete the entry.
 
 ## Related
 
