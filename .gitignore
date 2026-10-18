@@ -1,0 +1,7 @@
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+.netlify-cache/
+.netlify/*
+!.netlify/results.md
+.DS_Store

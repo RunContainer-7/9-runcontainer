@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="RunContainer">
+  <rect x="2.25" y="2.25" width="27.5" height="27.5" rx="7" fill="none" stroke="#3fcfaa" stroke-width="2.5"/>
+  <rect x="8.5" y="8.5" width="15" height="15" rx="3.25" fill="#3fcfaa"/>
+  <path d="M14 12.4 19.2 16 14 19.6Z" fill="#0e1116"/>
+</svg>
