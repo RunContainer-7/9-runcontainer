@@ -13,6 +13,11 @@ These are the known limits on what it does and doesn't do.
 - **Not every Windows application works.** Applications that install drivers or system services, use anti-cheat or copy protection, or need deep system access are likely to have problems. → [Unsupported applications](/troubleshooting/unsupported-apps)
 - **Behaviour can vary between application versions.** An application that works today may behave differently after it updates itself.
 
+## Isolation backend
+
+- **The VM backend needs a prepared image.** RunContainer never downloads or bundles Windows. When a prepared QEMU image is available (Settings → Advanced → Use prepared image), apps run inside a virtual machine; otherwise they run contained with Job Object caps and a private profile folder. The Settings tab always says which one is in use.
+- **Containment is not a virtual machine.** It separates app data and limits resources, but it shares the Windows kernel and does not cut off network access.
+
 ## Security
 
 - **Isolation isn't absolute.** Applications still interact with your screen, input, files you give them and the network. → [Isolation is not a guarantee](/safety/not-a-guarantee)

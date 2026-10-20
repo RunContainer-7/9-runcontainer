@@ -37,7 +37,7 @@ Choose **Import from URL** from the same **+** menu, then enter the address of t
 
 ## Running the installer
 
-The app's installer runs inside the app's isolated environment, not on your host. In the default mode that is a virtual machine. Installer prompts to watch for are listed below.
+The app's installer runs inside the app's isolated environment, not on your host — in a managed VM when this PC has a VM backend, otherwise under containment with its own profile. Installer prompts to watch for are listed below.
 
 If the installer finishes but the environment needs a reboot, RunContainer tells you. Use **Reset** on the app, then **Run** it.
 
