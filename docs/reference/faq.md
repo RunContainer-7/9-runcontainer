@@ -16,7 +16,7 @@ RunContainer is free and open source. Its source code is public at [github.com/R
 
 ### Is it available now?
 
-Yes. RunContainer 0.6.1 is the current stable release for Windows. Download the installer from [Downloads](/downloads).
+Yes. RunContainer 0.6.2 is the current stable release for Windows. Download the installer from [Downloads](/downloads).
 
 ### Will RunContainer update itself?
 
