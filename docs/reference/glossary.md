@@ -34,7 +34,7 @@ Delete an environment along with the applications and files inside it. → [Rese
 
 ### Reset
 
-Return an environment to a clean state, removing its applications and files but keeping the environment. → [Reset & remove](/user-guide/reset-remove)
+Stop everything an app started and return its environment to a clean state, keeping the app's saved files and data. → [Reset & remove](/user-guide/reset-remove)
 
 ### Running
 

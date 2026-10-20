@@ -30,16 +30,29 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.3',
-    filename: 'RunContainer-Setup-0.6.3.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.3/RunContainer-Setup-0.6.3.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.3',
-    sha256: 'ddc0ffe6bb3658269403dc8b4544d9ea6c8e8741bafa1602b9c75f1c55e3f72f',
+    version: '0.6.4',
+    filename: 'RunContainer-Setup-0.6.4.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.4/RunContainer-Setup-0.6.4.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.4',
+    sha256: 'b39bb2b6b93eadcdeef7d8a02d4361fd9667b8080c1594967593fae1309cd4ec',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.4',
+      date: '2026-10-20',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.4',
+      notes: [
+        'The app now describes what it does: each application gets its own space and its own files. Settings no longer shows a backend to choose, and virtual-machine setup, prepared images and guest paths are gone from the everyday screens.',
+        'Profiles are honest: locked means no network access, and the Profiles tab says when this PC cannot enforce that for a standard environment.',
+        'Tweaks no longer offers a networking switch that the default environment could not honour, and saving tweaks can no longer put a locked application back online.',
+        'An application pinned to a particular backend can return to automatic from its Manage panel, and automatic now stays automatic instead of turning into a virtual-machine request.',
+        'The installer is not code-signed, so Windows may warn before it runs.',
+      ],
+    },
     {
       version: '0.6.3',
       date: '2026-10-20',

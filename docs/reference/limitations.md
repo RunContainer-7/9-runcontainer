@@ -13,10 +13,12 @@ These are the known limits on what it does and doesn't do.
 - **Not every Windows application works.** Applications that install drivers or system services, use anti-cheat or copy protection, or need deep system access are likely to have problems. → [Unsupported applications](/troubleshooting/unsupported-apps)
 - **Behaviour can vary between application versions.** An application that works today may behave differently after it updates itself.
 
-## Isolation backend
+## How apps are kept apart
 
-- **The VM backend needs a prepared image.** RunContainer never downloads or bundles Windows. When a prepared QEMU image is available (Settings → Advanced → Use prepared image), apps run inside a virtual machine; otherwise they run contained with Job Object caps and a private profile folder. The Settings tab always says which one is in use.
-- **Containment is not a virtual machine.** It separates app data and limits resources, but it shares the Windows kernel and does not cut off network access.
+- **It is a launcher, not a virtual machine.** Apps run in their own space on the same Windows as everything else. That keeps their files and data together and limits their memory and CPU, but it is not a full security boundary.
+- **A virtual machine is used only when one is already available.** RunContainer never downloads or bundles Windows. When a prepared image exists on the PC, apps use it automatically for a stronger boundary; the Settings tab says whether that is happening.
+- **Shared Windows places are outside the app's folder.** A program that writes to the registry or a system-wide install directory can still leave traces there.
+- **`locked` cannot always block the network.** It works when the app runs in a virtual machine or a restricted container; on a standard environment, Windows gives ordinary apps network access, and the app says so instead of implying otherwise.
 
 ## Security
 

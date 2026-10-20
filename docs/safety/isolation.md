@@ -19,12 +19,12 @@ Isolation in RunContainer is intended to:
 
 ## What the settings say
 
-The **Settings** tab shows the backend RunContainer picked for this PC:
+The **Settings** tab describes what RunContainer does on this PC:
 
-- When a VM backend is available, apps run inside a managed virtual machine with their own disk.
-- Otherwise apps run contained: a Windows Job Object enforces lifetime, memory, CPU and process caps, and each app gets a private profile folder. This is not a hardware VM.
+- Every app runs in its own space, with its own files, its own data folder, and limits on memory and CPU.
+- If a prepared virtual-machine image is already available, RunContainer uses it automatically for a stronger boundary.
 
-Either way, nothing runs unguarded: if a boundary can't be established, RunContainer refuses to launch the app.
+Either way, nothing runs unguarded: if the environment can't be established, RunContainer refuses to launch the app.
 
 ## What it doesn't mean
 

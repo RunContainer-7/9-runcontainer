@@ -6,9 +6,9 @@ RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **
 | --- | --- |
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
-| **Tweaks** | Per-application options: launch arguments, memory cap, CPU share and networking |
-| **Settings** | Which isolation backend this PC uses, and app storage |
-| **Profiles** | Isolation presets (default, relaxed or locked), assigned per application |
+| **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
+| **Settings** | How apps are kept apart, and where their files live |
+| **Profiles** | Access presets (default, relaxed or locked), assigned per application |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
 
@@ -23,42 +23,44 @@ Labels and options may change between releases. The pages in this guide describe
 Pick an application in **Tweaks** to change its options:
 
 - **Launch arguments**: passed to the app when it starts.
-- **Memory cap**: 512 to 32768 MB.
-- **CPU share**: 1 to 16.
-- **Guest networking**: turn it off to run the app offline.
+- **Memory limit**: 512 to 32768 MB.
+- **CPU limit**: 1 to 16.
 
-Invalid values are rejected and not saved. Memory and CPU caps apply at the next **Run**. Network changes apply to a VM backend after **Reset**; containment can't cut network access.
+Invalid values are rejected and not saved. Limits apply the next time you press **Run**. To take an app offline, use the `locked` profile instead.
 
-![The Tweaks form, with launch arguments, VM memory, VM CPUs, guest networking and Save tweaks](/screenshots/tweaks-panel.png)
+![The Tweaks form, with launch arguments, memory limit, CPU limit and Save tweaks](/screenshots/tweaks-panel.png)
 
 ## Profiles
 
-Each profile is a preset for an application's network and container capabilities:
+Each profile sets how much access an application gets:
 
-- **default**: online VM, with the network adapter attached.
-- **relaxed**: online VM, with wider container capabilities.
-- **locked**: offline VM with the adapters removed, and a container with no capabilities. A running VM needs **Reset** before this takes effect.
+- **default**: normal access.
+- **relaxed**: normal access, plus extra permissions for apps that ask for them.
+- **locked**: no network access.
+
+A `locked` profile can only be enforced when the app runs in a virtual machine or a restricted container. On a standard environment, Windows gives ordinary apps network access — the Profiles tab says so for each app instead of pretending the block is in place.
 
 ![The Profiles tab, listing the default, relaxed and locked presets](/screenshots/profiles-panel.png)
 
 ## Info
 
-The **Info** tab explains how RunContainer works. Its "How it works" and "What isolation you actually get" sections match the limits described in [Isolation](/safety/isolation).
+The **Info** tab explains how RunContainer works, including the one limit worth knowing about: a program that saves settings in shared Windows places can leave traces outside its folder.
 
 Further down the tab, the **Support & documentation** section links to this documentation and to the [Discord server](/support), and both open in your default browser. The same Discord link appears in the beta notice. RunContainer only opens its own project links; any other address is refused.
 
 ![The Info tab. The Support & documentation section with both links sits below the cards shown here.](/screenshots/info-panel.png)
 
-## Isolation in Settings
+## How apps are kept apart
 
-You don't configure isolation by hand. The **Settings** tab shows the backend RunContainer picked for this PC:
+There is nothing to configure. **Settings** says what RunContainer does for this PC:
 
-- **Backend: VM (QEMU)** — apps run inside a managed virtual machine with its own disk.
-- **Backend: containment (RCVM)** — apps run inside a Windows Job Object with lifetime, memory, CPU and process caps, plus a private profile folder per app. This is not a hardware VM and does not cut network access.
+- **Each app runs in its own space** — its own files and processes, memory and CPU limits, and a private folder for its data.
+- **Where app files live** — each app has a folder under RunContainer's data directory. **Duplicate** gives a second copy with separate data, and **Delete** removes that folder.
+- **Logs** — launch, stop and exit events, readable from each app's **Logs** button.
 
-Backend overrides, the Hyper-V readiness check, the guest credential and the option to point at a prepared VM image sit under **Advanced**, so the everyday screens are short. RunContainer never downloads or bundles Windows.
+If a prepared virtual-machine image is already available on the PC, RunContainer uses it automatically for a stronger boundary. Nothing is downloaded, and no Windows licence is included.
 
-![The Settings tab, showing the picked backend, app storage and a collapsed Advanced section](/screenshots/tab-settings.png)
+![The Settings tab, showing one space per app and where app files live](/screenshots/tab-settings.png)
 
 ## Updates
 
@@ -71,7 +73,7 @@ The **Updates** tab shows the installed version and the release notes for every 
 There are two kinds of settings to keep apart:
 
 - **An application's own settings** (its preferences, sign-ins and recent files) are changed inside the application. They belong to that app's own RunContainer folder, so changing them doesn't affect other apps or your PC.
-- **RunContainer's settings** control RunContainer itself and how it isolates apps.
+- **RunContainer's settings** decide how much access an app gets and how much memory and CPU it may use.
 
 ## Related
 

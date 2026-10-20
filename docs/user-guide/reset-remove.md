@@ -16,12 +16,12 @@ RunContainer has two separate actions. Don't confuse them.
 | **The environment** | Kept | Deleted |
 | **Installed applications** | Kept | Removed |
 | **Files saved inside it** | Kept | Removed |
-| **Good for** | Recovering a stuck environment, or applying changed CPU, memory or network settings | Environments you no longer need |
+| **Good for** | Recovering a stuck environment, or applying changed CPU and memory limits | Environments you no longer need |
 
-Reset keeps the disk, installed applications and data. Use it when an environment is stuck or after you change its settings. For AppContainer-mode applications, Reset stops the processes and removes the container profile.
+Reset stops everything the app started and returns its environment to a clean state, while keeping its files and data. Use it when an app is stuck or after you change its memory or CPU limits.
 
 ::: warning Delete can take a while
-Deleting a VM environment shuts the environment down first, and can wait up to two minutes for it to power off. If deletion reports a leftover lock, close antivirus, backup or indexing tools that may be using the files, then run Delete again.
+Delete stops the app first, which can take a moment with a large app. If it reports that a file is still in use, close antivirus, backup or indexing tools that may be holding it, then run Delete again.
 :::
 
 ## Before you reset or remove

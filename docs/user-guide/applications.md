@@ -37,7 +37,7 @@ Choose **Import from URL** from the same **+** menu, then enter the address of t
 
 ## Running the installer
 
-The app's installer runs inside the app's isolated environment, not on your host — in a managed VM when this PC has a VM backend, otherwise under containment with its own profile. Installer prompts to watch for are listed below.
+The app's installer runs inside the app's own environment, not loose on your desktop. It gets the same space and limits as the app itself. Installer prompts to watch for are listed below.
 
 If the installer finishes but the environment needs a reboot, RunContainer tells you. Use **Reset** on the app, then **Run** it.
 
@@ -54,7 +54,7 @@ If the installer finishes but the environment needs a reboot, RunContainer tells
 
 Each app in **My Apps** has these actions:
 
-- **Manage**: open the app's settings, including launch arguments, memory, CPUs and networking. See [Settings](/user-guide/settings).
+- **Manage**: see where the app lives, its log, how its window appears, and its access profile. See [Settings](/user-guide/settings).
 - **Run** and **Close**: start the app, or stop it. See [Running & stopping](/user-guide/running).
 - **Reset**: restart the app's environment, keeping its data. See [Reset or remove](/user-guide/reset-remove).
 - **Duplicate**: create a separate copy with separate data.
