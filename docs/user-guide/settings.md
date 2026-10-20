@@ -44,9 +44,9 @@ Each profile is a preset for an application's network and container capabilities
 
 The **Info** tab explains how RunContainer works. Its "How it works" and "What isolation you actually get" sections match the limits described in [Isolation](/safety/isolation).
 
-Its **Support & documentation** section links to this documentation and to the [Discord server](/support), and both open in your default browser. RunContainer only opens its own project links; any other address is refused.
+Further down the tab, the **Support & documentation** section links to this documentation and to the [Discord server](/support), and both open in your default browser. The same Discord link appears in the beta notice. RunContainer only opens its own project links; any other address is refused.
 
-![The Info tab, with the Support & documentation section and its links](/screenshots/info-panel.png)
+![The Info tab. The Support & documentation section with both links sits below the cards shown here.](/screenshots/info-panel.png)
 
 ## Isolation in Settings
 
