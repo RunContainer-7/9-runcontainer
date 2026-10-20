@@ -44,6 +44,10 @@ Each profile is a preset for an application's network and container capabilities
 
 The **Info** tab explains how RunContainer works. Its "How it works" and "What isolation you actually get" sections match the limits described in [Isolation](/safety/isolation).
 
+Its **Support & documentation** section links to this documentation and to the [Discord server](/support), and both open in your default browser. RunContainer only opens its own project links; any other address is refused.
+
+![The Info tab, with the Support & documentation section and its links](/screenshots/info-panel.png)
+
 ## Isolation in Settings
 
 The **Settings** tab explains how each app is isolated. VM isolation is required and is the default. Optional AppContainer mode is available only when you opt in per app, and is never used as a fallback for VM isolation.

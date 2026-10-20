@@ -30,16 +30,39 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.5.1',
-    filename: 'RunContainer-Setup-0.5.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.5.1/RunContainer-Setup-0.5.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.5.1',
-    sha256: 'ec9f3b38cd7e4c92fa4e088bfdafd6c10f0bd2376f4faf656bd285e0341b5af7',
-    sizeMb: 100,
+    version: '0.6.1',
+    filename: 'RunContainer-Setup-0.6.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.1/RunContainer-Setup-0.6.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.1',
+    sha256: '85d187d399dfd22b7f76e43b0cf2c24b9a9cc36a1784e5e8c6409beb9821e8a0',
+    sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.1',
+      date: '2026-10-20',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.1',
+      notes: [
+        'New RunContainer icon, containing every size Windows asks for.',
+        'The icon now appears on the app window and taskbar, in the installed RunContainer.exe, in the installer wizard, and on the Start menu and desktop shortcuts.',
+        'The installer is not code-signed, so Windows may warn before it runs.',
+      ],
+    },
+    {
+      version: '0.6.0',
+      date: '2026-10-20',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.0',
+      notes: [
+        'Every environment can run inside its own virtual machine, using a Windows image you provide. No operating system image is bundled or downloaded.',
+        'First-run provisioning: install the virtual machine support, create a disk, install your own licensed Windows in it, then use that disk as the base image.',
+        'The update wizard shows release notes, downloads the installer inside the app with progress, and installs it over your copy.',
+        'RCVM containment stays available as a lighter, explicitly labelled option that is not a virtual machine.',
+      ],
+    },
     {
       version: '0.5.1',
       date: '2026-10-18',
