@@ -30,16 +30,26 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.7',
-    filename: 'RunContainer-Setup-0.6.7.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.7/RunContainer-Setup-0.6.7.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.7',
-    sha256: 'd4cdd3e5689d64333b42e1cc908927bb060f4bce72ebdc5fde5c6355ec562335',
+    version: '0.6.8',
+    filename: 'RunContainer-Setup-0.6.8.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.8/RunContainer-Setup-0.6.8.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.8',
+    sha256: '75aed091a40897b137009033c582935d3bbbcbe8e216b6f4f8173908fff806d0',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.8',
+      date: '2026-10-22',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.8',
+      notes: [
+        'The Policies tab is gone from the launcher. Terms, privacy, source code and community rules now live only on this site, where they can be corrected without shipping a new build. The Info tab still opens the documentation.',
+        'The version shown during the first moment of startup comes from the build instead of a hard-coded older number.',
+      ],
+    },
     {
       version: '0.6.7',
       date: '2026-10-22',
