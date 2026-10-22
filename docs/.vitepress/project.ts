@@ -30,16 +30,26 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.8',
-    filename: 'RunContainer-Setup-0.6.8.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.8/RunContainer-Setup-0.6.8.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.8',
-    sha256: '75aed091a40897b137009033c582935d3bbbcbe8e216b6f4f8173908fff806d0',
+    version: '0.6.9',
+    filename: 'RunContainer-Setup-0.6.9.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.9/RunContainer-Setup-0.6.9.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.9',
+    sha256: '86775dd98a1f966ca8717ce092ddb712410641160e41b92ea68ad1c7736f2b4a',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.9',
+      date: '2026-10-22',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.9',
+      notes: [
+        'Fixed “Setup could not close RunContainer” during an upgrade. Setup now waits up to ten seconds for the old process tree to exit and only reports a problem if the app is still running; 0.6.8 checked once after 1.5 seconds and could abort while RunContainer was already closing.',
+        'The same wait applies to silent installs and to a crashed copy showing an error window, so upgrades no longer stop halfway through.',
+      ],
+    },
     {
       version: '0.6.8',
       date: '2026-10-22',
