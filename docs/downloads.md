@@ -21,6 +21,12 @@ RunContainer is **free and open source**. Its source code is at [github.com/RunC
   <p>Full notes are on the <a :href="latest.releaseUrl">release page</a>.</p>
 </div>
 
+::: warning Windows may flag the installer as malware
+The installer is **not code-signed**, so Windows can treat it as an unknown file: SmartScreen may show a blue “Windows protected your PC” box, and Microsoft Defender or your browser may label the download as a virus or “potentially unwanted software”, or remove it from your Downloads folder. That is a reputation false positive for a new unsigned build, not a detection of known malware.
+
+Do **not** turn off real-time protection. The exact steps to verify the file, restore it from Protection history and install it anyway are in [Installation → Windows will probably warn you](/getting-started/installation#windows-will-probably-warn-you-and-that-is-expected).
+:::
+
 ::: danger Beware of unofficial downloads
 Any file presented as a RunContainer installer that isn't linked from this page is **not official**. Don't run it.
 :::
