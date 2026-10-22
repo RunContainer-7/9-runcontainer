@@ -6,7 +6,7 @@ Plain-language rules for using RunContainer and its community spaces. They are n
 
 RunContainer is free software provided **as-is, without warranty**. You may use it for personal or commercial work, on as many PCs as you like.
 
-By installing and using RunContainer, you confirm that you are at least **15 years old**, or the minimum age required where you live if that is higher.
+By installing and using RunContainer, you confirm that you are at least **15 years old**, regardless of where you live.
 
 You are responsible for:
 
