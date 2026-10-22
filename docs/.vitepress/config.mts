@@ -67,6 +67,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
       { text: 'FAQ', link: '/reference/faq' },
       { text: 'Glossary', link: '/reference/glossary' },
       { text: 'Known limitations', link: '/reference/limitations' },
+      { text: 'Policies', link: '/policies' },
       { text: 'Changelog', link: '/changelog' },
       { text: 'Contributing', link: '/reference/contributing' },
       { text: 'Reporting security issues', link: '/reference/security' },
@@ -111,6 +112,7 @@ export default defineConfig({
       { text: 'Docs', link: '/guide/introduction', activeMatch: '^/(guide|getting-started|user-guide|troubleshooting|safety|reference)/' },
       { text: 'Downloads', link: '/downloads' },
       { text: 'Changelog', link: '/changelog' },
+      { text: 'Policies', link: '/policies' },
       { text: 'Community', link: '/community' },
       { text: 'Support', link: '/support' }
     ],

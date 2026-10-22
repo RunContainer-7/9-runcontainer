@@ -30,16 +30,30 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.5',
-    filename: 'RunContainer-Setup-0.6.5.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.5/RunContainer-Setup-0.6.5.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.5',
-    sha256: '763832fef59e85bb27714c0d6561bf0e8adfaca015fe5beb4cab5a70d799a4f3',
+    version: '0.6.6',
+    filename: 'RunContainer-Setup-0.6.6.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.6/RunContainer-Setup-0.6.6.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.6',
+    sha256: 'd0f29cfe1913f543492d08efcabc5c3840a8f13beb4803f699bbc133b3b5796f',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.6',
+      date: '2026-10-22',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.6',
+      notes: [
+        'RC-Brain 2: 8,334 parameters over 66 structured observation features, 19 diagnoses and 11 actions. It now uses temporal evidence (persistence, recurrence, recovery), exit-code classes, host pressure and contradictory-log signals instead of one error string.',
+        'Repairs are verified independently over three consecutive observations. “Verified”, “unresolved” and “inconclusive” are reported honestly, and a restart alone is not treated as success.',
+        'Verified outcomes are stored locally with paths and names redacted. They can be promoted, with consent, into a curated dataset; training a candidate and activating it are separate gated offline steps, and the previous model can be rolled back in the AI tab.',
+        'Evaluation by split: 99.6% on familiar holdout variants, 96.8% on whole unseen failure families, 96.5% on an untouched final split, 0 unsafe destructive actions and 0 repairs proposed for normal behaviour. The ambiguous/restraint split is reported separately.',
+        'Fixed the 0.6.5 startup failure (a pruned training dependency was required by the shipped app) and the per-launch Electron CSP warning. Startup failures are now logged and explained instead of leaving invisible processes.',
+        'New Policies tab covering terms, privacy, source and self-hosting, responsible app use (no piracy) and community conduct. Installation docs explain the unsigned-installer warning and how to verify the download.',
+      ],
+    },
     {
       version: '0.6.5',
       date: '2026-10-22',

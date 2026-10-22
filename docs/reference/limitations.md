@@ -27,10 +27,11 @@ These are the known limits on what it does and doesn't do.
 
 ## RC-Brain (AI monitoring)
 
-- **It is a small model, not a language model.** RC-Brain 1 has 4,229 parameters and recognises patterns represented in its synthetic RunContainer corpus. It cannot reason about arbitrary novel software, read source code, or explain itself beyond the evidence vector it was given.
-- **The evaluation corpus is synthetic.** 98.9% diagnosis and action accuracy, no false positives on normal behaviour and no unsafe actions were measured on held-out variants generated from the same scenario families. That measures generalisation within those families, not real-world software diversity.
-- **It abstains rather than guessing.** About 2% of held-out variants fall below the 0.90 confidence threshold. When that happens the app only continues observing; it does not restart or repair anything.
-- **No online learning.** The model's weights never change while the app runs. Repair outcomes are kept as local history and used to stop repeated repairs; improving the model requires a reviewed corpus change and a deliberate retrain.
+- **It is a small fixed-label classifier, not a language model.** RC-Brain 2 has 8,334 parameters and chooses among 19 diagnoses and 11 actions from a 66-number evidence vector. It cannot read arbitrary log text semantically, invent a new diagnosis, or explain itself beyond that evidence. Unknown evidence becomes `unknown_failure` plus “gather more evidence”.
+- **The evaluation corpus is synthetic.** Familiar-holdout diagnosis accuracy is 99.6%, unseen families 96.8% and the untouched final split 96.5%. Unseen families are still generated from RunContainer's architecture, so this measures generalisation across scenario families, not real-world software diversity. The keyword baseline scores 48.6%, 93.5% and 53.7% respectively.
+- **Ambiguous cases are handled conservatively, not perfectly.** On 15 ambiguous/restraint cases the model often reported “unknown, gather evidence” instead of “still starting, wait”. Both are harmless; no repairs were proposed. Read the ambiguous accuracy (26.7%) as conservative behaviour, not understanding.
+- **False positives are reported two ways.** A repair proposed for normal behaviour: 0% on every split. Normal behaviour labelled abnormal but only observed: 6.5% on the final split.
+- **No online learning.** The model's weights never change while the app runs. History and retrieval are context; curated examples are data; only an offline, gated training run changes weights, and the previous model stays available for rollback.
 - **Monitoring is not a service.** It runs only while RunContainer is open. Nothing is monitored after you close the app.
 - **It sees the host, not inside a VM.** Window, CPU/IO and engine-liveness checks observe the host side of a virtual machine. A guest application that hangs without changing host-visible signals may not be diagnosed.
 - **A detached GUI app's own stdout is not available.** RC-Brain reads the app's log file and the launcher's piped output; an app that writes to a console RunContainer does not own produces no live stdout.
