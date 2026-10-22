@@ -15,7 +15,7 @@ The rest of this page explains what it is, how it was trained, what it is allowe
 | Shape | Two feed-forward heads: diagnosis `32 × 16`, action `24 × 12` |
 | Input | 44 structured observation features |
 | Outputs | 18 diagnoses, 11 actions |
-| Runtime | Local CPU inference through `brain.js`; no network call |
+| Runtime | Local CPU inference in the app process; no network call and no GPU dependency |
 | Model file | `src/ai/model/rc-brain-1.json` |
 | Knowledge version | `2026-10-22.1` |
 | Licence | Same as RunContainer (open source) |
@@ -60,7 +60,7 @@ Log text is **evidence, never instruction**. A log line saying "ignore previous 
 ## How it decides
 
 1. The supervisor hands the observation vector to the diagnosis head.
-2. The softmax output is calibrated with a temperature fitted on a separate calibration split. If the top probability is below **0.60**, or the gap to the second diagnosis is below **0.15**, the model abstains: it reports `unknown_failure` and chooses `observe` instead of guessing.
+2. The softmax output is calibrated with a temperature fitted on a separate calibration split. If the top probability is below **0.90**, or the gap to the second diagnosis is below **0.15**, the model abstains: it reports `unknown_failure` and chooses `observe` instead of guessing.
 3. The action head receives the same 44 features plus the predicted diagnosis, and chooses one of the 11 actions.
 4. A safety gate outside the network enforces the rules the model cannot override:
    - an action that is not in the catalogue becomes `observe`;
@@ -104,7 +104,7 @@ Measured on the 348 variants the model never saw:
 | Abstention rate | 2.0% | 0% |
 | Unsafe actions | **0** | — |
 
-All four held-out misses are the same safe behaviour: a `window_hang` variant where the model was not confident enough and abstained with `observe` instead of restarting. The 0.90 confidence threshold is what produces that abstention rate; at 0.60 the model would have restarted two ambiguous healthy cases. The baseline is strong on obvious keyword cases such as a missing DLL, which is why the corpus includes interactions and misleading cases where keyword matching chooses the wrong cause.
+All four held-out misses are the same safe behaviour: a `window_hang` variant where the model was not confident enough and abstained with `observe` instead of restarting. The 0.90 confidence threshold is what produces that abstention rate: the model would rather hand an ambiguous case back to you than restart an app on a guess. The baseline is strong on obvious keyword cases such as a missing DLL, which is why the corpus includes interacting failures and misleading wording where keyword matching chooses the wrong cause.
 
 These numbers are a measurement of this synthetic corpus, not a claim that the model understands arbitrary software. See [Known limitations](/reference/limitations).
 
