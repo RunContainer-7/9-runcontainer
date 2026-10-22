@@ -30,16 +30,30 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.6',
-    filename: 'RunContainer-Setup-0.6.6.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.6/RunContainer-Setup-0.6.6.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.6',
-    sha256: 'd0f29cfe1913f543492d08efcabc5c3840a8f13beb4803f699bbc133b3b5796f',
+    version: '0.6.7',
+    filename: 'RunContainer-Setup-0.6.7.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.7/RunContainer-Setup-0.6.7.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.7',
+    sha256: 'd4cdd3e5689d64333b42e1cc908927bb060f4bce72ebdc5fde5c6355ec562335',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.7',
+      date: '2026-10-22',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.7',
+      notes: [
+        'Installing over a running copy no longer fails. Setup used to abort with “Setup was unable to automatically close all applications” when RunContainer was open, including a crashed copy showing an error window. It now closes RunContainer itself: silently during an unattended install, and after asking you during a normal one.',
+        '0.6.5 users are unstuck. That build required a training-only package that packaging removed, so the installed app could stop with “Cannot find module” before opening, and its own updater never ran. 0.6.6 removed the dependency; this release also makes the installer replace a broken copy that is still in memory.',
+        'The AI tab now shows the monitor is alive: how many checks it has completed, when the last check ran, and how many running apps it is watching. The heartbeat refreshes while the tab is open instead of showing a snapshot.',
+        '“What it may do on its own” is read from the shipped action catalogue, so the automatic and approval-only repairs listed are exactly the ones this build enforces.',
+        'The safety gate no longer applies even a low-risk repair to an app the model just diagnosed as normal: a restart is never a repair for a working app.',
+        'Documentation: the download answer and system requirements describe the current release, and installation explains what to do if you are still on 0.6.5.',
+      ],
+    },
     {
       version: '0.6.6',
       date: '2026-10-22',

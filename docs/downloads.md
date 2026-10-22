@@ -30,7 +30,7 @@ Any file presented as a RunContainer installer that isn't linked from this page 
 Before you run the installer, compare its checksum with the SHA-256 value above. In PowerShell, in the folder with the file:
 
 ```powershell
-Get-FileHash .\RunContainer-Setup-0.6.6.exe -Algorithm SHA256
+Get-FileHash .\RunContainer-Setup-0.6.7.exe -Algorithm SHA256
 ```
 
 If the hash doesn't match, delete the file and download it again from this page.
@@ -49,7 +49,7 @@ If the hash doesn't match, delete the file and download it again from this page.
 
 ## Installation requirements
 
-RunContainer's installer is built for 64-bit Windows. Official supported Windows versions and system requirements haven't been confirmed yet. See [Prerequisites](/getting-started/prerequisites) for what's currently known, and [Installation](/getting-started/installation) for the steps.
+RunContainer's installer is built for **64-bit Windows (x64)** and supports Windows 10 and Windows 11, Home through Education. Virtual-machine environments need a Pro, Enterprise or Education edition plus virtualization support. See [Prerequisites](/getting-started/prerequisites) for details and [Installation](/getting-started/installation) for the steps.
 
 ## Stay informed
 

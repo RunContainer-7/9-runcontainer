@@ -25,7 +25,7 @@ RunContainer's installer is **not code-signed**, because a code-signing certific
 
 **This is not malware.** RunContainer is an open-source Windows launcher. It does not install itself as a service, does not add itself to startup, and does not upload your files. Every build published here is produced by the public GitHub Actions workflow from the public source at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). You do not have to take our word for it:
 
-1. **Check the checksum.** Compare the SHA-256 on the [Downloads](/downloads) page with `Get-FileHash .\RunContainer-Setup-0.6.6.exe -Algorithm SHA256`. A mismatch means the file is not the published build.
+1. **Check the checksum.** Compare the SHA-256 on the [Downloads](/downloads) page with `Get-FileHash .\RunContainer-Setup-0.6.7.exe -Algorithm SHA256`. A mismatch means the file is not the published build.
 2. **Read the code.** The whole application, including the installer script and the release workflow, is in the repository. Nothing is minified away from inspection.
 3. **Build it yourself.** `git clone`, `npm install`, `npm run dist` produces an installer from the same source. See [Building from source](#building-from-source).
 
@@ -34,7 +34,12 @@ Do **not** turn off real-time protection permanently to install RunContainer. Re
 The installer was unsigned in earlier releases too; this section exists because the warnings are the most common support question.
 
 Then read [First launch](/getting-started/first-launch) to see what to expect when you open RunContainer, or follow the [Walkthrough](/getting-started/walkthrough).
-Then read [First launch](/getting-started/first-launch) to see what to expect when you open RunContainer, or follow the [Walkthrough](/getting-started/walkthrough).
+
+## Upgrading, including from 0.6.5
+
+Run the current installer from [Downloads](/downloads) over your existing copy. Your apps and environments are kept; only the application files are replaced.
+
+If you are still on **0.6.5**, you may have seen the app stop with a “Cannot find module” JavaScript error before its window opened. That build could not start, so its own update notice never ran and it cannot update itself. Download the current installer and run it once by hand. It closes any leftover RunContainer process — including an error window from the crashed copy — before replacing files. From 0.6.6 onward the app starts normally and shows an update notice for later releases.
 
 ## Building from source
 
