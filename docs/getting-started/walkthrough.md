@@ -4,8 +4,8 @@ This walkthrough covers the basic RunContainer workflow: install an application,
 
 <WorkflowSteps />
 
-::: info Pre-release
-Exact button names and screens may change before the first official release.
+::: info Screens change between releases
+Button names and screens can change between releases.
 :::
 
 ## 1. Install an application

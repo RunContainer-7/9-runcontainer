@@ -27,8 +27,8 @@ The **Sources** tab has the same two options as the **+** menu: a **Source URL**
 
 RunContainer checks that the file is an `.exe` with a valid Windows program header before it copies anything. Files that fail the check aren't installed.
 
-::: info Pre-release
-The exact steps and labels may change before the first official release. The screenshots above are from a pre-release build.
+::: info Screens change between releases
+The exact steps and labels can change between releases. The screenshots above are from the current build.
 :::
 
 ## Installing from a URL

@@ -13,7 +13,7 @@ Windows may warn about files downloaded from the internet. Only continue if the 
 ## RunContainer won't open
 
 - Restart your PC and try again.
-- Check that your PC meets the [prerequisites](/getting-started/prerequisites). Detailed requirements will be published with the first release.
+- Check that your PC meets the [prerequisites](/getting-started/prerequisites): Windows 10 or 11 on 64-bit (x64).
 - On a managed work or school device, policies may block it. Ask your administrator.
 
 ## My security software blocks it

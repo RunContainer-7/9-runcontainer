@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Where can I download it?',
-    a: 'There is no official public release yet. The Downloads page will list verified releases as soon as one is published.'
+    a: `Yes, it is available now. RunContainer ${project.latestDownload.version} is the current Stable release for Windows. The Downloads page points at the installer attached to that Stable GitHub release; both are the same file, and the page lists its SHA-256 checksum so you can verify the download. The installer is not code-signed, so Windows may warn before it runs.`
   }
 ]
 </script>
@@ -72,18 +72,18 @@ const faqs = [
         <p class="rc-lede">The documentation takes you from the core ideas to a first walkthrough.</p>
         <ol class="rc-start-list">
           <li><a :href="withBase('/guide/introduction')">Read what RunContainer is</a> and the <a :href="withBase('/guide/concepts')">key terms</a>.</li>
-          <li>Check the <a :href="withBase('/getting-started/prerequisites')">prerequisites</a> and the <a :href="withBase('/downloads')">download status</a>.</li>
+          <li>Check the <a :href="withBase('/getting-started/prerequisites')">prerequisites</a> and the <a :href="withBase('/downloads')">Downloads page</a>.</li>
           <li>Follow the <a :href="withBase('/getting-started/walkthrough')">beginner walkthrough</a>.</li>
         </ol>
       </div>
       <aside class="rc-panel" aria-labelledby="requirements">
         <h3 id="requirements">System requirements</h3>
         <dl>
-          <div><dt>Operating system</dt><dd>Windows PC</dd></div>
-          <div><dt>Supported versions</dt><dd>Not yet confirmed</dd></div>
-          <div><dt>Hardware</dt><dd>Not yet confirmed</dd></div>
+          <div><dt>Operating system</dt><dd>Windows 10 or Windows 11</dd></div>
+          <div><dt>Architecture</dt><dd>64-bit (x64)</dd></div>
+          <div><dt>Hardware</dt><dd>64-bit PC; virtual-machine environments also need virtualization support</dd></div>
         </dl>
-        <p>Detailed requirements will be published with the first official release.</p>
+        <p><a :href="withBase('/getting-started/prerequisites')">Full prerequisites and known limitations →</a></p>
       </aside>
     </section>
 
