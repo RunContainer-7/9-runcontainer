@@ -9,6 +9,7 @@ Find the page that matches what you're seeing.
 | An environment won't start, or gets stuck | [Environment startup](/troubleshooting/environment-startup) |
 | An installer fails, or an application won't open | [Install & launch errors](/troubleshooting/install-launch) |
 | An environment won't reset or remove, or leftovers remain | [Recovery & cleanup](/troubleshooting/recovery) |
+| The AI tab says RC-Brain is unavailable | [RC-Brain is unavailable](/guide/ai-brain#when-the-model-is-unavailable) — monitoring will not diagnose or repair until it loads |
 
 ## Try these first
 

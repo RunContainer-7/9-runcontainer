@@ -8,6 +8,17 @@ Putting an application in an environment changes **where its files and settings 
 - The application can still use the internet, including any telemetry or analytics of its own.
 - Accounts you sign into are accounts on that service. They exist outside RunContainer.
 
+## RC-Brain (AI monitoring)
+
+RC-Brain runs entirely on your PC. Observations and model inference stay local; the model is a small file shipped with the app, not a cloud service.
+
+- **No telemetry endpoint is configured by default.** Anomaly reports are only produced when a build explicitly sets an HTTPS registry endpoint. In the public builds there is no endpoint, so nothing is sent at all.
+- **If an endpoint is configured**, a handled anomaly produces a small JSON manifest containing the application's display name, the diagnosis and chosen action, a scrubbed log snippet (paths, user names, host names, IP addresses and e-mail addresses replaced) and whether the repair worked. It contains no app data, no files and no full logs.
+- **Logs are never executed.** Text in a log is evidence; instructions embedded in it are classified as suspicious and escalated.
+- **You can pause monitoring** from the **AI** tab, and closing RunContainer stops it.
+
+→ [RC-Brain: architecture, training and permissions](/guide/ai-brain)
+
 ## Handling credentials
 
 - **Sign in only to applications you trust.** An environment doesn't make it safe to give your password to unknown software.

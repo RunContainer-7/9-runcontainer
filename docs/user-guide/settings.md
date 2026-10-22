@@ -1,6 +1,6 @@
 # Settings and profiles
 
-RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**.
+RunContainer's main window has eight tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **AI**, **Info** and **Updates**.
 
 | Tab | What it's for |
 | --- | --- |
@@ -9,6 +9,7 @@ RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **
 | **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
 | **Settings** | How apps are kept apart, and where their files live |
 | **Profiles** | Access presets (default, relaxed or locked), assigned per application |
+| **AI** | RC-Brain: the model's status, held-out results, monitoring switch, permissions and recent diagnoses |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
 
@@ -41,6 +42,20 @@ Each profile sets how much access an application gets:
 A `locked` profile can only be enforced when the app runs in a virtual machine or a restricted container. On a standard environment, Windows gives ordinary apps network access — the Profiles tab says so for each app instead of pretending the block is in place.
 
 ![The Profiles tab, listing the default, relaxed and locked presets](/screenshots/profiles-panel.png)
+
+## AI
+
+The **AI** tab is where RC-Brain reports itself:
+
+- whether the model is loaded and monitoring is on;
+- its name, parameter count, version and knowledge version;
+- the held-out evaluation results that shipped with the model;
+- what it may do on its own and what needs your approval;
+- the most recent diagnoses, with the chosen action and outcome.
+
+**Pause monitoring** stops the supervisor until you start it again. Closing RunContainer always stops it: RC-Brain is not a Windows service. If the model is missing or corrupt, the tab says **Unavailable** and names the reason, and monitoring will not diagnose or repair anything until it is fixed.
+
+→ [RC-Brain: RunContainer's own AI model](/guide/ai-brain)
 
 ## Info
 

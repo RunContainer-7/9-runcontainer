@@ -25,6 +25,18 @@ These are the known limits on what it does and doesn't do.
 - **Isolation isn't absolute.** Applications still interact with your screen, input, files you give them and the network. → [Isolation is not a guarantee](/safety/not-a-guarantee)
 - **Not malware protection.** RunContainer doesn't scan or judge software.
 
+## RC-Brain (AI monitoring)
+
+- **It is a small model, not a language model.** RC-Brain 1 has 4,229 parameters and recognises patterns represented in its synthetic RunContainer corpus. It cannot reason about arbitrary novel software, read source code, or explain itself beyond the evidence vector it was given.
+- **The evaluation corpus is synthetic.** 98.9% diagnosis and action accuracy, no false positives on normal behaviour and no unsafe actions were measured on held-out variants generated from the same scenario families. That measures generalisation within those families, not real-world software diversity.
+- **It abstains rather than guessing.** About 2% of held-out variants fall below the 0.90 confidence threshold. When that happens the app only continues observing; it does not restart or repair anything.
+- **No online learning.** The model's weights never change while the app runs. Repair outcomes are kept as local history and used to stop repeated repairs; improving the model requires a reviewed corpus change and a deliberate retrain.
+- **Monitoring is not a service.** It runs only while RunContainer is open. Nothing is monitored after you close the app.
+- **It sees the host, not inside a VM.** Window, CPU/IO and engine-liveness checks observe the host side of a virtual machine. A guest application that hangs without changing host-visible signals may not be diagnosed.
+- **A detached GUI app's own stdout is not available.** RC-Brain reads the app's log file and the launcher's piped output; an app that writes to a console RunContainer does not own produces no live stdout.
+- **No automatic system repair.** It cannot install runtimes, drivers or services, delete app data without approval, or weaken isolation. For missing Microsoft runtimes it recommends the official installer and stops there.
+- **Model availability is reported, never faked.** If the model cannot load, the AI tab says so and there is no fallback to rule-based diagnosis.
+
 ## Data
 
 - **Reset and remove are permanent.** There's no built-in backup of environment contents. → [Reset & remove](/user-guide/reset-remove)

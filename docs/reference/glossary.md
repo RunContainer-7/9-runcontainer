@@ -16,6 +16,18 @@ Your PC itself: the normal Windows desktop, outside any environment.
 
 The setup program an application provides, usually a `.exe` or `.msi` file, which you run to install the application.
 
+### RC-Brain
+
+RunContainer's own small neural model. It observes running applications, diagnoses problems and chooses a repair action. It runs locally and only while RunContainer is open. → [RC-Brain](/guide/ai-brain)
+
+### Diagnosis
+
+The cause RC-Brain chooses for an observation (for example `missing_runtime` or `engine_unresponsive`), with a calibrated confidence and the evidence that led to it.
+
+### Repair action
+
+One of the fixed, validated operations RC-Brain may choose (restart the app, restart the engine, repair folder permissions, or clear the profile with approval). The model cannot supply commands of its own.
+
 ### Isolation
 
 Keeping applications and their changes apart from the host and from each other. It reduces risk but isn't a guarantee. → [What isolation is for](/safety/isolation)

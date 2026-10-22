@@ -30,16 +30,31 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.4',
-    filename: 'RunContainer-Setup-0.6.4.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.4/RunContainer-Setup-0.6.4.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.4',
-    sha256: 'b39bb2b6b93eadcdeef7d8a02d4361fd9667b8080c1594967593fae1309cd4ec',
+    version: '0.6.5',
+    filename: 'RunContainer-Setup-0.6.5.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.5/RunContainer-Setup-0.6.5.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.5',
+    sha256: '763832fef59e85bb27714c0d6561bf0e8adfaca015fe5beb4cab5a70d799a4f3',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.5',
+      date: '2026-10-22',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.5',
+      notes: [
+        'RC-Brain: RunContainer now has its own small neural model, trained from scratch on its own architecture and failure scenarios. It runs locally, diagnoses what is wrong and chooses a repair instead of a rules table deciding.',
+        'While RunContainer is open it watches running applications: visible windows, CPU and file activity, engine liveness and the live log tail. It abstains when the evidence is weak instead of guessing.',
+        'A new AI tab shows the model (4,229 parameters, two heads for diagnosis and action), its held-out results, a monitoring switch, its repair permissions and recent diagnoses. A diagnosis banner shows the evidence, confidence and chosen action.',
+        'Low-risk repairs (restart the app, restart its engine, repair its own folder permissions) run automatically. Clearing an app profile needs approval. It never installs system software, deletes app data, weakens isolation or follows instructions found in logs.',
+        'Held-out evaluation: 98.9% diagnosis accuracy, 98.9% action accuracy, 0% false positives on normal behaviour and 0 unsafe actions across 348 unseen scenarios. A keyword baseline scores 49.7% and 58.6%.',
+        'If the model is missing or corrupt, the app says so and monitoring will not diagnose or repair anything. There is no silent rule-based fallback.',
+        'The installer is not code-signed, so Windows may warn before it runs.',
+      ],
+    },
     {
       version: '0.6.4',
       date: '2026-10-20',
