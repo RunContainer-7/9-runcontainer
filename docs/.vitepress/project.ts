@@ -30,16 +30,27 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.9',
-    filename: 'RunContainer-Setup-0.6.9.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.9/RunContainer-Setup-0.6.9.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.9',
-    sha256: '86775dd98a1f966ca8717ce092ddb712410641160e41b92ea68ad1c7736f2b4a',
+    version: '0.6.10',
+    filename: 'RunContainer-Setup-0.6.10.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.10/RunContainer-Setup-0.6.10.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.10',
+    sha256: '70bd966b05fe4915388de0328b46ae1623b068d1d6935f42038917d672f14a5d',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.6.10',
+      date: '2026-10-23',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.10',
+      notes: [
+        'The AI tab is gone. RC-Brain’s status, held-out results, monitoring switch, repair permissions, verified outcomes and recent diagnoses now live in Settings, below the cards about how apps are kept apart. The monitor’s “last check” line keeps refreshing while Settings is open.',
+        'Nothing changed about what RC-Brain may do: the same low-risk repairs still run automatically, clearing an app profile still needs your approval, and the previous model can still be rolled back.',
+        'The bottom bar now has seven tabs: Sources, Apps, Tweaks, Settings, Profiles, Info and Updates. This guide points at Settings for everything RC-Brain.',
+      ],
+    },
     {
       version: '0.6.9',
       date: '2026-10-22',
