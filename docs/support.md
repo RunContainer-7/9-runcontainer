@@ -9,7 +9,9 @@ RunContainer is **free and open source**. Support comes from the community.
 
 <DiscordCard />
 
-Prefer watching to reading? The [RunContainer YouTube channel](https://www.youtube.com/@RunContainer) shows how the app works — installing your first application, keeping applications apart, and each feature demonstrated step by step. It is a good place to get help when a written guide is not enough.
+Prefer watching to reading? The video below walks through the app — installing your first application, keeping applications apart, and each feature step by step. Subscribing to the [RunContainer YouTube channel](https://www.youtube.com/@RunContainer) and joining the [Discord server](https://discord.gg/UKTGRMMmC4) is also the simplest way to support the project.
+
+<VideoIntro eyebrow="Video guide" heading="Watch RunContainer instead of reading" compact />
 
 <SupportPanel />
 

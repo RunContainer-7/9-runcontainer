@@ -1,5 +1,7 @@
 # Beginner walkthrough
 
+<VideoIntro eyebrow="Prefer watching?" heading="Watch this walkthrough instead" compact />
+
 This walkthrough covers the basic RunContainer workflow: install an application, run it, and clean up afterwards.
 
 <WorkflowSteps />

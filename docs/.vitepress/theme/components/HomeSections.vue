@@ -56,6 +56,9 @@ const faqs = [
       <p class="rc-more"><a :href="withBase('/guide/how-it-differs')">How RunContainer differs from ordinary installation →</a></p>
     </section>
 
+    <!-- Video tour -->
+    <VideoIntro eyebrow="Watch first" heading="See RunContainer in action" compact />
+
     <!-- Workflow -->
     <section class="rc-section" aria-labelledby="workflow">
       <p class="rc-eyebrow">How it works</p>

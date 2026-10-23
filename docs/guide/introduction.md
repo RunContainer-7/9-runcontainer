@@ -2,9 +2,11 @@
 
 RunContainer is a **Windows application management and isolation tool**. With it, you install and run Windows applications **inside environments that RunContainer manages**, instead of installing them directly onto your PC as ordinary standalone desktop applications.
 
-::: info Pre-release software
-RunContainer is in development and hasn't had an official public release yet. This documentation describes the intended user experience. Details may change before the first release. See [Downloads](/downloads) for current availability.
+::: info Current release
+RunContainer is available now: **0.7.3** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
 :::
+
+<VideoIntro heading="New here? Watch the tour" />
 
 ## The idea in one sentence
 

@@ -140,7 +140,7 @@ export default defineConfig({
 
     footer: {
       message:
-        'RunContainer is pre-release software. Isolation reduces risk but is not a guarantee of safety.',
+        'RunContainer is free and open source. Isolation reduces risk but is not a guarantee of safety.',
       copyright: `© ${new Date().getFullYear()} The RunContainer project`
     },
 

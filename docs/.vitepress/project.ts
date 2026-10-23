@@ -32,16 +32,29 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.2',
-    filename: 'RunContainer-Setup-0.7.2.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.2/RunContainer-Setup-0.7.2.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.2',
-    sha256: '100f951442c99876562112784e40519d1f94e5e13f96cd09f2a3ef9fb2b53be1',
-    sizeMb: 99,
+    version: '0.7.3',
+    filename: 'RunContainer-Setup-0.7.3.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.3/RunContainer-Setup-0.7.3.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.3',
+    sha256: '8b25d2c8ed26f583723927be08522c877405392731c5588325065b8628a51307',
+    sizeMb: 98.8,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.3',
+      date: '2026-10-23',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.3',
+      notes: [
+        'Run no longer leaves a standalone window on the desktop. Graphical apps are started with a hidden first window, hosted inside RunContainer the moment that window exists, and the second RunContainer window opens as soon as you press Run so there is a RunContainer surface on screen from the first second.',
+        'Fixed RC-Brain restarting apps that were correctly shown inside RunContainer. Its window check only looked at ordinary top-level windows, so a hosted window counted as missing and the app was diagnosed as hung and restarted. The check now walks the whole window tree and recognises windows hosted by RunContainer itself.',
+        'Hosting is much quicker: the Win32 host assembly is cached and warmed in the background, and the watcher starts before the app. On the test PC the app window was inside RunContainer 126 ms after containment was confirmed, down from about two seconds.',
+        'Pressing Run on an already-running app now hosts its existing window instead of leaving it on the desktop. Installers use the same RunContainer window as apps, so setup never covers the main window’s controls.',
+        'If Windows refuses to host a window (for example an app that asks for administrator rights), the window is shown on the desktop instead of staying invisible, and RunContainer keeps trying.',
+      ],
+    },
     {
       version: '0.7.2',
       date: '2026-10-23',

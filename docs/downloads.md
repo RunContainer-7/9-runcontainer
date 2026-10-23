@@ -17,7 +17,8 @@ RunContainer is **free and open source**. Its source code is at [github.com/RunC
   <span class="rc-badge rc-badge--stable">Stable</span>
   <p><strong>RunContainer {{ latest.version }} is available for Windows.</strong></p>
   <p><a :href="latest.url">Download {{ latest.filename }}</a> (about {{ latest.sizeMb }} MB)</p>
-  <p>SHA-256: <code>{{ latest.sha256 }}</code></p>
+  <p v-if="latest.sha256">SHA-256: <code>{{ latest.sha256 }}</code></p>
+  <p v-else>The SHA-256 checksum is added here once the release build is published.</p>
   <p>Full notes are on the <a :href="latest.releaseUrl">release page</a>.</p>
 </div>
 
@@ -36,7 +37,7 @@ Any file presented as a RunContainer installer that isn't linked from this page 
 Before you run the installer, compare its checksum with the SHA-256 value above. In PowerShell, in the folder with the file:
 
 ```powershell
-Get-FileHash .\RunContainer-Setup-0.7.2.exe -Algorithm SHA256
+Get-FileHash .\{{ latest.filename }} -Algorithm SHA256
 ```
 
 If the hash doesn't match, delete the file and download it again from this page.
