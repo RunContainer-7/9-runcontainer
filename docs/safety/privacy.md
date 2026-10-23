@@ -16,9 +16,9 @@ RC-Brain runs entirely on your PC. Observations and model inference stay local; 
 - **If an endpoint is configured**, a handled anomaly produces a small JSON manifest containing the application's display name, the diagnosis and chosen action, a scrubbed log snippet (paths, user names, host names, IP addresses and e-mail addresses replaced) and whether the repair worked. It contains no app data, no files and no full logs.
 - **Logs are never executed.** Text in a log is evidence; instructions embedded in it are classified as suspicious and escalated.
 - **Diagnostic history stays local.** Verified repair outcomes are stored in `%APPDATA%\RunContainer` as a versioned JSON Lines file. Before a record is written, Windows paths, user names, machine names, e-mail addresses, IP addresses and URLs are replaced with placeholders, and only a short log snippet is kept. Raw logs are never copied into the history.
-- **Promotion is explicit.** Turning a verified outcome into a training example requires your action in the **AI** tab, and the curated dataset stays on your PC. Training a candidate model is an offline command; monitoring never trains or changes weights by itself.
-- **You can pause monitoring** from the **AI** tab, clear its history, or delete the app-data folder. Closing RunContainer stops monitoring.
-- **Model rollback is local.** The previous model file stays on disk, and **Roll back model** in the AI tab only changes which local file is loaded.
+- **Promotion is explicit.** Turning a verified outcome into a training example requires your action in **Settings**, and the curated dataset stays on your PC. Training a candidate model is an offline command; monitoring never trains or changes weights by itself.
+- **You can pause monitoring** from **Settings**, clear its history, or delete the app-data folder. Closing RunContainer stops monitoring.
+- **Model rollback is local.** The previous model file stays on disk, and **Roll back model** in Settings only changes which local file is loaded.
 
 → [RC-Brain: architecture, training and permissions](/guide/ai-brain)
 

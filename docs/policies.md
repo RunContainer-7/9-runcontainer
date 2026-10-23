@@ -24,7 +24,7 @@ RunContainer is local-first.
 - **Diagnostic records are redacted** before they are written: Windows paths, user names, machine names, e-mail addresses, IP addresses and URLs are replaced with placeholders. Raw log text is kept only as a short, scrubbed snippet.
 - **The update check** contacts GitHub (`api.github.com`) to read the public release feed. It sends no information about you beyond a normal HTTPS request.
 - **Telemetry is off by default.** The official build has no telemetry endpoint configured, so nothing is sent. A build can only report an anonymised anomaly manifest if its owner configures an explicit registry endpoint; the app shows whether that is configured.
-- **You stay in control.** You can disable monitoring in the AI tab, clear the history, or delete `%APPDATA%\RunContainer` at any time.
+- **You stay in control.** You can disable monitoring in Settings, clear the history, or delete `%APPDATA%\RunContainer` at any time.
 
 ## Source code, cloning and self-hosting
 

@@ -168,7 +168,7 @@ The unseen-family result is high because several unseen families share signals w
 
 RC-Brain distinguishes four things that are easy to blur together:
 
-1. **Memory (history).** Decisions and outcomes are kept in a bounded local history for the AI tab and for the safety policy. This does not change the model.
+1. **Memory (history).** Decisions and outcomes are kept in a bounded local history for **Settings** and for the safety policy. This does not change the model.
 2. **Retrieval.** A new observation can be compared with previous verified incidents, and the closest ones are shown next to the diagnosis. Retrieval is context. It is *not* merged into the feature vector, so a superficially similar past incident cannot override current evidence.
 3. **Dataset curation.** A verified success (or a user-corrected diagnosis) can be promoted, with your consent, into a local curated dataset. This is also not learning yet; it is a reviewed list of examples.
 4. **Weight updates.** Only an offline training run changes weights. It is never automatic.
@@ -179,7 +179,7 @@ The loop:
 2. The executor records what it ran.
 3. The verifier reports whether the original condition actually cleared.
 4. The outcome is stored as verified success, unresolved, inconclusive, or user-corrected.
-5. In the **AI** tab, you can promote eligible examples. The curated file lives in `%APPDATA%\RunContainer`.
+5. In **Settings**, you can promote eligible examples. The curated file lives in `%APPDATA%\RunContainer`.
 6. Train a candidate offline:
 
    ```powershell
@@ -195,7 +195,7 @@ The loop:
    node scripts/promote-model.js --activate rc-brain-2-candidate.json
    ```
 
-8. **Rollback** is one step, either in the AI tab or with:
+8. **Rollback** is one step, either in **Settings** or with:
 
    ```powershell
    node scripts/promote-model.js --rollback
@@ -219,7 +219,7 @@ RC-Brain 2 is 8,334 parameters (about 180 KB of JSON) and runs in a few millisec
 
 ## When the model is unavailable
 
-If the model file is missing, corrupt, or was trained with a different feature schema, the AI tab says **Unavailable** and names the reason. Monitoring reports that state once and **does not diagnose or repair anything**. There is no silent fallback to a rule-based diagnosis.
+If the model file is missing, corrupt, or was trained with a different feature schema, **Settings** says **Unavailable** and names the reason. Monitoring reports that state once and **does not diagnose or repair anything**. There is no silent fallback to a rule-based diagnosis.
 
 ## Reproducing and reviewing
 

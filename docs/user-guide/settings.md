@@ -1,15 +1,14 @@
 # Settings and profiles
 
-RunContainer's main window has eight tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **AI**, **Info** and **Updates**.
+RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**.
 
 | Tab | What it's for |
 | --- | --- |
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
 | **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
-| **Settings** | How apps are kept apart, and where their files live |
+| **Settings** | How apps are kept apart, where their files live, and RC-Brain's status, results and monitoring switch |
 | **Profiles** | Access presets (default, relaxed or locked), assigned per application |
-| **AI** | RC-Brain: the model's status, held-out results, monitoring switch, permissions and recent diagnoses |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
 
@@ -43,9 +42,9 @@ A `locked` profile can only be enforced when the app runs in a virtual machine o
 
 ![The Profiles tab, listing the default, relaxed and locked presets](/screenshots/profiles-panel.png)
 
-## AI
+## RC-Brain (in Settings)
 
-The **AI** tab is where RC-Brain reports itself:
+RC-Brain reports itself in **Settings**, below the cards about how apps are kept apart:
 
 - whether the model is loaded and monitoring is on;
 - its name, parameter count, version and knowledge version;
@@ -53,7 +52,7 @@ The **AI** tab is where RC-Brain reports itself:
 - what it may do on its own and what needs your approval;
 - the most recent diagnoses, with the chosen action and outcome.
 
-**Pause monitoring** stops the supervisor until you start it again. Closing RunContainer always stops it: RC-Brain is not a Windows service. If the model is missing or corrupt, the tab says **Unavailable** and names the reason, and monitoring will not diagnose or repair anything until it is fixed.
+**Pause monitoring** stops the supervisor until you start it again. Closing RunContainer always stops it: RC-Brain is not a Windows service. If the model is missing or corrupt, **Settings** says **Unavailable** and names the reason, and monitoring will not diagnose or repair anything until it is fixed.
 
 → [RC-Brain: RunContainer's own AI model](/guide/ai-brain)
 

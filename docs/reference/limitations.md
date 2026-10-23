@@ -36,7 +36,7 @@ These are the known limits on what it does and doesn't do.
 - **It sees the host, not inside a VM.** Window, CPU/IO and engine-liveness checks observe the host side of a virtual machine. A guest application that hangs without changing host-visible signals may not be diagnosed.
 - **A detached GUI app's own stdout is not available.** RC-Brain reads the app's log file and the launcher's piped output; an app that writes to a console RunContainer does not own produces no live stdout.
 - **No automatic system repair.** It cannot install runtimes, drivers or services, delete app data without approval, or weaken isolation. For missing Microsoft runtimes it recommends the official installer and stops there.
-- **Model availability is reported, never faked.** If the model cannot load, the AI tab says so and there is no fallback to rule-based diagnosis.
+- **Model availability is reported, never faked.** If the model cannot load, Settings says so and there is no fallback to rule-based diagnosis.
 
 ## Data
 
