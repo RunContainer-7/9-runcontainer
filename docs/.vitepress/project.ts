@@ -23,6 +23,8 @@ export const project = {
   releasesUrl: 'https://github.com/RunContainer-7/runcontainer/releases',
   /** Community chat server for questions and support. */
   discordUrl: 'https://discord.gg/UKTGRMMmC4',
+  /** Official video guides: how RunContainer works, shown step by step. */
+  youtubeUrl: 'https://www.youtube.com/@RunContainer',
   /** Private vulnerability reporting channel (e.g. GitHub security advisories). */
   securityUrl: '',
   /** Officially established community platforms only. */
@@ -30,16 +32,29 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.0',
-    filename: 'RunContainer-Setup-0.7.0.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.0/RunContainer-Setup-0.7.0.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.0',
-    sha256: 'd1e208a9e349fcc18522cbb2cea0db4deed5eabad13df1a244085017a9d35ced',
+    version: '0.7.1',
+    filename: 'RunContainer-Setup-0.7.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.1/RunContainer-Setup-0.7.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.1',
+    sha256: 'ce5332de3282da047bb51475a41fceaefea3265794043893e74c88e1bb3ceb79',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.1',
+      date: '2026-10-23',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.1',
+      notes: [
+        'Installer wizards are hosted inside RunContainer. Pressing Run on a setup program used to show its wizard as an ordinary desktop window; RunContainer now waits longer for an installer to create its window and hosts it, so setup is completed inside the app.',
+        'If the main window cannot host it, a second RunContainer window opens with Stop app, Release window and a way back to the main window. Windows can still refuse hosting; the window says so instead of pretending the app is inside.',
+        'Hyper-V and QEMU displays open in a RunContainer window automatically, so a wizard running inside the guest is visible without a stray Virtual Machine Connection window.',
+        'Show app window works for QEMU as well as Hyper-V and reports whether the window is really shown inside RunContainer or stayed on your desktop.',
+        'The Info tab and the documentation support panel link the official RunContainer YouTube channel.',
+      ],
+    },
     {
       version: '0.7.0',
       date: '2026-10-23',

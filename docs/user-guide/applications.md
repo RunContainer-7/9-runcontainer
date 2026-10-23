@@ -39,6 +39,8 @@ Choose **Import from URL** from the same **+** menu, then enter the address of t
 
 The app's installer runs inside the app's own environment, not loose on your desktop. It gets the same space and limits as the app itself. Installer prompts to watch for are listed below.
 
+The installer's window is shown inside RunContainer. It is hosted in the main window when Windows allows it; otherwise RunContainer opens a second RunContainer window with **Stop app**, **Release window** and a way back to the main window. Apps that run in a virtual machine get the same treatment: the guest display, including any wizard inside it, opens in that window automatically. Hosting is presentation only — it changes where a window appears, not what the app can reach — and Windows can still decline to host a window, in which case RunContainer says so and the window stays on your desktop.
+
 If the installer finishes but the environment needs a reboot, RunContainer tells you. Use **Reset** on the app, then **Run** it.
 
 ## Installer prompts to watch for
