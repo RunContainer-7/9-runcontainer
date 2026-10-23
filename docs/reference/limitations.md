@@ -37,6 +37,8 @@ These are the known limits on what it does and doesn't do.
 - **A detached GUI app's own stdout is not available.** RC-Brain reads the app's log file and the launcher's piped output; an app that writes to a console RunContainer does not own produces no live stdout.
 - **No automatic system repair.** It cannot install runtimes, drivers or services, delete app data without approval, or weaken isolation. For missing Microsoft runtimes it recommends the official installer and stops there.
 - **Model availability is reported, never faked.** If the model cannot load, Settings says so and there is no fallback to rule-based diagnosis.
+- **Some installers refuse process containment.** A few bootstrappers (for example the MSYS2 Qt Installer Framework setup) exit with code 1 as soon as they are placed in a Job Object, before they draw anything. RunContainer reports that exit code, keeps nothing running, and does not fall back to an uncontained launch. Use a virtual machine environment for those installers.
+- **JIT cannot be switched on for native code.** A native `.exe` is already machine code. Only managed runtimes (.NET, Java, V8) compile at run time, and they already do so; [Performance and JIT](/guide/performance) covers what RunContainer can and cannot change.
 
 ## Data
 

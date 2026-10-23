@@ -35,6 +35,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
       { text: 'Installing applications', link: '/user-guide/applications' },
       { text: 'Running & stopping', link: '/user-guide/running' },
       { text: 'Settings & profiles', link: '/user-guide/settings' },
+      { text: 'Performance & JIT', link: '/guide/performance' },
       { text: 'RC-Brain (AI)', link: '/guide/ai-brain' },
       { text: 'Reset & remove', link: '/user-guide/reset-remove' },
       { text: 'Statuses & errors', link: '/user-guide/statuses' }

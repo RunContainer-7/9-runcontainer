@@ -25,6 +25,7 @@ Pick an application in **Tweaks** to change its options:
 - **Launch arguments**: passed to the app when it starts.
 - **Memory limit**: 512 to 32768 MB.
 - **CPU limit**: 1 to 16.
+- **Runtime & JIT**: what the app actually runs on, and — for managed .NET apps only — how the .NET runtime should balance startup against steady-state speed. Native programs are reported as already compiled code, with no strategy offered. [Performance and JIT](/guide/performance) explains why.
 
 Invalid values are rejected and not saved. Limits apply the next time you press **Run**. To take an app offline, use the `locked` profile instead.
 
@@ -71,6 +72,7 @@ There is nothing to configure. **Settings** says what RunContainer does for this
 - **Each app runs in its own space** — its own files and processes, memory and CPU limits, and a private folder for its data.
 - **Where app files live** — each app has a folder under RunContainer's data directory. **Duplicate** gives a second copy with separate data, and **Delete** removes that folder.
 - **Logs** — launch, stop and exit events, readable from each app's **Logs** button.
+- **Performance on this PC** — the backend in use, the last launch time and the median of recent launches (measured from Run until containment is confirmed), and how often running apps are checked. It says so plainly when nothing has been measured yet. [How the numbers are produced](/guide/performance)
 
 If a prepared virtual-machine image is already available on the PC, RunContainer uses it automatically for a stronger boundary. Nothing is downloaded, and no Windows licence is included.
 

@@ -30,16 +30,30 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.6.10',
-    filename: 'RunContainer-Setup-0.6.10.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.6.10/RunContainer-Setup-0.6.10.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.6.10',
-    sha256: '70bd966b05fe4915388de0328b46ae1623b068d1d6935f42038917d672f14a5d',
+    version: '0.7.0',
+    filename: 'RunContainer-Setup-0.7.0.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.0/RunContainer-Setup-0.7.0.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.0',
+    sha256: 'd1e208a9e349fcc18522cbb2cea0db4deed5eabad13df1a244085017a9d35ced',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.0',
+      date: '2026-10-23',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.0',
+      notes: [
+        'Launching is quicker. The launcher’s helper assembly is compiled once and loaded from disk afterwards instead of on every Run; measured on the reference machine, Run to confirmed containment fell from 712 ms to 563 ms and to a reported PID from 637 ms to 493 ms. The benchmark and raw samples ship in reports/performance-0.7.0.md.',
+        'Background cost is lower: the process poll moved from every 1.5 s to every 5 s, cutting the PowerShell query duty cycle from roughly 40% to roughly 13% while still noticing a closed app within seconds.',
+        'Tweaks has a Runtime & JIT card. It reads the app’s own executable header, reports native code as already compiled with no JIT strategy, offers a .NET strategy only for managed apps, and describes RunContainer’s own V8 JIT as built in rather than a switch.',
+        'Settings shows measured launch timings from your own machine — last launch, median of recent launches, backend and monitor interval — and stays silent until something has been measured.',
+        'Fixed containment killing a bootstrapper’s child: the job object now stays alive until its last process exits, so installers that hand off to another process remain contained instead of being killed.',
+        'Launch failures now name the app’s own exit code, so a crash can be told apart from an installer that refuses to run inside a Job Object.',
+      ],
+    },
     {
       version: '0.6.10',
       date: '2026-10-23',
