@@ -32,16 +32,29 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.1',
-    filename: 'RunContainer-Setup-0.7.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.1/RunContainer-Setup-0.7.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.1',
-    sha256: 'ce5332de3282da047bb51475a41fceaefea3265794043893e74c88e1bb3ceb79',
+    version: '0.7.2',
+    filename: 'RunContainer-Setup-0.7.2.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.2/RunContainer-Setup-0.7.2.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.2',
+    sha256: '100f951442c99876562112784e40519d1f94e5e13f96cd09f2a3ef9fb2b53be1',
     sizeMb: 99,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.2',
+      date: '2026-10-23',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.2',
+      notes: [
+        'RunContainer keeps watching while an app runs instead of looking for a window once at launch. Installer wizards that open their real window from a second process, apps that show a splash first and dialogs that appear later are hosted as they appear, usually within half a second.',
+        'Fixed the glitchy layout: resizing a hosted window used to move every descendant window — including the app’s own buttons and panels — which threw its interface apart. Only the window RunContainer actually hosts is moved now.',
+        'Dialogs keep their own size and are centred instead of being stretched, maximised windows are restored before hosting, and windows are hidden while they are moved so they no longer jump across the screen.',
+        'RunContainer follows the app’s process tree, so an installer that re-launches itself from a temporary folder is still recognised, and it also matches windows running from the app’s own folder.',
+        'A second RunContainer window stays hidden until there is something in it and closes when the app ends; stopping an app no longer flashes its window on the desktop first.',
+      ],
+    },
     {
       version: '0.7.1',
       date: '2026-10-23',
