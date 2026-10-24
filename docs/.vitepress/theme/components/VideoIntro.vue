@@ -3,8 +3,8 @@ import { project } from '../../project'
 
 // The official walkthrough: linked as well as embedded, so it still works when
 // the embed is blocked by a browser extension or privacy setting.
-const videoId = 'g5O2-31Ml2g'
-const watchUrl = `https://www.youtube.com/watch?v=${videoId}`
+const videoId = 'mgVoS6I98Gs'
+const watchUrl = `https://m.youtube.com/watch?v=${videoId}`
 
 withDefaults(defineProps<{ eyebrow?: string; heading?: string; compact?: boolean }>(), {
   eyebrow: 'Watch first',
