@@ -16,16 +16,14 @@ You are responsible for:
 
 Do not use RunContainer to break the law, to harm other people or their systems, or to bypass licence checks or protections you do not own. The project may change or withdraw features between releases; the current terms are always this page.
 
-### No selling RunContainer
+### Selling and forks
 
-RunContainer is free, and it is meant to stay free for everyone.
+RunContainer is free, and it is meant to stay free for everyone. You are **not recommended** to sell RunContainer, its source code or any build made from it.
 
-- Do not sell RunContainer, its source code or any build made from it, whether on its own or bundled with other software.
-- Do not put it behind a paywall, subscription or paid download, or charge people for something they can get here for free.
-- Do not present RunContainer, or a copy of it, as your own product.
-- Do not use the RunContainer name, logo or videos to sell, advertise or promote a paid product or service.
+If you clone the repository and publish your own version (a fork):
 
-If you share a modified build, it must be free to download.
+- link back to the original project, [RunContainer](https://github.com/RunContainer-7/runcontainer), somewhere people will see it, such as your README or download page;
+- do not claim that your fork is the original RunContainer or the official release.
 
 ## Privacy policy
 
