@@ -15,10 +15,12 @@ another stand-alone window and another set of files scattered over your PC.
 
 <SimulationDemo />
 
-::: info This is a simulation, not a screen recording
-The animation above is drawn from the product's real flow, so it plays instantly, loops,
-and works on every screen size. It is not footage of a specific PC. For the real interface,
-watch the [video walkthrough](/guide/introduction#new-here-watch-the-tour) or
+::: info This is an illustration, not a screen recording
+The animation above follows the product's real flow — an app, Run, then the window inside
+RunContainer — but it is a drawing, not footage. The sample apps are placeholders, the
+colours follow the site theme rather than your Windows theme, and your real app list shows
+your own apps with their extracted icons. For the actual interface, watch the
+[video walkthrough](/guide/introduction#new-here-watch-the-tour) or
 [install RunContainer](/downloads).
 :::
 
@@ -30,8 +32,10 @@ watch the [video walkthrough](/guide/introduction#new-here-watch-the-tour) or
    actually in force, and only then reports it as running. Nothing is reported as contained
    on trust.
 3. **The window opens inside RunContainer.** The app's window is hosted in a RunContainer
-   window. For an app that requires administrator rights, Windows will not allow that
-   hosting, so the window stays on your desktop and RunContainer says so plainly.
+   window. An app that requires administrator rights cannot be hosted in the normal
+   window — Windows blocks that across privilege levels — so RunContainer opens a second,
+   administrator-level RunContainer window and hosts the app or installer wizard inside
+   that one instead.
 4. **Close it.** Everything the app wrote stays in its environment. Deleting the
    environment afterwards removes exactly those files; resetting it keeps them.
 

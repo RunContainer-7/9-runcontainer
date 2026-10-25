@@ -144,7 +144,7 @@ Duplicates are removed across splits (training first, then the held-out sets), s
 
 ## Administrator-required apps
 
-Some executables refuse to start unless Windows grants administrator rights (Win32 740). RC-Brain was trained on that evidence too, so it treats the refusal as an environment condition rather than a sign that the app is broken: it does not propose restarting the app in a loop and recommends the elevated relaunch or a virtual machine. A launch that was approved and then verified inside its Job Object is recognised as healthy, even though its window stays on the desktop.
+Some executables refuse to start unless Windows grants administrator rights (Win32 740). RC-Brain was trained on that evidence too, so it treats the refusal as an environment condition rather than a sign that the app is broken: it does not propose restarting the app in a loop and recommends the elevated relaunch or a virtual machine. A launch that was approved and then verified inside its Job Object is recognised as healthy, even though its window opens in the separate administrator-level RunContainer window rather than the normal one.
 
 ## Measured results
 

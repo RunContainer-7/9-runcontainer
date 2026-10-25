@@ -98,8 +98,9 @@ onBeforeUnmount(stop)
     <div
       class="rc-sim-stage"
       role="img"
-      :aria-label="`Animated simulation: ${caption}`"
+      :aria-label="`Illustration, not a screen recording. Animated simulation: ${caption}`"
     >
+      <p class="rc-sim-badge">Illustration · not a screen recording</p>
       <div class="rc-shell" aria-hidden="true">
         <div class="rc-shell-bar">
           <span class="rc-dot rc-dot--red"></span>
@@ -220,6 +221,22 @@ onBeforeUnmount(stop)
     radial-gradient(1200px 320px at 20% -10%, rgba(59, 130, 246, 0.22), transparent 70%),
     #070b16;
   overflow: hidden;
+}
+
+.rc-sim-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 3;
+  margin: 0;
+  padding: 3px 9px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #cbd5e1;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .rc-shell {

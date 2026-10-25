@@ -29,7 +29,7 @@ Some executables declare that they **require administrator rights**. Windows ref
 
 1. RunContainer recognises the refusal and asks **Windows** for approval once (the standard UAC prompt).
 2. If you approve, the **same contained launcher** starts elevated — the Job Object caps and the app's own data folder still apply.
-3. Because Windows does not allow a normal process to host an elevated window, that app's window **stays on your desktop** instead of opening inside RunContainer. The app card says so.
+3. Because Windows does not allow a normal process to host an elevated window, the **elevated launcher opens its own RunContainer window** (titled `RunContainer — <app> (administrator approved)`) and hosts the app or installer wizard inside it. Closing that window stops the contained app. The app card says it is administrator-approved.
 
 If you decline the prompt, nothing is started. If the app still fails after approval, it is probably installing drivers or services, which needs a [virtual machine environment](/safety/isolation). Never weaken containment just to make an installer run.
 
