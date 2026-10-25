@@ -15,6 +15,9 @@ hero:
       text: Downloads
       link: /downloads
     - theme: alt
+      text: See the simulation
+      link: /guide/simulation
+    - theme: alt
       text: Source code
       link: /community#source-code
 

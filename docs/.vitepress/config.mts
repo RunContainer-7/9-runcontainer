@@ -15,6 +15,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     text: 'Introduction',
     items: [
       { text: 'What is RunContainer?', link: '/guide/introduction' },
+      { text: 'Simulation (animated)', link: '/guide/simulation' },
       { text: 'Concepts & terminology', link: '/guide/concepts' },
       { text: 'How it differs', link: '/guide/how-it-differs' }
     ]
@@ -111,6 +112,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Docs', link: '/guide/introduction', activeMatch: '^/(guide|getting-started|user-guide|troubleshooting|safety|reference)/' },
+      { text: 'Simulation', link: '/guide/simulation' },
       { text: 'Downloads', link: '/downloads' },
       { text: 'Changelog', link: '/changelog' },
       { text: 'Policies', link: '/policies' },

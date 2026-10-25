@@ -3,14 +3,23 @@
 RunContainer is a **Windows application management and isolation tool**. With it, you install and run Windows applications **inside environments that RunContainer manages**, instead of installing them directly onto your PC as ordinary standalone desktop applications.
 
 ::: info Current release
-RunContainer is available now: **0.7.3** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
+RunContainer is available now: **0.7.4** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
 :::
 
 <VideoIntro heading="New here? Watch the tour" />
 
-## The idea in one sentence
+## The simplest way to think about it
 
-> Give every Windows application a managed space of its own, so it's easier to keep track of, keep apart and clean up.
+> **RunContainer is an app that opens other apps inside itself.**
+
+You add a Windows application, press **Run**, and it opens in a window inside RunContainer — not as
+another stand-alone app on your desktop — with its own files, settings and limits. That's the whole
+concept; everything else in these docs is detail on top of it.
+
+<SimulationDemo />
+
+
+## If you know LiveContainer on iOS
 
 If you know [LiveContainer](https://github.com/LiveContainer/LiveContainer) on iOS, the idea is similar. LiveContainer lets apps run inside its own managed space instead of being installed on the device as normal apps. RunContainer applies the same idea to Windows applications. RunContainer is a separate project and isn't affiliated with LiveContainer.
 

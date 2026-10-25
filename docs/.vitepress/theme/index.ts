@@ -9,6 +9,7 @@ import CommunityLinks from './components/CommunityLinks.vue'
 import SupportPanel from './components/SupportPanel.vue'
 import DiscordCard from './components/DiscordCard.vue'
 import VideoIntro from './components/VideoIntro.vue'
+import SimulationDemo from './components/SimulationDemo.vue'
 import './custom.css'
 
 export default {
@@ -23,5 +24,6 @@ export default {
     app.component('SupportPanel', SupportPanel)
     app.component('DiscordCard', DiscordCard)
     app.component('VideoIntro', VideoIntro)
+    app.component('SimulationDemo', SimulationDemo)
   }
 } satisfies Theme

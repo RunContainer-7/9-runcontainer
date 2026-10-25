@@ -32,16 +32,30 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.3',
-    filename: 'RunContainer-Setup-0.7.3.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.3/RunContainer-Setup-0.7.3.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.3',
-    sha256: '8b25d2c8ed26f583723927be08522c877405392731c5588325065b8628a51307',
+    version: '0.7.4',
+    filename: 'RunContainer-Setup-0.7.4.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.4/RunContainer-Setup-0.7.4.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.4',
+    sha256: 'c51b3ffca02d13d4ad208ad2872706836a33181224a9efaabd2837656a10ff3e',
     sizeMb: 98.8,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.4',
+      date: '2026-10-25',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.4',
+      notes: [
+        'Apps that ask Windows for administrator rights now start instead of failing. Windows refuses them to a normal process with error 740 (this is what stopped the VirtualBox setup), so RunContainer recognises the refusal, asks Windows for approval once, and starts the same contained launcher elevated. The Job Object caps and the app’s own data folder still apply; the window stays on your desktop and is labelled administrator-approved, because Windows does not allow a normal process to host an elevated window.',
+        'Stop and Reset work for those apps too. An elevated launcher cannot be killed from a normal process, so Stop is delivered through a file it polls, and it ends the whole job rather than just the first process.',
+        'The app list shows each application’s real icon next to its name. Icons were being extracted with a command that never received the file path, so every app fell back to a phone placeholder; they are now real PNGs extracted from the executable and shown inline, and older entries are converted on the next start. An app without an icon gets a clean lettered tile.',
+        'RC-Brain was retrained on the elevation evidence and now treats a 740 refusal as an environment condition rather than a reason to restart the app. Familiar-holdout accuracy is 99.6% (action 98.5%), unseen families 96.8%, final split 96.3% (action 95.0%), with zero unsafe actions.',
+        'The documentation now says the whole idea in one sentence — “an app that opens other apps inside itself” — and has an animated Simulation page, also embedded in the introduction, that plays the flow: pick an app, press Run, the window opens inside RunContainer.',
+        'Reset & remove no longer contradicts itself: Reset keeps the environment, the installed app and its files; only Delete removes them. Administrator apps and the 740 case are documented in Install & launch errors and in Known limitations.',
+      ],
+    },
     {
       version: '0.7.3',
       date: '2026-10-23',

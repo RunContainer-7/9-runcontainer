@@ -142,23 +142,27 @@ Duplicates are removed across splits (training first, then the held-out sets), s
 | Ambiguous / restraint | Cases where the right answer is wait, observe or escalate |
 | Final untouched | Fresh realisation generated with independent seeds, run once for the published report |
 
+## Administrator-required apps
+
+Some executables refuse to start unless Windows grants administrator rights (Win32 740). RC-Brain was trained on that evidence too, so it treats the refusal as an environment condition rather than a sign that the app is broken: it does not propose restarting the app in a loop and recommends the elevated relaunch or a virtual machine. A launch that was approved and then verified inside its Job Object is recognised as healthy, even though its window stays on the desktop.
+
 ## Measured results
 
 These numbers come from `reports/ai-evaluation.md` for the shipped artefact. Every split below is disjoint from training and calibration.
 
 | Split | Diagnosis accuracy | Action accuracy | Notes |
 | --- | --- | --- | --- |
-| Familiar holdout | **99.6%** | 98.4% | New variants of trained families; keyword baseline 48.6% |
+| Familiar holdout | **99.6%** | 98.5% | New variants of trained families; keyword baseline 51.5% |
 | Unseen failure families | **96.8%** | 96.8% | Whole families never trained; keyword baseline 93.5% |
-| Final untouched | **96.5%** | 95.2% | Independent seeds; keyword baseline 53.7% |
-| Ambiguous / restraint | 26.7% | 26.7% | Only 15 cases; the meaningful metric is below |
+| Final untouched | **96.3%** | 95.0% | Independent seeds; keyword baseline 56.2% |
+| Ambiguous / restraint | 25.0% | 25.0% | Only 16 cases; the meaningful metric is below |
 
 Safety and calibration:
 
 - **0 unsafe destructive actions** on every split.
-- **0 repairs proposed** for ambiguous/restraint cases (`0 / 15`), so the low diagnosis accuracy there did not cause intervention.
-- False positives that would touch an app: **0%** on familiar, **0%** on unseen, **0%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (6.5% on the final split).
-- Expected calibration error: 0.004 (familiar), 0.032 (unseen), 0.035 (final).
+- **0 repairs proposed** for ambiguous/restraint cases (`0 / 16`), so the low diagnosis accuracy there did not cause intervention.
+- False positives that would touch an app: **0%** on familiar, **0%** on unseen, **0%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (6.7% on the final split).
+- Expected calibration error: 0.004 (familiar), 0.032 (unseen), 0.039 (final).
 
 The **ambiguous accuracy is deliberately poor and should be read carefully**. For `starting_slow` with no log output, the model often says “unknown failure, gather evidence” instead of “still starting, wait”. Both are harmless restraint; neither restarts anything. The honest statement is that the model is conservative on ambiguous evidence, not that it identifies every ambiguous case correctly.
 

@@ -23,6 +23,16 @@ The application may already be installed in this environment. Check the applicat
 - **Look for a missing component.** Some applications need extra runtime libraries, which their own installer may offer to install.
 - If it never opens, it may be [unsupported](/troubleshooting/unsupported-apps).
 
+## The application asks for administrator rights (Windows error 740)
+
+Some executables declare that they **require administrator rights**. Windows refuses to start those from a normal, non-elevated process and reports **740**. This used to stop an installation outright; since 0.7.4 RunContainer handles it:
+
+1. RunContainer recognises the refusal and asks **Windows** for approval once (the standard UAC prompt).
+2. If you approve, the **same contained launcher** starts elevated — the Job Object caps and the app's own data folder still apply.
+3. Because Windows does not allow a normal process to host an elevated window, that app's window **stays on your desktop** instead of opening inside RunContainer. The app card says so.
+
+If you decline the prompt, nothing is started. If the app still fails after approval, it is probably installing drivers or services, which needs a [virtual machine environment](/safety/isolation). Never weaken containment just to make an installer run.
+
 ## The application asks me to sign in again
 
 Each environment keeps its own copy of an application's settings and sign-ins. This is expected after installing into a new environment. See [Settings & profiles](/user-guide/settings).

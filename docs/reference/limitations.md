@@ -17,6 +17,7 @@ These are the known limits on what it does and doesn't do.
 
 - **It is a launcher, not a virtual machine.** Apps run in their own space on the same Windows as everything else. That keeps their files and data together and limits their memory and CPU, but it is not a full security boundary.
 - **A virtual machine is used only when one is already available.** RunContainer never downloads or bundles Windows. When a prepared image exists on the PC, apps use it automatically for a stronger boundary; the Settings tab says whether that is happening.
+- **An administrator app's window stays on your desktop.** Windows refuses to let a normal process host a window owned by an elevated process, so an app that requires administrator rights is still contained (Job Object caps and its own data folder) but is shown in its own window. RunContainer labels it as administrator-approved instead of pretending it is hosted.
 - **Shared Windows places are outside the app's folder.** A program that writes to the registry or a system-wide install directory can still leave traces there.
 - **`locked` cannot always block the network.** It works when the app runs in a virtual machine or a restricted container; on a standard environment, Windows gives ordinary apps network access, and the app says so instead of implying otherwise.
 
@@ -28,9 +29,9 @@ These are the known limits on what it does and doesn't do.
 ## RC-Brain (AI monitoring)
 
 - **It is a small fixed-label classifier, not a language model.** RC-Brain 2 has 8,334 parameters and chooses among 19 diagnoses and 11 actions from a 66-number evidence vector. It cannot read arbitrary log text semantically, invent a new diagnosis, or explain itself beyond that evidence. Unknown evidence becomes `unknown_failure` plus “gather more evidence”.
-- **The evaluation corpus is synthetic.** Familiar-holdout diagnosis accuracy is 99.6%, unseen families 96.8% and the untouched final split 96.5%. Unseen families are still generated from RunContainer's architecture, so this measures generalisation across scenario families, not real-world software diversity. The keyword baseline scores 48.6%, 93.5% and 53.7% respectively.
-- **Ambiguous cases are handled conservatively, not perfectly.** On 15 ambiguous/restraint cases the model often reported “unknown, gather evidence” instead of “still starting, wait”. Both are harmless; no repairs were proposed. Read the ambiguous accuracy (26.7%) as conservative behaviour, not understanding.
-- **False positives are reported two ways.** A repair proposed for normal behaviour: 0% on every split. Normal behaviour labelled abnormal but only observed: 6.5% on the final split.
+- **The evaluation corpus is synthetic.** Familiar-holdout diagnosis accuracy is 99.6%, unseen families 96.8% and the untouched final split 96.3%. Unseen families are still generated from RunContainer's architecture, so this measures generalisation across scenario families, not real-world software diversity. The keyword baseline scores 51.5%, 93.5% and 56.2% respectively.
+- **Ambiguous cases are handled conservatively, not perfectly.** On 16 ambiguous/restraint cases the model often reported “unknown, gather evidence” instead of “still starting, wait”. Both are harmless; no repairs were proposed. Read the ambiguous accuracy (25.0%) as conservative behaviour, not understanding.
+- **False positives are reported two ways.** A repair proposed for normal behaviour: 0% on every split. Normal behaviour labelled abnormal but only observed: 6.7% on the final split.
 - **No online learning.** The model's weights never change while the app runs. History and retrieval are context; curated examples are data; only an offline, gated training run changes weights, and the previous model stays available for rollback.
 - **Monitoring is not a service.** It runs only while RunContainer is open. Nothing is monitored after you close the app.
 - **It sees the host, not inside a VM.** Window, CPU/IO and engine-liveness checks observe the host side of a virtual machine. A guest application that hangs without changing host-visible signals may not be diagnosed.
@@ -42,7 +43,7 @@ These are the known limits on what it does and doesn't do.
 
 ## Data
 
-- **Reset and remove are permanent.** There's no built-in backup of environment contents. → [Reset & remove](/user-guide/reset-remove)
+- **Delete is permanent; Reset is not.** Reset stops and restarts the app while keeping its environment, files and settings. Delete removes them, and RunContainer keeps no backup. → [Reset & remove](/user-guide/reset-remove)
 - **Each environment has its own copy** of the applications installed in it, which uses extra disk space.
 
 ## Documentation
