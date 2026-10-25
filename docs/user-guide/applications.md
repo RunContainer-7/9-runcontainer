@@ -68,6 +68,17 @@ Each app in **My Apps** has these actions:
 
 Many applications update themselves. An update applies only to the RunContainer copy of the app. The installed copy on your PC isn't affected, and neither is any other app.
 
+## Microsoft Store packages
+
+Some downloads from a vendor's site aren't the application itself. They are a small bridge — a few hundred kilobytes — that asks Windows to install a Microsoft Store package. Windows installs those system-wide into `WindowsApps`, with a package identity, and does not let any other program redirect that into an app folder: there is nothing for RunContainer to keep separate, and the Store's window is a UWP frame that no RunContainer window can host.
+
+RunContainer recognises such a bridge and refuses it before anything starts, rather than letting the real app install outside its environment. Two options:
+
+- **Use the desktop build.** The vendor's `.exe` or `.msi` download is installed into the app's own folder and contained normally.
+- **Use a virtual machine for that environment.** With a VM engine selected in [Settings](/user-guide/settings), the Store install happens inside the guest OS, on the guest's own screen.
+
+A normal application that merely offers a Store link is not affected; only a small file that exists to hand off to the Store is refused.
+
 ## Uninstalling applications
 
 To remove an app, use **Delete** in its entry under **My Apps**. You can also use the app's own uninstaller inside RunContainer first, then delete the entry.

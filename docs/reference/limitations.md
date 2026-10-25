@@ -12,6 +12,7 @@ These are the known limits on what it does and doesn't do.
 
 - **Not every Windows application works.** Applications that install drivers or system services, use anti-cheat or copy protection, or need deep system access are likely to have problems. → [Unsupported applications](/troubleshooting/unsupported-apps)
 - **Behaviour can vary between application versions.** An application that works today may behave differently after it updates itself.
+- **Microsoft Store packages can't be redirected into an app folder.** Windows installs a Store app system-wide into `WindowsApps` with a package identity, and its window is a UWP frame that cannot be hosted. A small download that only asks the Store to install something is therefore refused before it starts, with the alternatives: the vendor's desktop build, or a virtual machine where the install happens inside the guest. → [Installing applications](/user-guide/applications)
 
 ## How apps are kept apart
 

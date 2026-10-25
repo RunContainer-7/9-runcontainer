@@ -22,6 +22,8 @@ Reset stops everything the app started and starts it again, while keeping the en
 
 ::: warning Delete can take a while
 Delete stops the app first, which can take a moment with a large app. If it reports that a file is still in use, close antivirus, backup or indexing tools that may be holding it, then run Delete again.
+
+Windows also creates links inside an environment's profile by itself — the internet cache turns `Content.IE5` into a junction the first time an app caches anything. Delete removes such a link and nothing it points at, so this no longer needs any action from you.
 :::
 
 ## Before you reset or remove
