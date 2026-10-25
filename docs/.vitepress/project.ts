@@ -32,16 +32,40 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.4',
-    filename: 'RunContainer-Setup-0.7.4.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.4/RunContainer-Setup-0.7.4.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.4',
-    sha256: 'c51b3ffca02d13d4ad208ad2872706836a33181224a9efaabd2837656a10ff3e',
+    version: '0.7.7',
+    filename: 'RunContainer-Setup-0.7.7.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.7/RunContainer-Setup-0.7.7.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.7',
+    sha256: 'b866c69991bd133825c7293c477a090196b74dffbad19b19fc6b487e42940e16',
     sizeMb: 98.8,
   },
 
   /** Published releases, newest first. */
   releases: [
+    {
+      version: '0.7.7',
+      date: '2026-10-25',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.7',
+      notes: [
+        'Fixed “The path cannot be traversed because it contains an untrusted mount point” when deleting or updating an app. Windows puts a junction inside the app’s profile the first time anything is cached (Content.IE5 inside INetCache is a junction pointing at IE), and a folder containing one cannot be deleted recursively at all, so every retry failed the same way and left a half-deleted app whose icon and executable were already gone. RunContainer now removes such a link first — the link only, never what it points at — and then deletes the folder normally.',
+        'Delete is now all or nothing for an app: the folder is removed whole, so the app list never keeps an entry pointing at an executable that no longer exists.',
+        'Fixed apps installing outside containment through the Microsoft Store. Some downloads are not applications but a few hundred kilobytes of “ms-windows-store:” bridge that asks Windows to install a Store package, which puts the real app in WindowsApps and opens a Store window no RunContainer window can host. RunContainer now recognises such a bridge, refuses it before anything starts and says what to use instead; a virtual machine environment is still allowed, because there the install happens inside the guest. See Installing applications.',
+        'An app whose icon file went missing gets its real icon back instead of a bare initial, because the icon is extracted again from the executable when the list is read.',
+      ],
+    },
+    {
+      version: '0.7.6',
+      date: '2026-10-25',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.6',
+      notes: [
+        'Apps and installer wizards that need administrator rights now open inside a RunContainer window. Windows will not let a normal process host a window owned by an elevated one, so the elevated launcher creates its own RunContainer window and hosts the app or the setup wizard there.',
+        'Closing that window ends the app: it is tied to the contained job, so Stop and Reset work as they do everywhere else.',
+        'The behavioural monitor follows the administrator window, so a working installer is no longer read as “no window” and restarted.',
+        'The docs now label the animated walkthrough as an illustration, not a screen recording.',
+      ],
+    },
     {
       version: '0.7.4',
       date: '2026-10-25',
