@@ -25,7 +25,7 @@ RunContainer's installer is **not code-signed**, because a code-signing certific
 
 **This is not malware.** RunContainer is an open-source Windows launcher. It does not install itself as a service, does not add itself to startup, and does not upload your files. Every build published here is produced by the public GitHub Actions workflow from the public source at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). You do not have to take our word for it:
 
-1. **Check the checksum.** Compare the SHA-256 on the [Downloads](/downloads) page with `Get-FileHash .\RunContainer-Setup-0.7.4.exe -Algorithm SHA256`. A mismatch means the file is not the published build.
+1. **Check the checksum.** Compare the SHA-256 on the [Downloads](/downloads) page with <code>Get-FileHash .\{{ latest.filename }} -Algorithm SHA256</code>. A mismatch means the file is not the published build.
 2. **Read the code.** The whole application, including the installer script and the release workflow, is in the repository. Nothing is minified away from inspection.
 3. **Build it yourself.** `git clone`, `npm install`, `npm run dist` produces an installer from the same source. See [Building from source](#building-from-source).
 

@@ -1,9 +1,14 @@
+<script setup lang="ts">
+import { project } from '../.vitepress/project'
+const latest = project.latestDownload
+</script>
+
 # What is RunContainer?
 
 RunContainer is a **Windows application management and isolation tool**. With it, you install and run Windows applications **inside environments that RunContainer manages**, instead of installing them directly onto your PC as ordinary standalone desktop applications.
 
 ::: info Current release
-RunContainer is available now: **0.7.4** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
+RunContainer is available now: **{{ latest.version }}** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
 :::
 
 <VideoIntro heading="New here? Watch the tour" />

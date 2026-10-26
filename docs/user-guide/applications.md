@@ -43,6 +43,19 @@ The installer's window is shown inside RunContainer. It is hosted in a second Ru
 
 If the installer finishes but the environment needs a reboot, RunContainer tells you. Use **Reset** on the app, then **Run** it.
 
+## When the app you added *is* the setup program
+
+Adding an installer as an app is a normal thing to do, and it means the first thing Run does is setup, not the application. RunContainer recognises that case and says so on the app's own line in **My Apps**, instead of leaving a window that looks frozen while a wizard waits for a click.
+
+It recognises the installers that document their own unattended mode — **Inno Setup, NSIS, InstallShield, a WiX Burn bundle, an MSI package and Squirrel** — and it treats a name like “Setup”, “Installer” or “Patch” as evidence even when the installer type is unknown. Then one of two honest things happens:
+
+- **Unattended setup is offered.** The app's line shows **Set up in the background**. Press it and setup runs inside the same environment the app would run in, without a wizard to click through; RunContainer then looks for the executable setup produced and makes **Run** start *that*. Where the installer type is unknown it refuses rather than guessing at switches.
+- **The wizard is the setup.** Its wizard opens in a RunContainer window, and the app's line says plainly that this window *is* the app's setup, so a long setup is explained rather than looking like an app that never appears.
+
+Setup is **observed, not assumed**. RunContainer follows the setup process tree to its exit (bounded, and it stops waiting instead of hanging forever), then searches the environment for what setup produced. When it finds something, it records it, says so, and **Run** starts the installed application from then on. When it finds nothing, it says exactly that rather than claiming success.
+
+If you want the wizard even for an installer that supports unattended setup, the choice is stored per app: setup in the background is offered, never forced.
+
 ## Installer prompts to watch for
 
 | The installer asks to… | What it may mean |

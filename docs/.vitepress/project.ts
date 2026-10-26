@@ -32,16 +32,41 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.7',
-    filename: 'RunContainer-Setup-0.7.7.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.7/RunContainer-Setup-0.7.7.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.7',
-    sha256: 'b866c69991bd133825c7293c477a090196b74dffbad19b19fc6b487e42940e16',
-    sizeMb: 98.8,
+    version: '0.7.8',
+    filename: 'RunContainer-Setup-0.7.8.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.8/RunContainer-Setup-0.7.8.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.8',
+    // The published asset's own SHA-256 digest, copied from the GitHub release.
+    // Only set this once the installer is actually published: a stale or guessed
+    // checksum tells readers their correct download has been tampered with.
+    sha256: 'abe5ddc98a40c509bdfb3e2c50800d91c3adcbec11197403365e402ece00f61d',
+    sizeMb: 99.0,
   },
 
-  /** Published releases, newest first. */
+  /**
+   * Published releases, newest first. Add an entry only once the installer is
+   * attached to that GitHub release: every entry renders a download link, so a
+   * version listed here that was never published is simply a broken link.
+   */
   releases: [
+    {
+      version: '0.7.8',
+      date: '2026-10-26',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.8',
+      notes: [
+        'The app list shows the icon the executable actually carries. RunContainer reads the icon frames out of the program file itself — the same source Windows Explorer uses — and rebuilds a genuine multi-size icon, so installers and tools that used to show as a bare letter now show their own icon and name. Where a program carries no icon at all, the shell is asked as a second choice instead of a letter being shown.',
+        'Apps that are really their own setup program say so. When the program you added is an Inno Setup, NSIS, InstallShield, WiX or MSI installer, the app list labels it and either completes setup inside the environment (“Set up in the background”, where the installer has a documented unattended mode) or keeps the wizard in its own RunContainer window. While an unattended setup runs, that line counts how long it has been working inside this environment, so a setup that takes minutes no longer looks like an app that never appears.',
+        'Setup completion is observed rather than assumed. RunContainer follows the setup process tree to its exit, searches the environment for the executable setup produced, and records it, so Run starts the app instead of its installer. If setup produced nothing, it says exactly that instead of claiming success.',
+        'RC-Brain 4 replaces the previous model: 9,088 parameters over 75 observation features and 13 actions. The new action consults the Runbook, a hard-coded table of exact documented signatures (Windows errors, setup exit codes and documented RunContainer states) with their meaning, and the agents’ own measurements are added as features.',
+        'RC-Brain now has two tools, and only two. The first dispatches specialist agents: six fixed read-only evidence probes (engine, window, process, filesystem, logs, setup), then three agents that reason over what they measured — a research agent that searches RunContainer’s bundled documentation and the incidents already verified on this machine, offline in both cases, an expert agent that works the whole documented rule set and names the measurement it is missing rather than guessing, and a harmony agent that resolves a disagreement between the model and the expert by explicit rules and refuses to choose when both conclusions rest on equal evidence and equal risk. The second tool consults the hard-coded Runbook. The model chooses which tool to use and nothing else about either: it cannot author an agent, give one arguments, run a command through one or add a table entry, a dispatch happens at most once per incident, and everything the agents return still goes through the same safety policy the model’s own proposal goes through.',
+        'Held-out results for RC-Brain 4: 99.7% on familiar holdout variants, 90.6% on whole failure families absent from training, 95.1% on an untouched final split, zero unsafe destructive actions on every split. The Runbook action has no held-out figure, because the held-out splits contain no instance of it; that is stated rather than left out.',
+        'Fixed evidence that looked complete but was not. Temporal evidence — how long a problem had lasted, whether it had recurred, whether it had only just cleared — was never measured at all, so the model was being asked to work without it; the monitor now tracks incidents properly. A window owned by the elevated launcher was reported as “no window”, which is how a working app could be restarted; those windows are now reported separately and measured.',
+        'Fixed re-rendering the old icon. A record whose icon came from an older extractor is now upgraded, because the decision is based on which extractor wrote the file rather than on its name, and when setup finishes and Run starts a different executable the icon is extracted again from that file, so the tile shows the app rather than its installer.',
+        'Apps that are still starting are no longer restarted. A launch is reported as running as soon as its process is verified, so an app that simply has not drawn its window yet is waited for inside the 10 second window budget while a genuinely hung one is still restarted after it.',
+        'Fixed a rollback path that could have left RunContainer with no model at all. The previous model predates the agents’ features and its 66 features are exactly the first 66 of this build’s 75, so it now loads and reads that prefix instead of being rejected as incompatible; the shipped model itself must still match the whole schema.',
+      ],
+    },
     {
       version: '0.7.7',
       date: '2026-10-25',

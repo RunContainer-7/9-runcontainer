@@ -36,9 +36,7 @@ Any file presented as a RunContainer installer that isn't linked from this page 
 
 Before you run the installer, compare its checksum with the SHA-256 value above. In PowerShell, in the folder with the file:
 
-```powershell
-Get-FileHash .\{{ latest.filename }} -Algorithm SHA256
-```
+<code>Get-FileHash .\{{ latest.filename }} -Algorithm SHA256</code>
 
 If the hash doesn't match, delete the file and download it again from this page.
 

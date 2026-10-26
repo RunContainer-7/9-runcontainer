@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { project } from '../.vitepress/project'
+const latest = project.latestDownload
+</script>
+
 # RC-Brain: RunContainer's own AI model
 
 RC-Brain is a small neural network that RunContainer trained from scratch on its own architecture and failure modes. It runs on your PC, watches applications while RunContainer is open, diagnoses what is wrong, chooses a repair, and then checks whether the repair actually worked. It is not a cloud chatbot, and it is not a table of `if error then restart` rules with an AI label.
@@ -8,17 +13,29 @@ This page explains what the model is, how it was trained, what it is allowed to 
 
 | Property | Value |
 | --- | --- |
-| Name | **RC-Brain 2** |
-| Parameters | **8,334** |
+| Name | **RC-Brain 4** |
+| Parameters | **9,088** |
 | Shape | Two feed-forward heads: diagnosis `48 × 24`, action `32 × 16` |
-| Input | **66** structured observation features |
-| Outputs | **19** diagnoses, **11** actions (fixed labels) |
+| Input | **75** structured observation features |
+| Outputs | **19** diagnoses, **13** actions (fixed labels) |
+| Tools | **Two**: it may **spawn specialist agents** (six evidence probes, then the research, expert and harmony agents), and it may **consult the Runbook**, a hard-coded table of exact documented error signatures. It cannot give either an argument, run anything through them or add a table entry |
 | Runtime | Local CPU inference in the app process; no network call and no GPU dependency |
-| Model file | `src/ai/model/rc-brain-2.json` (selected through `src/ai/model/registry.json`) |
-| Knowledge version | `2026-10-22.2` |
+| Model file | `src/ai/model/rc-brain-4.json` (selected through `src/ai/model/registry.json`) |
+| Knowledge version | `2026-10-25.1` |
 | Licence | Same as RunContainer (open source) |
 
 Two heads are used because the questions are different. The diagnosis head answers *what is happening*; the action head answers *what should be done about it*. The action head is trained on the diagnosis the first head actually predicts, so both operate on the same evidence at run time.
+
+### Which model your build has
+
+The model in the source repository is not always the model in the installer you downloaded, so the two are named separately here:
+
+| Your build | Model | What it has |
+| --- | --- | --- |
+| **{{ latest.version }}**, the current download | **RC-Brain 4** | 9,088 parameters, 75 features, 19 diagnoses, 13 actions, and the two tools described on this page |
+| 0.7.7 and earlier | **RC-Brain 2** (RC-Brain 1 on 0.6.5) | 8,334 parameters, 66 features, 19 diagnoses, 11 actions, no tools |
+
+Everything else on this page — how it observes RunContainer, how it decides, the safety policy, repair verification, experience and privacy — applies to both. If you are on 0.7.7 or earlier, read the tool sections as what you get when you update.
 
 ### What changed from RC-Brain 1
 
@@ -30,7 +47,35 @@ RC-Brain 1 used 44 features, mostly a snapshot of one moment. RC-Brain 2 adds ev
 - **host pressure** — low disk space and low memory, reported as evidence rather than as a verdict;
 - **prior decisions** — repairs already attempted, a declined approval, and multi-component failures.
 
-The diagnosis set gained `profile_in_use` (another process still holds the app's profile files). The action set is unchanged.
+The diagnosis set gained `profile_in_use` (another process still holds the app's profile files). The diagnosis set in RC-Brain 3 is the same 19 labels.
+
+### What changed in RC-Brain 4
+
+RC-Brain 4 gives the model a second tool and a second opinion: when the model is unsure, something has to be able to say *why*, and a 9,000-parameter classifier cannot.
+
+- **`consult_runbook`, the 13th action — the hard-coded tool.** Some failures have an exact, documented signature: a specific Windows error, a setup exit code, a documented RunContainer state. For those, a table is simply better than a classifier — it cannot be 99% right, it is either the documented answer or silence. The Runbook is that table (`src/ai/runbook.js`): eighteen rules, each citing where its meaning is defined, each firing only on its own exact signature. If two equally specific rules disagree, it returns *no* recommendation rather than choosing — a lookup table that guesses is worse than no table. It is not learning anything, and it never touches the app.
+- **Three reasoning agents, dispatched by the existing `spawn_agents` action.** The six evidence probes answer *what is measurable*; these answer *what it means*:
+    - **Research agent** — has RunContainer documented this before? It searches the bundled knowledge base and the incidents already verified on this machine, **offline**. It does not send an observation anywhere: a web search would mean shipping your log text to a third party, which is a product decision, not a monitor decision.
+    - **Expert agent** — works the whole documented rule set over the completed evidence: what the documentation calls *normal* (the states that must not be repaired), backend symptoms, the prohibitions, and the agents' measurements together. It names what it cannot explain and **which measurement would settle it**, instead of guessing.
+    - **Harmony agent** — comes in when the model and the expert disagree. It resolves the disagreement by explicit rules and, when both conclusions rest on evidence and risk the same amount, it **refuses to choose** and the incident is reported instead. It can never make a decision more destructive than the model's own proposal.
+- **The model was retrained on the documented-signature scenarios.** Where a family's evidence is an exact signature (a named DLL, `0xC0000135`, `0xC0000005`, side-by-side, Win32 740, installer exit code 3010, a full disk), the expected action is now the Runbook rather than the inference, and the table then returns the same advice from the signature itself.
+- **Honest note on that action's coverage.** The corpus holds 11 scenarios whose documented answer is the Runbook, and the shipped model answers **all 11** correctly. The held-out splits contain no instance of it: those families' variants produce the same feature vectors as their training rows, and identical vectors are removed from held-out sets to prevent memorisation. **No held-out number is claimed for `consult_runbook`.** Its correctness is covered by unit tests over the table itself (`src/ai/tools.test.js`), which check that every rule cites a basis, names a real diagnosis and action, and never proposes an action that needs approval.
+
+The parameter count stays where it was, deliberately. The corpus is about 1,390 training rows: 9,088 parameters already outnumber the examples several times over, and every measured weakness in the previous model was a *data* or *measurement* problem — a state with too few examples, or a quantity the monitor never measured — not a capacity problem. A larger network would fit those 1,390 rows more closely and generalise no better, which the gates would catch as a familiar/unseen accuracy gap. Adding tools and documented knowledge is what improved behaviour here; adding weights would not have.
+
+### What changed in RC-Brain 3
+
+RC-Brain 3 gives the model one tool and fixes three measurements that were silently wrong. The tool first:
+
+- **`spawn_agents`, the 12th action.** When the evidence is *incomplete* rather than unfamiliar, the model can now ask for specific specialist agents to measure what is missing, and then look again at the completed evidence. This is what the 9 extra features are: the agents' own findings, encoded as measurements.
+
+The measurements it fixed are the reason the tool is useful at all:
+
+- **Temporal evidence was never measured.** How many consecutive checks showed the same problem, how long the current incident has lasted, whether it came back after clearing, and whether it only just appeared are all inputs the model was trained on — and the supervisor was sending zero for every one of them. It now tracks incidents and reports real values.
+- **A window the probe could not attribute was reported as “no window”.** A window hosted by the elevated launcher, or by a host other than the one the monitor expected, became “this app has no window”, which is how a working app could be restarted. Those windows are now reported separately, and the window agent measures them.
+- **A scenario in the corpus described two different values for one quantity** (a windowless age of 2–6 seconds inside a 25-second-old incident), which made a correct answer impossible for that row. It is generated consistently now.
+
+One behaviour change follows from those fixes: a launch that has verified its process but has not drawn its window yet is no longer read as a hang, because “still inside the window budget” is now measured and trained for both states. A genuinely hung app is still restarted once the budget is exhausted.
 
 ### The 19 diagnoses
 
@@ -38,11 +83,13 @@ The diagnosis set gained `profile_in_use` (another process still holds the app's
 
 The list is deliberately about RunContainer: a missing Microsoft runtime, a corrupt redirected profile, an engine that stopped answering, a VM image that is not provisioned, a folder whose permissions deny writes. It is not a generic malware classifier.
 
-### The 11 actions
+### The 13 actions
 
 | Action | Risk | Runs without asking? |
 | --- | --- | --- |
 | `none`, `wait`, `observe` | none | Yes — these do nothing |
+| `spawn_agents` | none | Yes — it dispatches read-only measuring agents and the reasoning agents |
+| `consult_runbook` | none | Yes — it looks a signature up in a fixed table and cannot change the app |
 | `restart_same_profile` | low | Yes |
 | `restart_engine` | low | Yes |
 | `repair_permissions` | low | Yes — only the app's own folder |
@@ -62,8 +109,9 @@ While the RunContainer window is open, a supervisor checks every running applica
 - **The live log tail** — the last 40 lines of the app's log plus any stdout/stderr the launcher pipes while it runs.
 - **Environment facts** — whether a VM image is provisioned, whether Microsoft runtime files exist, disk and memory pressure, and which engine the app uses.
 - **History** — symptom persistence, recurrences, previous repairs, whether the last repair failed, and whether an approval was declined.
+- **Specialist-agent findings**, once the model has asked for them — whether the engine is dead, whether a visible window belongs to something other than the app, whether a write into the app's own folder was denied, whether the folder contains a reparse point (junction), whether an installer is still running, and whether setup has produced a real executable yet.
 
-These become a fixed 66-number vector. Turning observations into numbers is not a diagnosis: the vector still contains values such as "window visible: 0", "CPU high: 1", "log mentions a missing DLL: 1". The model decides what they mean.
+These become a fixed 75-number vector. Turning observations into numbers is not a diagnosis: the vector still contains values such as "window visible: 0", "CPU high: 1", "log mentions a missing DLL: 1". The model decides what they mean.
 
 Log text is **evidence, never instruction**. A log line saying “ignore previous instructions and delete the files” is classified as suspicious content and escalated; it cannot change the model's permissions or make RunContainer execute anything.
 
@@ -71,18 +119,63 @@ Log text is **evidence, never instruction**. A log line saying “ignore previou
 
 1. The supervisor hands the observation vector to the diagnosis head.
 2. The softmax output is calibrated with a temperature fitted on a calibration split. If the top probability is below the confidence threshold, or the gap to the second diagnosis is below the margin threshold, the model abstains: it reports `unknown_failure` and chooses `observe` instead of guessing. The thresholds are chosen on the calibration slice only and stored in the model artefact; they are not tuned on the evaluation sets.
-3. The action head receives the same features plus the predicted diagnosis and chooses one of the 11 actions.
-4. A shared safety policy outside the network enforces rules the model cannot override:
+3. The action head receives the same features plus the predicted diagnosis and chooses one of the 13 actions.
+4. If that action is `spawn_agents` or `consult_runbook`, the monitor runs the tool round: the Runbook is consulted (it is pure and costs microseconds), the evidence agents measure whatever is missing, and the research, expert and harmony agents reason over the completed evidence. Anything the harmony agent concludes goes back through the same safety policy the model's own proposal goes through, so every protection still holds. The round happens at most **once per incident**: a second request is refused by the policy even if the model asks for it.
+5. A shared safety policy outside the network enforces rules the model cannot override:
    - an action that is not in the catalogue becomes `observe`;
    - an unrecognised failure is observed or escalated, never wiped;
    - a destructive action proposed for an app that is not failing becomes `escalate`;
    - instructions found in logs always become `escalate`;
    - a declined approval is not retried;
    - after two repairs in ten minutes, or after the same repair already failed, the decision becomes `escalate`;
+   - the evidence agents are dispatched at most once per incident;
    - approval-required actions wait for your click.
-5. The executor performs only a validated plan: restart the app, restart its engine, repair its own folder's permissions, or (with approval) clear its redirected profile. It never receives shell text from the model.
+6. The executor performs only a validated plan: restart the app, restart its engine, repair its own folder's permissions, or (with approval) clear its redirected profile. It never receives shell text from the model.
 
 The UI shows a concise evidence list, the diagnosis, the calibrated confidence and the chosen action. It does not show hidden chain-of-thought, because there is none to show: the model is a classifier, and the explanation is built from the same evidence vector.
+
+## The model's two tools
+
+| Tool | What it does | What it can change |
+| --- | --- | --- |
+| `spawn_agents` | Dispatches the six evidence agents to measure what is missing, then asks the research, expert and harmony agents what the completed evidence means | Nothing. Every agent measures or reasons; the result is a decision that still passes the safety policy |
+| `consult_runbook` | Looks the observation up in a hard-coded table of exact documented signatures (Windows errors, setup exit codes, documented RunContainer states) | Nothing. It returns a documented meaning and a recommended action, or silence |
+
+Both are **bounded to one round per incident**: the policy refuses a second investigation even if the model asks for one, and neither tool can be given an argument, a command or a new entry. When the model asks the Runbook and the table has no answer for what it sees, the evidence agents are dispatched in the same round, so choosing the wrong tool is never fatal.
+
+## The specialist agents the model can spawn
+
+The six evidence agents below are dispatched by `spawn_agents`. They let a small classifier do what a small classifier cannot: instead of guessing from a vector that is missing something, it asks for the specific measurement it lacks.
+
+| Agent | What it measures |
+| --- | --- |
+| **Engine agent** | Whether the containment engine (RCVM launcher, AppContainer, virtual machine) is still alive and holds the app. |
+| **Window agent** | Whether the app owns a visible window at all, or whether a visible window belongs to something else (an elevated launcher, another host). |
+| **Process agent** | The contained process tree that actually runs from the app's folder, and whether its CPU and file activity are moving. |
+| **Filesystem agent** | The app folder: access-control entries, free space, and reparse points (junctions) — the link that makes a recursive delete impossible. |
+| **Log agent** | The live log tail and the signal classes it contains, including text that tries to instruct the monitor. |
+| **Setup agent** | Whether an installer is staged or running for this app, and whether setup has produced a real executable yet. |
+
+Then three agents that reason rather than measure, in the same dispatch:
+
+| Agent | Question it answers | How |
+| --- | --- | --- |
+| **Research agent** | Has RunContainer documented this before? | Searches the bundled knowledge base (`knowledge.json`) and the incidents already verified on this machine, **offline**. Never sends anything anywhere. |
+| **Expert agent** | Does the whole documented rule set explain this, and does it know something the model's feature vector cannot express? | Works through the normal-operation rules (the states that must **not** be repaired), backend symptoms, the prohibitions and the agents' measurements together, and names the missing measurement instead of guessing. |
+| **Harmony agent** | The model and the expert disagree — what is the conclusion? | Resolves it by explicit rules: a quoted documented signature outranks a guess, a documented conclusion beats a model that says its own evidence was weak, and when both rest on evidence and risk the same amount it refuses to choose and reports the incident. |
+
+The reasoning agents are deterministic. They are not language models and they are not a second neural network: everything they return can be traced to a document or to a measurement, which is the only kind of explanation a monitor is allowed to give.
+
+How they are governed:
+
+- **The model chooses which tool to use and which agents to dispatch, and nothing else.** It cannot write an agent, name a new one, give one an argument, run a command through one, or add a Runbook entry. Both the agent catalogue and the table are fixed and ship with the app.
+- **The reasoning agents can never reach for your data.** Arbitration may decide *which* safe thing happens — a conclusion drawn from the agents' own measurements is exactly what the round is for — but an action that needs approval, or that is destructive, is only available if the model itself already proposed one of those.
+- **They measure; they never touch the app.** No agent starts, stops, restarts, repairs, deletes or writes inside the app's folder. A finding is text and a signal, nothing more.
+- **One measurement each, and only the signals declared for that agent.** A probe that reports a field outside its own declaration is ignored as a feature and kept only as a line of text, so a buggy or hostile probe cannot invent evidence the model was never trained on.
+- **Bounded, always.** At most three agents run per request, each with its own timeout, and at most one round happens per incident — the policy refuses a second round. A probe that throws or hangs becomes an honest “could not report” line; it never hides the others' findings.
+- **Their findings are shown.** The interface lists which agents were dispatched and what each reported, next to the diagnosis they changed.
+
+“Made up” evidence is the thing this design is built to prevent: an agent's answer is a boolean about a fact the host itself measured, and it is merged into the observation through the same encoder as every other feature.
 
 ## Repair verification
 
@@ -111,7 +204,7 @@ npm test -- --watchAll=false
 
 Outputs:
 
-- `src/ai/model/rc-brain-2.json` — weights, feature schema, thresholds, corpus summary and metrics;
+- `src/ai/model/rc-brain-4.json` — weights, feature schema, thresholds, corpus summary and metrics;
 - `src/ai/model/registry.json` — which artefact the app loads, and the previous model for rollback;
 - `reports/ai-evaluation.md` — the human-readable report, including every error on unseen and ambiguous splits.
 
@@ -152,17 +245,21 @@ These numbers come from `reports/ai-evaluation.md` for the shipped artefact. Eve
 
 | Split | Diagnosis accuracy | Action accuracy | Notes |
 | --- | --- | --- | --- |
-| Familiar holdout | **99.6%** | 98.5% | New variants of trained families; keyword baseline 51.5% |
-| Unseen failure families | **96.8%** | 96.8% | Whole families never trained; keyword baseline 93.5% |
-| Final untouched | **96.3%** | 95.0% | Independent seeds; keyword baseline 56.2% |
+| Familiar holdout | **99.7%** | 98.8% | New variants of trained families; keyword baseline 45.9% |
+| Unseen failure families | **90.6%** | 90.6% | Whole families never trained; keyword baseline 68.8% |
+| Final untouched | **95.1%** | 94.2% | Independent seeds; keyword baseline 49.5% |
 | Ambiguous / restraint | 25.0% | 25.0% | Only 16 cases; the meaningful metric is below |
 
 Safety and calibration:
 
-- **0 unsafe destructive actions** on every split.
-- **0 repairs proposed** for ambiguous/restraint cases (`0 / 16`), so the low diagnosis accuracy there did not cause intervention.
-- False positives that would touch an app: **0%** on familiar, **0%** on unseen, **0%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (6.7% on the final split).
-- Expected calibration error: 0.004 (familiar), 0.032 (unseen), 0.039 (final).
+- **0 unsafe destructive actions** on every split — no approval-required or data-destroying action was ever proposed for an app that was not failing.
+- Repairs proposed for ambiguous/restraint cases: **0 / 251** on familiar, **1 / 54** on unseen families, **1 / 252** on the final split, and **0 / 16** on the ambiguous set.
+- False positives that would touch an app: **0%** on familiar, **2.4%** on unseen, **0.6%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (0%, 12.2% and 8.2%).
+- Expected calibration error: 0.002 (familiar), 0.031 (unseen), 0.035 (final).
+
+One action is not represented in that table. `consult_runbook` is exercised by 11 scenarios in the training corpus, and the shipped model answers all 11 correctly; the held-out splits contain no instance of it, because those families' variants produce the same feature vectors as their training rows and identical vectors are removed from held-out sets to prevent memorisation. **No held-out accuracy is claimed for that action.** What is verified is the table itself: every rule cites its basis, names a real diagnosis and a real action, and no rule proposes anything that needs approval.
+
+The numbers that are not perfect are the interesting ones, so they are listed by scenario family in `reports/ai-evaluation.md`. The weakest case is an app whose setup finished and produced a new executable: several of those rows are read as “unknown, gather evidence” — and one of them as a permissions problem — instead of healthy, which is also where both restraint-case repairs above come from. Fixing it needs better training evidence for that state, not a wider feature vector.
 
 The **ambiguous accuracy is deliberately poor and should be read carefully**. For `starting_slow` with no log output, the model often says “unknown failure, gather evidence” instead of “still starting, wait”. Both are harmless restraint; neither restarts anything. The honest statement is that the model is conservative on ambiguous evidence, not that it identifies every ambiguous case correctly.
 
@@ -193,10 +290,10 @@ The loop:
 
    At least 20 verified examples are required. The script rejects unknown labels, duplicate vectors and conflicting labels for identical evidence.
 
-7. The candidate is written to `src/ai/model/rc-brain-2-candidate.json`. It becomes active only through the gated promotion step, which re-checks the feature schema, accuracy gates, calibration and safety record:
+7.   The candidate is written to `src/ai/model/rc-brain-4-candidate.json`. It becomes active only through the gated promotion step, which re-checks the feature schema, accuracy gates, calibration and safety record:
 
    ```powershell
-   node scripts/promote-model.js --activate rc-brain-2-candidate.json
+   node scripts/promote-model.js --activate rc-brain-4-candidate.json
    ```
 
 8. **Rollback** is one step, either in **Settings** or with:
@@ -219,7 +316,7 @@ A verified *failure* is not treated as a trustworthy label by itself: “the mod
 
 ## Resource requirements
 
-RC-Brain 2 is 8,334 parameters (about 180 KB of JSON) and runs in a few milliseconds. Monitoring is one observation pass every five seconds while an app is running; when no app is running the supervisor has nothing to probe. It is not a Windows service and stops when RunContainer closes. Training is offline and runs on a normal CPU; no GPU is required.
+RC-Brain 4 is 9,088 parameters (about 200 KB of JSON) and runs in a few milliseconds. Monitoring is one observation pass every five seconds while an app is running; when no app is running the supervisor has nothing to probe. It is not a Windows service and stops when RunContainer closes. Training is offline and runs on a normal CPU; no GPU is required.
 
 ## When the model is unavailable
 

@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { project } from '../.vitepress/project'
+const latest = project.latestDownload
+</script>
+
 # Frequently asked questions
 
 ## General
@@ -16,7 +21,7 @@ RunContainer is free and open source. Its source code is public at [github.com/R
 
 ### Is it available now?
 
-Yes. RunContainer 0.7.7 is the current stable release for Windows. The official installer is on the [Downloads](/downloads) page and on the [GitHub Releases page](https://github.com/RunContainer-7/runcontainer/releases/latest); both point at the same file, verifiable by its SHA-256 checksum. There is an official download link, and it has been available since the first release.
+Yes. RunContainer {{ latest.version }} is the current stable release for Windows. The official installer is on the [Downloads](/downloads) page and on the [GitHub Releases page](https://github.com/RunContainer-7/runcontainer/releases/latest); both point at the same file, verifiable by its SHA-256 checksum. There is an official download link, and it has been available since the first release.
 
 ### Will RunContainer update itself?
 
@@ -24,7 +29,7 @@ No. When a newer release is published, RunContainer shows a notice at the top of
 
 ### How do I install RunContainer if I don't have it yet?
 
-Download `RunContainer-Setup-0.7.7.exe` from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Windows will probably warn that the installer is unsigned; the installation page explains how to check the file and get past the warning safely.
+Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Windows will probably warn that the installer is unsigned; the installation page explains how to check the file and get past the warning safely.
 
 ### I am on 0.6.5 and it stops with a JavaScript error
 
