@@ -38,31 +38,31 @@ This is a genuine virtual machine in the ordinary sense — its own virtual disk
 
 ### Creating a machine
 
-Press **Browse…** to pick the media, then set:
+Press **Browse…** to attach media, and set the rest from the lists the form offers:
 
-| Option | Range |
+| Option | What you can pick |
 | --- | --- |
-| Name | 2–60 characters, and safe to use as a file name |
-| Memory | 1 GB to 32 GB |
-| CPUs | 1 to 16 |
-| Disk | 8 GB to 512 GB |
-| Media | An `.iso` or `.img` you supply; optional |
-| Boot the attached media first | On for a fresh install, off once a system is installed |
+| Name | 2–60 characters, with no path separator or reserved character, because it names the disk file |
+| Memory | 1, 2, 4, 8, 16 or 32 GB |
+| CPUs | 1, 2, 4, 6, 8, 12 or 16 |
+| Disk | 8, 20, 40, 60, 80, 120, 256 or 512 GB |
+| Installation media | An `.iso` or `.img` you supply; it can be left unattached |
+| Boot the attached media first | Ticked for a fresh install; untick it once a system is installed |
 
-The virtual disk is created at that size as a sparse `qcow2` file, so it does not take 40 GB the moment you press Create.
+Press **Create virtual machine**. The virtual disk is a `qcow2` file created at that size, which grows as the guest writes to it rather than taking the whole size immediately.
 
 ### Booting it
 
-Press **Start**. QEMU is launched with a console on a loopback port that RunContainer checks is free first, and the guest screen appears in the window below the machine's card.
+Press **Start**. QEMU is launched with its console on a loopback port that RunContainer checks is free first. Nothing is drawn by QEMU itself: press **Show console** and the guest's screen is painted in a panel below the machine's card, and **Hide console** puts it away without stopping the machine.
 
-- With **Boot the attached media first** on, the guest boots from the media: that is how you install the system, exactly as you would in VirtualBox or VMware.
-- With it off, the guest boots from its own disk.
-- From then on, **Stop** ends the machine and **Delete** removes it together with its virtual disk.
+- With **Boot the attached media first** ticked, the guest boots from the media: that is how you install the system, exactly as you would in VirtualBox or VMware.
+- With it unticked, the guest boots from its own disk.
+- **Stop** ends the machine and **Delete** removes it together with its virtual disk.
 
 ### Using the console
 
 - **Click the screen** to give the guest your keyboard. Everything you type goes to the guest, not to RunContainer.
-- **Ctrl+Alt+Del** is a button, because your PC's own key combination never reaches a guest.
+- **Send Ctrl+Alt+Del** is a button, because your PC's own key combination never reaches a guest.
 - The console follows the guest when it changes resolution, and mouse positioning is absolute — the guest's cursor lands where you click.
 - Nothing else is integrated: there is no clipboard sharing, no drag and drop and no shared folders.
 
@@ -71,7 +71,7 @@ Press **Start**. QEMU is launched with a console on a loopback port that RunCont
 The tab is labelled **Experimental** and that is accurate rather than modest. Expect bugs, and expect these limits in particular:
 
 - **Frames are uncompressed over loopback.** A busy desktop, video playback or a large window drag can look delayed. This is a working console, not a display protocol tuned for gaming.
-- **A Windows guest needs the virtio storage driver to see its own disk.** A machine created here attaches its disk the efficient way, so a Windows setup will not find a drive unless the driver is supplied during setup (a second ISO with virtio drivers, or unattended media that already includes them). Linux guests have this support built in.
+- **A Windows guest needs the virtio storage driver to see its own disk.** A machine created here attaches its disk the efficient way, so a Windows setup will not find a drive unless the driver is supplied during setup (a second ISO with virtio drivers, or unattended media that already includes them). Linux guests have this support built in. A USB tablet is attached for the pointer, which is what makes the mouse land where you click instead of drifting.
 - **Without hardware acceleration the guest is slow.** If WHPX is unavailable, QEMU falls back to software emulation, and a graphical operating system will feel it. The tab reports which one is in use.
 - **Stop is an immediate power-off** — the equivalent of pulling the plug, not a shutdown request. Shut the guest down from inside for a clean exit.
 - **No graceful-shutdown integration, no snapshots and no saved states.** A machine is started or stopped; there is nothing in between.
