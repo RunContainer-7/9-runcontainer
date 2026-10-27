@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.9',
-    filename: 'RunContainer-Setup-0.7.9.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.9/RunContainer-Setup-0.7.9.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.9',
+    version: '0.8.0',
+    filename: 'RunContainer-Setup-0.8.0.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.0/RunContainer-Setup-0.8.0.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.0',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '9db5b54445970afedb7b14adee7250a9714923ebc1bc5f6330a6f1f24e500a06',
+    sha256: '0a9d9ec34a5528a7dee635368d89d142fe1dad0c4fa1bca93fb85927f9fbb4c9',
     // The published CI-built installer (Inno Setup) is ~103.9 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 103.9,
@@ -51,6 +51,19 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.0',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.0',
+      notes: [
+        'Applications and installers that ask Windows for administrator rights no longer open as ordinary windows on the desktop. A setup wizard that took a while to draw its first window, or a setup program that started the application it had just installed, could previously end up outside RunContainer; that window now opens inside RunContainer too.',
+        'An installer that shows more than one window — an unpacking window, the setup wizard, then a progress or finish window — used to have only its first window inside RunContainer. All of them appear inside RunContainer now, and a smaller window keeps its own size instead of being stretched to fill the space.',
+        'The application a setup program installs is shown inside RunContainer as soon as setup finishes, rather than starting as a separate window on the desktop.',
+        'Fixed an empty window after Stop. Stopping an application could leave a blank RunContainer window behind; that no longer happens.',
+        'Release installers are still not code-signed, so Windows may warn before the installer runs. The Downloads page explains why, and how to verify your download.',
+      ],
+    },
     {
       version: '0.7.9',
       date: '2026-10-27',

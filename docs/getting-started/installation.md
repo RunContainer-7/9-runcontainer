@@ -18,11 +18,11 @@ const latest = project.latestDownload
 
 ## Windows may still warn you (and that is expected)
 
-Release installers are signed for open source through the [SignPath Foundation](https://signpath.org/) — **free code signing provided by SignPath.io, certificate by SignPath Foundation** — so a signed build shows a publisher instead of “Unknown publisher”.
+**Release installers are not code-signed**, so Windows shows “Unknown publisher”. Signing is intended: RunContainer was built for the [SignPath Foundation](https://signpath.org/) programme, which signs qualifying open-source Windows software at no cost, but that application was declined for now because the programme needs projects with more public traction, and it invited a reapplication. The release workflow is ready for signing when a service is in place.
 
-Signing is not a promise of silence. SmartScreen reputation is built from clean downloads over time, so a brand-new version can still be treated as an unknown file, and any release published before signing was in place is unsigned. You may therefore still see one or both of these:
+Signing would not be a promise of silence even once it is in place: SmartScreen reputation is built from clean downloads over time, so a brand-new version can still be treated as an unknown file. You may therefore see one or both of these:
 
-- **SmartScreen:** a blue “Windows protected your PC” box. Click **More info**, check the app name is RunContainer and that the publisher is either unknown or SignPath Foundation, then click **Run anyway**.
+- **SmartScreen:** a blue “Windows protected your PC” box. Click **More info**, check the app name is RunContainer and that the publisher shows as unknown, then click **Run anyway**.
 - **Microsoft Defender or your browser:** a “file contains a virus or potentially unwanted software” warning, or the file disappears from your Downloads folder. This is a reputation false positive, not a detection of known malware. Open **Windows Security → Virus & threat protection → Protection history**, find the RunContainer entry and choose **Restore** (or **Allow on device**).
 
 **This is not malware.** RunContainer is an open-source Windows launcher. It does not install itself as a service, does not add itself to startup, and does not upload your files. Every build published here is produced by the public GitHub Actions workflow from the public source at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer). You do not have to take our word for it:
@@ -33,7 +33,7 @@ Signing is not a promise of silence. SmartScreen reputation is built from clean 
 
 Do **not** turn off real-time protection permanently to install RunContainer. Restore or allow the one file, install, and leave protection on. If your security product keeps flagging it, submit the file to Microsoft as a false positive and open an issue so we can look at it.
 
-Earlier releases were unsigned as well; this section exists because the warnings are the most common support question.
+No release published so far is code-signed; this section exists because these warnings are the most common support question.
 
 Then read [First launch](/getting-started/first-launch) to see what to expect when you open RunContainer, or follow the [Walkthrough](/getting-started/walkthrough).
 

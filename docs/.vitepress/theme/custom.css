@@ -443,3 +443,33 @@
   display: table;
   width: 100%;
 }
+
+
+/* Live star and fork counts for the source repository (RepoStats.vue).
+   Scoped under .rc-home so it also outranks the landing page link styling. */
+.rc-home .rc-repo-stats {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 8px 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+}
+.rc-home .rc-repo-stats:hover {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 45%, var(--vp-c-divider));
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+.rc-home .rc-repo-stats__item strong {
+  color: var(--vp-c-text-1);
+  font-variant-numeric: tabular-nums;
+}
+.rc-home .rc-repo-stats__note {
+  color: var(--vp-c-text-3);
+}

@@ -23,9 +23,9 @@ RunContainer is **free and open source**. Its source code is at [github.com/RunC
 </div>
 
 ::: warning Windows may still warn about the installer
-Release installers are signed for open source through the SignPath Foundation, so a signed release shows a publisher instead of “Unknown publisher”. Signing is not a promise of silence: SmartScreen reputation is built from clean downloads over time, so a brand-new version can still be treated as unrecognised, and any release published before signing was in place is unsigned. Windows may therefore still show a blue “Windows protected your PC” box, and Microsoft Defender or your browser may label the download as a virus or “potentially unwanted software”, or remove it from your Downloads folder. That is a reputation false positive for a newly published build, not a detection of known malware.
+Release installers are **not code-signed**, so Windows shows “Unknown publisher” and you should check the SHA-256 value above before you run the file. Windows may show a blue “Windows protected your PC” box, and Microsoft Defender or your browser may label the download as a virus or “potentially unwanted software”, or remove it from your Downloads folder. That is a reputation false positive for a newly published build, not a detection of known malware.
 
-Do **not** turn off real-time protection. The exact steps to verify the file, restore it from Protection history and install it anyway are in [Installation → Windows will probably warn you](/getting-started/installation#windows-will-probably-warn-you-and-that-is-expected).
+Do **not** turn off real-time protection. The exact steps to verify the file, restore it from Protection history and install it anyway are in [Installation → Windows will probably warn you](/getting-started/installation#windows-may-still-warn-you-and-that-is-expected).
 :::
 
 ::: danger Beware of unofficial downloads
@@ -58,15 +58,16 @@ RunContainer's installer is built for **64-bit Windows (x64)** and supports Wind
 
 ## Code signing
 
-**Free code signing provided by SignPath.io, certificate by SignPath Foundation.**
+**Release installers are not code-signed at the moment.** Windows therefore shows “Unknown publisher”, and the SHA-256 value above is what to check your download against.
 
-Release installers are signed through [SignPath Foundation](https://signpath.org/), which signs open-source Windows software at no cost. The certificate is issued to SignPath Foundation, so that is the publisher name shown on a signed installer rather than the name of an individual maintainer.
+RunContainer was built for the [SignPath Foundation](https://signpath.org/) programme, which signs qualifying open-source Windows software at no cost, and the release workflow is ready for it. That application was declined for now: the programme issues its own certificate only to projects that already show public traction, such as stars, contributors and coverage elsewhere, and it invited a reapplication once RunContainer has more of it. Releases therefore publish unsigned rather than failing.
 
-- Signing happens inside the project's release workflow, from the tagged commit and on GitHub-hosted runners, and it signs only the installer that workflow built from that tag.
-- The signature is read back off the file with `Get-AuthenticodeSignature` before the installer is attached to the release. A release whose installer is not validly signed fails instead of publishing.
-- Every signing request is approved by a person, so a release waits for that approval rather than falling back to an unsigned installer.
-- Only official builds are covered. Forks and modified builds are not signed with this certificate.
-- Signing roles and the privacy statement are set out in [Policies](/policies).
+Once a signing service is in place:
+
+- It signs only the installer that the project's release workflow built from the tagged commit, on GitHub-hosted runners. Forks and modified builds are never covered.
+- The signature is read back off the file with `Get-AuthenticodeSignature` before the installer is attached to the release, and a release whose installer is not validly signed fails instead of publishing.
+- Every signing request is approved by a person, so nothing is signed by a machine without review.
+- Signing roles and the privacy statement will be set out in [Policies](/policies).
 
 You can verify a download yourself by comparing its SHA-256 with the value above:
 

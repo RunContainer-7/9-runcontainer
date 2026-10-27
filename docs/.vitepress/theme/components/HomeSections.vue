@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Where can I download it?',
-    a: `Yes, it is available now. RunContainer ${project.latestDownload.version} is the current Stable release for Windows. The Downloads page points at the installer attached to that Stable GitHub release; both are the same file, and the page lists its SHA-256 checksum so you can verify the download. Release installers are signed for open source by SignPath.io through the SignPath Foundation, so the installer carries a publisher name instead of “Unknown publisher”. A very new version can still prompt, because SmartScreen reputation is built from clean downloads over time.`
+    a: `Yes, it is available now. RunContainer ${project.latestDownload.version} is the current Stable release for Windows. The Downloads page points at the installer attached to that Stable GitHub release; both are the same file, and the page lists its SHA-256 checksum so you can verify the download. Release installers are not code-signed yet, so Windows shows “Unknown publisher” and SmartScreen may warn before the installer runs. A very new version can still prompt even once signing is in place, because SmartScreen reputation is built from clean downloads over time.`
   }
 ]
 </script>
@@ -142,6 +142,7 @@ const faqs = [
         <p v-if="!project.repoUrl" class="rc-note">
           The public source repository and issue tracker have not been published yet.
         </p>
+        <RepoStats />
         <div class="rc-actions">
           <a class="rc-btn" :href="withBase('/reference/contributing')">Contribution guide</a>
           <a class="rc-btn rc-btn--ghost" :href="withBase('/community')">Community &amp; links</a>

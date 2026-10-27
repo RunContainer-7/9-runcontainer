@@ -4,7 +4,7 @@ These are the known limits on what it does and doesn't do.
 
 ## Availability
 
-- **Signing does not silence Windows.** Installers are signed for open source through the SignPath Foundation, but signing is not a promise of silence: a very new version can still be treated as an unrecognised file, and releases published before signing was in place are unsigned. Windows may therefore show a warning before the installer runs. See [Code signing](/downloads#code-signing).
+- **Signing does not silence Windows.** Release installers are not code-signed at the moment, so Windows shows “Unknown publisher” and may show a warning before the installer runs. Signing would not be a promise of silence either: a very new version can still be treated as an unrecognised file once it is in place. See [Code signing](/downloads#code-signing).
 - **System requirements aren't confirmed yet.** See [Prerequisites](/getting-started/prerequisites).
 - **Some features may not be in every build.** Pages note where a feature's availability isn't yet confirmed.
 

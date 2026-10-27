@@ -10,6 +10,7 @@ import SupportPanel from './components/SupportPanel.vue'
 import DiscordCard from './components/DiscordCard.vue'
 import VideoIntro from './components/VideoIntro.vue'
 import SimulationDemo from './components/SimulationDemo.vue'
+import RepoStats from './components/RepoStats.vue'
 import './custom.css'
 
 export default {
@@ -25,5 +26,6 @@ export default {
     app.component('DiscordCard', DiscordCard)
     app.component('VideoIntro', VideoIntro)
     app.component('SimulationDemo', SimulationDemo)
+    app.component('RepoStats', RepoStats)
   }
 } satisfies Theme
