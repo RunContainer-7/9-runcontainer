@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.2',
-    filename: 'RunContainer-Setup-0.8.2.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.2/RunContainer-Setup-0.8.2.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.2',
+    version: '0.8.3',
+    filename: 'RunContainer-Setup-0.8.3.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.3/RunContainer-Setup-0.8.3.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.3',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'a637706ab0ac2c6930e29692224dfa794ddfa828c729a04031dab8fd27ab23b4',
+    sha256: '54ffeb111a0280ce35bd5c3f5b7098b0e815d877a53b81ff160e13a18399bece',
     // The published CI-built installer (Inno Setup) is ~99.2 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 99.2,
@@ -51,6 +51,20 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.3',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.3',
+      notes: [
+        'The promise this project is about — press Run and the app\u2019s window is drawn inside a RunContainer window — is now checked by launching the real app instead of being assumed. A new verification installs a real graphical program through the app\u2019s own IPC, presses Run, and asks Windows where that window actually is: it must be a child window of the RunContainer window, visible, and large enough to be a window, with no copy of it left on the desktop. It runs on every push to the repository.',
+        'Fixed the window host being slow to start costing an entire launch. Its Win32 assembly is compiled the first time it runs, and on a new install or straight after an update that compile can take longer than the app waits before launching. RunContainer then decided hosting was unavailable, closed the window it had just opened, and refused to try again for twenty seconds — so the app opened on the desktop and stayed there while Run appeared to do nothing. A host that reports it is watching now clears that refusal, so the attempt that follows the launch adopts it and the app ends up inside RunContainer.',
+        'Fixed closing a RunContainer window closing the app\u2019s own window. A hosted window is a child of the RunContainer window, and Windows destroys a child together with its parent — so destroying the host took the app\u2019s window with it, and an app whose last window disappears simply exits. A host window that is still holding a window releases it to the desktop first.',
+        'Fixed virtual machines outliving the app that started them. A machine runs detached so the guest keeps working while the interface is busy, which also means it survives RunContainer being closed or killed — and nothing recorded its process. It was then shown as Stopped while its QEMU process still held its virtual disk and its console port, and pressing Start would have booted a second machine on the same disk, which corrupts a guest filesystem beyond repair. Each machine\u2019s process is now part of its record: machines from a previous session are stopped at startup, running machines are stopped when the app closes, Start refuses a machine whose disk is still in use and says why, Stop can stop one left over from a previous session, and a record clears itself the moment the machine really stops.',
+        'A machine\u2019s state is measured rather than remembered, so Running and Stopped mean what they say after a crash as well as after a clean exit. Four new tests cover the pid file, that reconciliation and the refusal to start one disk twice.',
+        'If the interface still looks like an older version after updating, run the installer again and let it close RunContainer first: a file that is in use cannot be replaced while the app is running, and a half-replaced installation keeps the old interface while reporting the new version.',
+      ],
+    },
     {
       version: '0.8.2',
       date: '2026-10-27',

@@ -57,6 +57,7 @@ The [RC-Brain page](/guide/ai-brain#which-model-your-build-has) lists which mode
 - **The console is screen and keyboard only.** The guest gets your typing and your clicks, and there is no clipboard sharing, no drag and drop and no shared folders.
 - **Stop is an immediate power-off.** It is not a graceful shutdown request, and there are no snapshots or saved states. Shut the guest down from inside for a clean exit.
 - **Deleting a machine deletes the system installed in it.** Its virtual disk is removed; if Windows refuses to remove the file, RunContainer reports that instead of claiming the machine is gone. Your installation media is never copied or modified.
+- **A machine is stopped when RunContainer closes.** A VM owns a virtual disk and a console port and there is no window left to show it in once the app is gone, so closing RunContainer stops what it started, and a machine left running by a crash is stopped the next time the app starts. Pressing Start while a machine's disk is still in use is refused with the reason, because a second machine on one disk can corrupt the guest's filesystem.
 - **Turning developer mode off never deletes a machine.** The tab closes and the detail hides; the disks stay where they are.
 - **The RC-Brain audit detail is the same data, just shown.** With developer mode off, the same model and the same supervision run; only the panel's level of detail changes.
 

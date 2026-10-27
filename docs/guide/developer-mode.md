@@ -59,6 +59,12 @@ Press **Start**. QEMU is launched with its console on a loopback port that RunCo
 - With it unticked, the guest boots from its own disk.
 - **Stop** ends the machine and **Delete** removes it together with its virtual disk.
 
+### What happens to a machine when RunContainer closes
+
+A machine is not left behind. Closing RunContainer stops any machine that is running, because each one owns a virtual disk and a console port and there is no window left to show it in. A machine that outlived the app — after a crash, or after RunContainer was killed — is stopped the next time RunContainer starts, and it says so in its log.
+
+That is not only tidiness. A QEMU process that survived the app still holds the machine's disk open, and starting the machine again would boot a second one on that same disk, which can corrupt the guest's filesystem. So **Start** refuses while the disk is still in use and names the machine holding it, and **Stop** can still stop a machine left over from a previous session. Each machine's QEMU process is recorded, so what this tab shows as Running or Stopped is measured rather than remembered, and a machine that has genuinely stopped clears its record by itself.
+
 ### Using the console
 
 - **Click the screen** to give the guest your keyboard. Everything you type goes to the guest, not to RunContainer.
