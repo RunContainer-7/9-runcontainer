@@ -32,15 +32,17 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.7.8',
-    filename: 'RunContainer-Setup-0.7.8.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.8/RunContainer-Setup-0.7.8.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.8',
+    version: '0.7.9',
+    filename: 'RunContainer-Setup-0.7.9.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.7.9/RunContainer-Setup-0.7.9.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.9',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'abe5ddc98a40c509bdfb3e2c50800d91c3adcbec11197403365e402ece00f61d',
-    sizeMb: 99.0,
+    sha256: '9db5b54445970afedb7b14adee7250a9714923ebc1bc5f6330a6f1f24e500a06',
+    // The published CI-built installer (Inno Setup) is ~103.9 MB; it is not the
+    // same artefact as a local electron-builder NSIS run of npm run dist.
+    sizeMb: 103.9,
   },
 
   /**
@@ -49,6 +51,22 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.7.9',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.7.9',
+      notes: [
+        'RC-Brain 5 replaces RC-Brain 4: 13,632 parameters instead of 9,088, because the corpus now carries several wordings for each condition instead of one. “Requires administrator privileges”, “elevation is required” and “requested operation requires elevation” are the same fact to a person, and only the first used to be a fact to the feature extractor. The broader corpus was trained twice with the same seed, changing only network width: the narrow pair scored 82.8% on unseen failure families and 93.9% on the final split, the wide pair 92.2% and 94.8%.',
+        'Measured results for RC-Brain 5: 99.7% on familiar holdout variants (99.1% action), 92.2% on whole failure families absent from training (up from 90.6%), 94.8% on an untouched final split (94.2% action, 310 cases), zero unsafe destructive actions on every split, and 0% repairs proposed for normal behaviour on the final split. The 16-case restraint set is still answered correctly only 25% of the time, and every miss is the same scenario — an app that has logged nothing at all yet — which is stated rather than rounded away.',
+        'Fixed a trainer that could ship a model which had failed its own release gates. The active-model registry was written before the thresholds were evaluated, so a failing run still became the shipped model; one did, leaving the app pointed at a model file that had never passed. Gates are now checked first and only a passing run touches the registry. Rollback now records the artefact that was actually active instead of the one before it, so it cannot skip a version, and the candidate trainer no longer inspects a hard-coded file name from RC-Brain 2 — which had made every promoted-experience candidate report as failed.',
+        'The app line now answers “did the AI use its tools?”. It names the tool used on the incident — Dispatch specialist agents, with what each one measured, or Consult the Runbook, with the signature that matched — and when no tool was used it says exactly that, instead of the silence that used to read as “it did something and did not tell you”.',
+        'A setup program that has not drawn its window yet is explained instead of looking stuck: while an unattended setup runs, the app’s line says it is still working inside this environment and counts how long, and where the wizard has to be shown it is hosted in the app’s RunContainer window. When automatic repair has spent its budget for an app, the message says so, names the state it is still in, and says what to do next instead of repeating a repair the policy will refuse.',
+        'Enable JIT is a control, not a claim: pick a runtime and a strategy in Tweaks, press Enable JIT, and that app starts straight away with the strategy applied on the way in. Compiling .NET IL is a real JIT; a native executable is already machine code, so the same button says that plainly rather than pretending a switch helped, and an executable it could not classify applies no strategy at all rather than a guessed one.',
+        'First launch is a walkthrough of the whole app in ten steps, 0/9 to 9/9: the idea, how a run works, then Updates, Info, Profiles, Settings, Tweaks, Apps, Sources, and where to get help and support the project. It is shown once per installation and never again, including after an update, and an installation that predates it still sees it once.',
+        'Documentation: the introduction starts with a video you can play on the page, the Support page names the YouTube channel and the Discord, and this page, the downloads page, the FAQ and the RC-Brain page now describe RC-Brain 5 with its measured numbers.',
+      ],
+    },
     {
       version: '0.7.8',
       date: '2026-10-26',

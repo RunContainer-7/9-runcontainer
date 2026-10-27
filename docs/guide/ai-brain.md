@@ -13,14 +13,14 @@ This page explains what the model is, how it was trained, what it is allowed to 
 
 | Property | Value |
 | --- | --- |
-| Name | **RC-Brain 4** |
-| Parameters | **9,088** |
-| Shape | Two feed-forward heads: diagnosis `48 × 24`, action `32 × 16` |
+| Name | **RC-Brain 5** |
+| Parameters | **13,632** |
+| Shape | Two feed-forward heads: diagnosis `64 × 32`, action `48 × 24` |
 | Input | **75** structured observation features |
 | Outputs | **19** diagnoses, **13** actions (fixed labels) |
 | Tools | **Two**: it may **spawn specialist agents** (six evidence probes, then the research, expert and harmony agents), and it may **consult the Runbook**, a hard-coded table of exact documented error signatures. It cannot give either an argument, run anything through them or add a table entry |
 | Runtime | Local CPU inference in the app process; no network call and no GPU dependency |
-| Model file | `src/ai/model/rc-brain-4.json` (selected through `src/ai/model/registry.json`) |
+| Model file | `src/ai/model/rc-brain-5.json` (selected through `src/ai/model/registry.json`) |
 | Knowledge version | `2026-10-25.1` |
 | Licence | Same as RunContainer (open source) |
 
@@ -32,7 +32,8 @@ The model in the source repository is not always the model in the installer you 
 
 | Your build | Model | What it has |
 | --- | --- | --- |
-| **{{ latest.version }}**, the current download | **RC-Brain 4** | 9,088 parameters, 75 features, 19 diagnoses, 13 actions, and the two tools described on this page |
+| **{{ latest.version }}**, the current download | **RC-Brain 5** | 13,632 parameters, 75 features, 19 diagnoses, 13 actions, and the two tools described on this page |
+| 0.7.8 | **RC-Brain 4** | 9,088 parameters, same features and tools, narrower networks and one wording per condition |
 | 0.7.7 and earlier | **RC-Brain 2** (RC-Brain 1 on 0.6.5) | 8,334 parameters, 66 features, 19 diagnoses, 11 actions, no tools |
 
 Everything else on this page — how it observes RunContainer, how it decides, the safety policy, repair verification, experience and privacy — applies to both. If you are on 0.7.7 or earlier, read the tool sections as what you get when you update.
@@ -49,6 +50,16 @@ RC-Brain 1 used 44 features, mostly a snapshot of one moment. RC-Brain 2 adds ev
 
 The diagnosis set gained `profile_in_use` (another process still holds the app's profile files). The diagnosis set in RC-Brain 3 is the same 19 labels.
 
+### What changed in RC-Brain 5
+
+RC-Brain 5 is wider and recognises more English, and both changes were paid for by measurement rather than by a version number going up.
+
+- **13,632 parameters instead of 9,088** — diagnosis `64 × 32`, action `48 × 24`. The corpus grew from about 1,390 fit rows to 2,341 because each condition now carries several wordings instead of one: “requires administrator privileges”, “elevation is required” and “requested operation requires elevation” are the same fact to a person, and a feature extractor that recognises only the first turns the other two into *unexplained*. That wording work happens in `src/ai/features.js`; the extra capacity is what lets the model use it.
+- **The capacity claim is measured, not asserted.** The broadened corpus was trained twice with the same seed, changing only the width of the networks: the narrow pair (`48 × 24` / `32 × 16`) scored **82.8%** on unseen families and **93.9%** on the final split, the wide pair **92.2%** and **94.8%**. That is the evidence for the extra parameters. RC-Brain 4's notes argued that “adding weights would not help”; on a corpus with this much variation, that turned out to be wrong, and it is recorded here rather than quietly dropped.
+- **Unseen-family accuracy improved: 90.6% → 92.2%.** Familiar variants stayed at 99.7% (action 99.1%), the untouched final split is 94.8% (action 94.2%, on 310 cases rather than 242), and repairs proposed for normal behaviour on the final split fell from 0.6% to **0%**. Zero unsafe destructive actions and zero over-interventions on every split.
+- **The trainer could ship a model that had failed its own gates — that is fixed.** The registry was written before the release thresholds were evaluated, so a run that missed them still became the active model, and one did: the app was briefly pointed at a model file that had never passed. The gates are now evaluated first and only a passing run touches the registry; a failing run still writes its artefact and its report, because that is the evidence for fixing it. Rollback now records the artefact that was actually active, so it cannot silently skip a version. The candidate trainer no longer inspects a hard-coded file name from RC-Brain 2 either, which had made every promoted-experience candidate report as failed.
+- **The remaining weakness is stated, not hidden.** RC-Brain 5 swallows more of the wording a real app produces, but it is still a small fixed-label classifier: on the 16-case restraint set it is right only about a quarter of the time, and all twelve misses are the same honest scenario, an app that has logged nothing at all yet.
+
 ### What changed in RC-Brain 4
 
 RC-Brain 4 gives the model a second tool and a second opinion: when the model is unsure, something has to be able to say *why*, and a 9,000-parameter classifier cannot.
@@ -61,7 +72,7 @@ RC-Brain 4 gives the model a second tool and a second opinion: when the model is
 - **The model was retrained on the documented-signature scenarios.** Where a family's evidence is an exact signature (a named DLL, `0xC0000135`, `0xC0000005`, side-by-side, Win32 740, installer exit code 3010, a full disk), the expected action is now the Runbook rather than the inference, and the table then returns the same advice from the signature itself.
 - **Honest note on that action's coverage.** The corpus holds 11 scenarios whose documented answer is the Runbook, and the shipped model answers **all 11** correctly. The held-out splits contain no instance of it: those families' variants produce the same feature vectors as their training rows, and identical vectors are removed from held-out sets to prevent memorisation. **No held-out number is claimed for `consult_runbook`.** Its correctness is covered by unit tests over the table itself (`src/ai/tools.test.js`), which check that every rule cites a basis, names a real diagnosis and action, and never proposes an action that needs approval.
 
-The parameter count stays where it was, deliberately. The corpus is about 1,390 training rows: 9,088 parameters already outnumber the examples several times over, and every measured weakness in the previous model was a *data* or *measurement* problem — a state with too few examples, or a quantity the monitor never measured — not a capacity problem. A larger network would fit those 1,390 rows more closely and generalise no better, which the gates would catch as a familiar/unseen accuracy gap. Adding tools and documented knowledge is what improved behaviour here; adding weights would not have.
+RC-Brain 4 kept the parameter count of RC-Brain 3 deliberately: the corpus was about 1,390 training rows, 9,088 parameters already outnumbered the examples several times over, and every measured weakness at the time was a *data* or *measurement* problem — a state with too few examples, or a quantity the monitor never measured — rather than a capacity problem. **RC-Brain 5 tested that reasoning against a corpus with several wordings per condition and it did not hold**, which is why the networks are wider now: the ablation is described in the section above.
 
 ### What changed in RC-Brain 3
 
@@ -245,17 +256,17 @@ These numbers come from `reports/ai-evaluation.md` for the shipped artefact. Eve
 
 | Split | Diagnosis accuracy | Action accuracy | Notes |
 | --- | --- | --- | --- |
-| Familiar holdout | **99.7%** | 98.8% | New variants of trained families; keyword baseline 45.9% |
-| Unseen failure families | **90.6%** | 90.6% | Whole families never trained; keyword baseline 68.8% |
-| Final untouched | **95.1%** | 94.2% | Independent seeds; keyword baseline 49.5% |
+| Familiar holdout | **99.7%** | 99.1% | New variants of trained families; keyword baseline 45.3% |
+| Unseen failure families | **92.2%** | 92.2% | Whole families never trained; keyword baseline 68.8% |
+| Final untouched | **94.8%** | 94.2% | Independent seeds; keyword baseline 48.1% |
 | Ambiguous / restraint | 25.0% | 25.0% | Only 16 cases; the meaningful metric is below |
 
 Safety and calibration:
 
 - **0 unsafe destructive actions** on every split — no approval-required or data-destroying action was ever proposed for an app that was not failing.
-- Repairs proposed for ambiguous/restraint cases: **0 / 251** on familiar, **1 / 54** on unseen families, **1 / 252** on the final split, and **0 / 16** on the ambiguous set.
-- False positives that would touch an app: **0%** on familiar, **2.4%** on unseen, **0.6%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (0%, 12.2% and 8.2%).
-- Expected calibration error: 0.002 (familiar), 0.031 (unseen), 0.035 (final).
+- Repairs proposed for ambiguous/restraint cases: **0 / 251** on familiar, **0 / 54** on unseen families, **0 / 253** on the final split, and **0 / 16** on the ambiguous set.
+- False positives that would touch an app: **0%** on familiar, **0%** on unseen, **0%** on the final split. Some normal cases are labelled “unknown” and merely observed; the report lists that separately as normal-behaviour mislabels (0%, 9.8% and 8.1%).
+- Expected calibration error: 0.009 (familiar), 0.022 (unseen), 0.030 (final).
 
 One action is not represented in that table. `consult_runbook` is exercised by 11 scenarios in the training corpus, and the shipped model answers all 11 correctly; the held-out splits contain no instance of it, because those families' variants produce the same feature vectors as their training rows and identical vectors are removed from held-out sets to prevent memorisation. **No held-out accuracy is claimed for that action.** What is verified is the table itself: every rule cites its basis, names a real diagnosis and a real action, and no rule proposes anything that needs approval.
 
@@ -290,10 +301,10 @@ The loop:
 
    At least 20 verified examples are required. The script rejects unknown labels, duplicate vectors and conflicting labels for identical evidence.
 
-7.   The candidate is written to `src/ai/model/rc-brain-4-candidate.json`. It becomes active only through the gated promotion step, which re-checks the feature schema, accuracy gates, calibration and safety record:
+7.   The candidate is written next to the active model with `-candidate` on the end (`src/ai/model/rc-brain-5-candidate.json` today). It becomes active only through the gated promotion step, which re-checks the feature schema, accuracy gates, calibration and safety record:
 
    ```powershell
-   node scripts/promote-model.js --activate rc-brain-4-candidate.json
+   node scripts/promote-model.js --activate rc-brain-5-candidate.json
    ```
 
 8. **Rollback** is one step, either in **Settings** or with:
@@ -316,7 +327,7 @@ A verified *failure* is not treated as a trustworthy label by itself: “the mod
 
 ## Resource requirements
 
-RC-Brain 4 is 9,088 parameters (about 200 KB of JSON) and runs in a few milliseconds. Monitoring is one observation pass every five seconds while an app is running; when no app is running the supervisor has nothing to probe. It is not a Windows service and stops when RunContainer closes. Training is offline and runs on a normal CPU; no GPU is required.
+RC-Brain 5 is 13,632 parameters (about 290 KB of JSON) and runs in a few milliseconds. Monitoring is one observation pass every five seconds while an app is running; when no app is running the supervisor has nothing to probe. It is not a Windows service and stops when RunContainer closes. Training is offline and runs on a normal CPU; no GPU is required.
 
 ## When the model is unavailable
 
