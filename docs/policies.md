@@ -43,6 +43,19 @@ You may read it, clone it, build it, modify it and share your changes. If you pu
 
 Building from source is the strongest way to check that the installer matches the code: the release workflow in `.github/workflows/release.yml` is the same process used for published builds.
 
+## Code signing
+
+**Free code signing provided by SignPath.io, certificate by SignPath Foundation.**
+
+Official release installers are signed through SignPath Foundation, a free service for open-source Windows software. The certificate is issued to SignPath Foundation, and that is the publisher name Windows shows for a signed build — not the name of an individual maintainer.
+
+- **What a signature means.** The file came from this project's own build of a tagged release and has not been changed since. It is not a claim that the software is safe, and it does not replace the checksum on [Downloads](/downloads).
+- **What can be signed.** Only the installer produced by this project's release workflow, on GitHub-hosted runners, from the tagged commit. Forks and modified builds are not covered.
+- **Signing roles.** An approver authorises each individual signing request; a submitter's API token is what the release workflow uses. <!-- TODO(maintainer): name them here, e.g. "Approver: @handle — Submitter: @handle". SignPath's terms require the signing roles to be published. -->
+- **Reviews.** Every signing request is approved by a person, so nothing is signed automatically by a machine without review.
+
+RunContainer's own privacy practices are described in the [privacy policy](#privacy-policy) above; signing adds no tracking.
+
 ## Use of applications
 
 RunContainer runs programs; it does not give you a licence to them.
@@ -54,7 +67,7 @@ RunContainer runs programs; it does not give you a licence to them.
 
 ## Community and feedback
 
-The community runs on the [Discord server](https://discord.gg/rvMjMZJykE) and GitHub issues.
+The community runs on the [Discord server](https://discord.gg/UKTGRMMmC4) and GitHub issues.
 
 - Treat maintainers and members with respect. Abuse, harassment, threats, discrimination and personal attacks are not welcome.
 - Do not mistreat the people answering your questions. They are volunteers, not a support desk you bought.

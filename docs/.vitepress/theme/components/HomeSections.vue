@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Where can I download it?',
-    a: `Yes, it is available now. RunContainer ${project.latestDownload.version} is the current Stable release for Windows. The Downloads page points at the installer attached to that Stable GitHub release; both are the same file, and the page lists its SHA-256 checksum so you can verify the download. The installer is not code-signed, so Windows may warn before it runs.`
+    a: `Yes, it is available now. RunContainer ${project.latestDownload.version} is the current Stable release for Windows. The Downloads page points at the installer attached to that Stable GitHub release; both are the same file, and the page lists its SHA-256 checksum so you can verify the download. Release installers are signed for open source by SignPath.io through the SignPath Foundation, so the installer carries a publisher name instead of “Unknown publisher”. A very new version can still prompt, because SmartScreen reputation is built from clean downloads over time.`
   }
 ]
 </script>
