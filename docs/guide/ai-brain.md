@@ -9,6 +9,10 @@ RC-Brain is a small neural network that RunContainer trained from scratch on its
 
 This page explains what the model is, how it was trained, what it is allowed to do, what it cannot do, and how it can improve over time.
 
+::: tip Where these numbers appear in the app
+**Settings** shows RC-Brain's state in plain language: whether the model loaded, whether it is watching, what it may do on its own, and its recent diagnoses. The audit detail on this page — the model file and its registry entry, parameter counts, evaluation results, label counts, learning-loop counters and the agent catalogue — is shown in **Settings** too, once [developer mode](/guide/developer-mode) is on. Nothing on this page is applied only in a developer build; the switch only decides how much of it the app displays.
+:::
+
 ## What the model is
 
 | Property | Value |
@@ -291,7 +295,7 @@ The loop:
 2. The executor records what it ran.
 3. The verifier reports whether the original condition actually cleared.
 4. The outcome is stored as verified success, unresolved, inconclusive, or user-corrected.
-5. In **Settings**, you can promote eligible examples. The curated file lives in `%APPDATA%\RunContainer`.
+5. In **Settings** (with [developer mode](/guide/developer-mode) on, which is where this action appears), you can promote eligible examples. The curated file lives in `%APPDATA%\RunContainer`.
 6. Train a candidate offline:
 
    ```powershell
@@ -307,7 +311,7 @@ The loop:
    node scripts/promote-model.js --activate rc-brain-5-candidate.json
    ```
 
-8. **Rollback** is one step, either in **Settings** or with:
+8. **Rollback** is one step, either with **Roll back model** in **Settings** (developer mode) or with:
 
    ```powershell
    node scripts/promote-model.js --rollback

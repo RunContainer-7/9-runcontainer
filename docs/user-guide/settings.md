@@ -1,13 +1,13 @@
 # Settings and profiles
 
-RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**.
+RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**. With [developer mode](#developer-mode) on there is an eighth, **Virtualise**.
 
 | Tab | What it's for |
 | --- | --- |
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
 | **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
-| **Settings** | How apps are kept apart, where their files live, and RC-Brain's status, results and monitoring switch |
+| **Settings** | How apps are kept apart, where their files live, developer mode, and RC-Brain's status and monitoring switch |
 | **Profiles** | Access presets (default, relaxed or locked), assigned per application |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
@@ -43,15 +43,30 @@ A `locked` profile can only be enforced when the app runs in a virtual machine o
 
 ![The Profiles tab, listing the default, relaxed and locked presets](/screenshots/profiles-panel.png)
 
+## Developer mode
+
+One card sits near the top of **Settings**: **Developer mode**. It is off by default, and with it off nothing a normal user needs is hidden — the app behaves identically either way.
+
+Press **Enable developer mode** to show the detail meant for people who want to see how RunContainer works, and **Turn off developer mode** to put it back. The choice belongs to this installation and survives restarts and updates, so you are not asked again.
+
+What it adds:
+
+- **A Virtualise tab** — configure and run a whole operating system on QEMU inside RunContainer. It is labelled experimental because it is: expect bugs, no clipboard or drag and drop, slow graphics without hardware acceleration, and a Windows guest that needs a storage driver before setup can see its own disk. → [Developer mode, and running a virtual machine](/guide/developer-mode)
+- **RC-Brain's audit detail** — the model file and registry it loaded, its parameter and feature counts, the evaluation results shipped with it, label counts, the learning-loop counters, the agent catalogue and its stated limits.
+- **Launch timings** — the backend in use, the last launch and the median of recent launches, under **Performance on this PC**.
+
+Turning developer mode off hides that detail and closes the Virtualise tab. It deletes nothing, including any virtual machine you created.
+
 ## RC-Brain (in Settings)
 
 RC-Brain reports itself in **Settings**, below the cards about how apps are kept apart:
 
 - whether the model is loaded and monitoring is on;
-- its name, parameter count, version and knowledge version;
-- the held-out evaluation results that shipped with the model;
+- its name and version;
 - what it may do on its own and what needs your approval;
 - the most recent diagnoses, with the chosen action and outcome.
+
+With developer mode on, the same panel adds the audit detail listed above. The model's full numbers, its tools and its limits are documented once on the RC-Brain page rather than repeated in the app.
 
 **Pause monitoring** stops the supervisor until you start it again. Closing RunContainer always stops it: RC-Brain is not a Windows service. If the model is missing or corrupt, **Settings** says **Unavailable** and names the reason, and monitoring will not diagnose or repair anything until it is fixed.
 
@@ -72,7 +87,7 @@ There is nothing to configure. **Settings** says what RunContainer does for this
 - **Each app runs in its own space** — its own files and processes, memory and CPU limits, and a private folder for its data.
 - **Where app files live** — each app has a folder under RunContainer's data directory. **Duplicate** gives a second copy with separate data, and **Delete** removes that folder.
 - **Logs** — launch, stop and exit events, readable from each app's **Logs** button.
-- **Performance on this PC** — the backend in use, the last launch time and the median of recent launches (measured from Run until containment is confirmed), and how often running apps are checked. It says so plainly when nothing has been measured yet. [How the numbers are produced](/guide/performance)
+- **Performance on this PC** — the backend in use, the last launch time and the median of recent launches (measured from Run until containment is confirmed), and how often running apps are checked. It says so plainly when nothing has been measured yet. This card appears with [developer mode](#developer-mode) on. [How the numbers are produced](/guide/performance)
 
 If a prepared virtual-machine image is already available on the PC, RunContainer uses it automatically for a stronger boundary. Nothing is downloaded, and no Windows licence is included.
 

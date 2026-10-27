@@ -49,6 +49,17 @@ The [RC-Brain page](/guide/ai-brain#which-model-your-build-has) lists which mode
 - **Some installers refuse process containment.** A few bootstrappers (for example the MSYS2 Qt Installer Framework setup) exit with code 1 as soon as they are placed in a Job Object, before they draw anything. RunContainer reports that exit code, keeps nothing running, and does not fall back to an uncontained launch. Use a virtual machine environment for those installers.
 - **JIT cannot be switched on for native code.** A native `.exe` is already machine code. Only managed runtimes (.NET, Java, V8) compile at run time, and they already do so; [Performance and JIT](/guide/performance) covers what RunContainer can and cannot change.
 
+## Developer mode and virtual machines
+
+- **Virtualise is experimental, and the panel says so.** The [Virtualise tab](/guide/developer-mode) runs a real machine on QEMU, but its console is a working screen rather than a tuned display protocol: frames are uncompressed over loopback, so a busy desktop can look delayed. Without hardware acceleration (WHPX) it falls back to software emulation and a graphical guest will feel it.
+- **RunContainer ships no guest operating system.** You supply installation media you own; nothing is downloaded, and no Windows licence is included.
+- **A Windows guest needs a storage driver to see its own disk.** The disk is attached the efficient way, so Windows setup will report no drive unless the virtio storage driver is supplied during setup (or the media already includes it). Linux guests have that support built in.
+- **The console is screen and keyboard only.** The guest gets your typing and your clicks, and there is no clipboard sharing, no drag and drop and no shared folders.
+- **Stop is an immediate power-off.** It is not a graceful shutdown request, and there are no snapshots or saved states. Shut the guest down from inside for a clean exit.
+- **Deleting a machine deletes the system installed in it.** Its virtual disk is removed; if Windows refuses to remove the file, RunContainer reports that instead of claiming the machine is gone. Your installation media is never copied or modified.
+- **Turning developer mode off never deletes a machine.** The tab closes and the detail hides; the disks stay where they are.
+- **The RC-Brain audit detail is the same data, just shown.** With developer mode off, the same model and the same supervision run; only the panel's level of detail changes.
+
 ## Data
 
 - **Delete is permanent; Reset is not.** Reset stops and restarts the app while keeping its environment, files and settings. Delete removes them, and RunContainer keeps no backup. → [Reset & remove](/user-guide/reset-remove)

@@ -4,6 +4,10 @@
 
 A Windows program installed into an environment through RunContainer. → [Installing applications](/user-guide/applications)
 
+### Developer mode
+
+A switch in Settings that shows RunContainer's technical detail and adds the Virtualise tab. It changes what is displayed, not what the app does. → [Developer mode and virtual machines](/guide/developer-mode)
+
 ### Environment
 
 A managed space created and looked after by RunContainer. Applications are installed into and run from an environment. → [Managing environments](/user-guide/environments)
@@ -59,3 +63,7 @@ A build recommended for general use.
 ### Stopped
 
 Not in use. → [Statuses](/user-guide/statuses)
+
+### Virtual machine
+
+An operating system running inside its own virtual disk, memory and CPUs, separate from your PC. RunContainer runs one on the same custom QEMU backend it uses for a stronger isolation boundary, and draws the guest's screen inside its own window. → [Developer mode and virtual machines](/guide/developer-mode)

@@ -32,17 +32,17 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.0',
-    filename: 'RunContainer-Setup-0.8.0.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.0/RunContainer-Setup-0.8.0.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.0',
+    version: '0.8.2',
+    filename: 'RunContainer-Setup-0.8.2.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.2/RunContainer-Setup-0.8.2.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.2',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '0a9d9ec34a5528a7dee635368d89d142fe1dad0c4fa1bca93fb85927f9fbb4c9',
-    // The published CI-built installer (Inno Setup) is ~103.9 MB; it is not the
+    sha256: 'a637706ab0ac2c6930e29692224dfa794ddfa828c729a04031dab8fd27ab23b4',
+    // The published CI-built installer (Inno Setup) is ~99.2 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
-    sizeMb: 103.9,
+    sizeMb: 99.2,
   },
 
   /**
@@ -51,6 +51,34 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.2',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.2',
+      notes: [
+        'Settings has one new switch: Enable developer mode. Off is the normal interface. On reveals the technical detail behind RC-Brain, the launch timings, and a Virtualise tab — and nothing else about the app changes, because it is a development switch rather than a different product. The choice is recorded once for this installation and stays until it is turned off, across restarts and across updates.',
+        'The RC-Brain panel in Settings is no longer an engineering audit. It says what RC-Brain is, whether it is watching, what it may do on its own and that inference stays on this PC. The held-out evaluation numbers, the model artefact and registry, the label counts, the verified-outcome and learning-loop counters, the specialist-agent catalogue and the model limits moved behind developer mode, where they belong, and the model\u2019s measured numbers now live on the RC-Brain page.',
+        'Virtualise is a new tab that only developer mode reveals. It configures and runs a real virtual machine on RunContainer\u2019s own QEMU backend: name, memory, CPUs, virtual disk size, and installation media you choose. The machine boots from that media for a fresh install, or from its own disk once a system is installed, and the guest screen is drawn inside the RunContainer window instead of a window of QEMU\u2019s own.',
+        'The console inside the window is a real RFB (VNC) client written for this purpose. QEMU serves the guest on loopback and RunContainer paints it: raw and copy rectangles, resolution changes when the guest changes mode, and keyboard and mouse sent back to the guest, including Ctrl+Alt+Del. The socket lives in the main process, so the window never opens a network connection of its own.',
+        'It is labelled experimental where a machine is created, and that is honest: frames are uncompressed over loopback, there are no guest additions, and integration stops at the keyboard and mouse. RunContainer still ships no guest operating system and no licence, downloads none, and asks for media you already own. QEMU remains a program you install yourself.',
+        'Fixed a bug the new tests found: pausing monitoring replaced the whole RC-Brain status with the toggle\u2019s answer, so the panel lost the model name, parameter count and model file until the next poll put them back. The answer is now merged into the status instead.',
+        'Virtual machine configuration is validated in the main process, not only in the interface: memory, CPU, disk and name limits, a name that is safe to use as a file name, media that must be an ISO or disk image, and a console port per machine that is checked as free before QEMU starts. Deleting a machine removes the disk it owns, and says so if that removal fails.',
+        'A new documentation page covers developer mode and running a virtual machine, and the Settings, RC-Brain, privacy, glossary and known-limitations pages now say which parts of the interface the switch reveals.',
+      ],
+    },
+    {
+      version: '0.8.1',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.1',
+      notes: [
+        'Fixed RunContainer opening to a blank window. The once-a-second clock that shows how long a background setup has been running was declared inside the launch-animation hook but read by the component that draws the app list, so every tick referred to a name that did not exist in its scope. React removes the whole interface when a component throws, which is why the window went empty rather than showing an error. The clock now lives in the component that reads it, and an app sitting in an unattended setup at launch no longer has that effect.',
+        'A setup whose recorded start time cannot be read now leaves the elapsed-time line out entirely, instead of printing a nonsense duration.',
+        'Added a last line of defence for the window itself: if any panel ever throws again, RunContainer shows the real error with a Reload button instead of an empty screen, and the error is written to runcontainer-console.log so it can be reported. Installed apps and their files are untouched by a fault in the interface.',
+        'A regression test covers it: a container that is setting up in the background must keep the interface rendered while the clock ticks.',
+      ],
+    },
     {
       version: '0.8.0',
       date: '2026-10-27',
