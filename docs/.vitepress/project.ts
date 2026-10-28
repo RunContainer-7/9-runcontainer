@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.9',
-    filename: 'RunContainer-Setup-0.8.9.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.9/RunContainer-Setup-0.8.9.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.9',
+    version: '0.9.0',
+    filename: 'RunContainer-Setup-0.9.0.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.0/RunContainer-Setup-0.9.0.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.0',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '0253e472d4112cf9eeeb4ff23dc2e425ec5ae72966badfff234dfa97ac57d671',
+    sha256: '1208b091a49e5b3882926af8b131a12f2ed4c07ec637d033b4618102a92d09b1',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.0,
@@ -51,6 +51,20 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.9.0',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.0',
+      notes: [
+        'Fixed “Setup finished, but no executable was found”. An unattended install is now given the installer’s own documented destination switch, so an NSIS or Inno Setup program installs inside the app’s environment instead of into your real Windows profile. Windows’ known-folder API ignores the environment’s folder variables, which is why a successful install could look like an empty one.',
+        'Finding the installed app no longer depends on file timestamps. RunContainer records which executables exist before setup runs and treats anything new afterwards as the app, so an installer that copies files with their original (older) dates is still recognised.',
+        'If an installer still writes outside its environment — for example a wizard completed by hand — RunContainer reads Windows’ own uninstall record for the app, brings the installed folder into the app’s environment, and starts that copy. If the folder is too large to copy, the app still starts and the log says where it lives.',
+        'A successful setup now always ends with a named result: the app it installed, started in a RunContainer window, or a clear next step if the installer genuinely installed nothing.',
+        'Settings has an Appearance choice: Dark (the default graphite and teal interface) or Light, a high-contrast pale surface for daylight and projectors. It changes colour only, and it is remembered.',
+        'A few interface refinements in the same palette: a fainter geometric grid on the panel itself, softer card depth and a cleaner app icon plate.',
+      ],
+    },
     {
       version: '0.8.9',
       date: '2026-10-28',

@@ -7,7 +7,7 @@ RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
 | **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
-| **Settings** | How apps are kept apart, where their files live, developer mode, and RC-Brain's status and monitoring switch |
+| **Settings** | Appearance, how apps are kept apart, where their files live, developer mode, and RC-Brain's status and monitoring switch |
 | **Profiles** | Access presets (default, relaxed or locked), assigned per application |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
@@ -42,6 +42,12 @@ Each profile sets how much access an application gets:
 A `locked` profile can only be enforced when the app runs in a virtual machine or a restricted container. On a standard environment, Windows gives ordinary apps network access — the Profiles tab says so for each app instead of pretending the block is in place.
 
 ![The Profiles tab, listing the default, relaxed and locked presets](/screenshots/profiles-panel.png)
+
+## Appearance
+
+The first card in **Settings** chooses how the interface looks. **Dark** is the default: graphite surfaces, teal accents and a faint geometric grid. **Light** is the same interface on a pale, high-contrast surface, meant for daylight and projectors.
+
+The choice changes colour only. It does not affect an app, its environment, its files or how anything runs, and it is remembered for this installation across restarts and updates.
 
 ## Developer mode
 
