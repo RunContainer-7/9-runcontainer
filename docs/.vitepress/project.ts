@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.8',
-    filename: 'RunContainer-Setup-0.8.8.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.8/RunContainer-Setup-0.8.8.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.8',
+    version: '0.8.9',
+    filename: 'RunContainer-Setup-0.8.9.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.9/RunContainer-Setup-0.8.9.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.9',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '407127a818b6eba2aaf124adacd619fdf1776a05f749e7d1d6a741d790dfd21d',
+    sha256: '0253e472d4112cf9eeeb4ff23dc2e425ec5ae72966badfff234dfa97ac57d671',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.0,
@@ -51,6 +51,20 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.9',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.9',
+      notes: [
+        'The window host is now a small native helper built once on this PC, instead of a fresh PowerShell process on every launch. It reports that it is watching in about 80 ms rather than about half a second, so the first window of an app is adopted almost immediately and Run no longer waits at the gate before the app starts.',
+        'Run returns as soon as the app process has started, rather than waiting up to 12 seconds for its window to be found. The RunContainer window stays open and fills with the app as soon as its window appears, so a slow app no longer makes the Run button look stuck.',
+        'A supported installer completed in the background no longer holds Run for up to 25 seconds. The window reports the progress of setup while it works, and the app opens there when setup finishes.',
+        'Fixed a hidden installer wizard never being adopted. The check for a main window still rejected every window that has an owner, which is the normal shape of a wizard, even though the documentation said otherwise. An owner no longer disqualifies a window; a real child control still does.',
+        'The log records how long the window host took to become ready, so a slow launch can be attributed to the host or to the application itself.',
+        'The interface now uses the graphite and teal palette of this site, with a faint geometric grid behind the panel, squarer cards and controls, and a softer teal glow on the active tab. The README was rewritten in plain language with a single build snippet.',
+      ],
+    },
     {
       version: '0.8.8',
       date: '2026-10-28',
