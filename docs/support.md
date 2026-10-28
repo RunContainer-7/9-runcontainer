@@ -7,6 +7,8 @@ description: How to get help with RunContainer.
 
 RunContainer is **free and open source**. Support comes from the community.
 
+If you enjoy RunContainer, you can support the project by [giving RunContainer a star on GitHub](https://github.com/RunContainer-7/runcontainer).
+
 <DiscordCard />
 
 Prefer watching to reading? The video below walks through the app — installing your first application, keeping applications apart, and each feature step by step. Subscribing to the [RunContainer YouTube channel](https://www.youtube.com/@RunContainer) and joining the [Discord server](https://discord.gg/UKTGRMMmC4) is also the simplest way to support the project.
