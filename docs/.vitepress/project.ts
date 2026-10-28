@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.7',
-    filename: 'RunContainer-Setup-0.8.7.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.7/RunContainer-Setup-0.8.7.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.7',
+    version: '0.8.8',
+    filename: 'RunContainer-Setup-0.8.8.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.8/RunContainer-Setup-0.8.8.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.8',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'eb6291b4d3254e9b2db58628e3933064ab083a96b8e134e111ae373ea3d0bf1f',
+    sha256: '407127a818b6eba2aaf124adacd619fdf1776a05f749e7d1d6a741d790dfd21d',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.0,
@@ -51,6 +51,18 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.8',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.8',
+      notes: [
+        'Fixed a freshly installed app showing a letter instead of its own icon, and the app list claiming its folder was missing. The answer an install returned carried neither the icon nor the folder state, and the card read the missing folder flag as "folder missing". Every record handed to the interface now carries both, so the icon appears immediately and the folder note appears only when the folder is really gone.',
+        'Run gets to the app sooner. When the window host\u2019s support code is already prepared, Run no longer waits the full cold-start budget before starting the app; that longer wait is now reserved for the first Run after an install or update, where it prevents the window from appearing outside RunContainer.',
+        'App icons are limited to the sizes the interface actually shows, so each app list refresh transfers a fraction of the data it used to.',
+        'Status messages fade out and clear after a few seconds instead of staying on the Apps tab as if they described the current state.',
+      ],
+    },
     {
       version: '0.8.7',
       date: '2026-10-28',
