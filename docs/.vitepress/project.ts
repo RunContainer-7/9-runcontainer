@@ -32,17 +32,17 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.8.3',
-    filename: 'RunContainer-Setup-0.8.3.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.3/RunContainer-Setup-0.8.3.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.3',
+    version: '0.8.7',
+    filename: 'RunContainer-Setup-0.8.7.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.8.7/RunContainer-Setup-0.8.7.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.7',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '54ffeb111a0280ce35bd5c3f5b7098b0e815d877a53b81ff160e13a18399bece',
-    // The published CI-built installer (Inno Setup) is ~99.2 MB; it is not the
+    sha256: 'eb6291b4d3254e9b2db58628e3933064ab083a96b8e134e111ae373ea3d0bf1f',
+    // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
-    sizeMb: 99.2,
+    sizeMb: 104.0,
   },
 
   /**
@@ -51,6 +51,53 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.8.7',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.7',
+      notes: [
+        'Fixed the app appearing on the desktop first. Run started the app before the RunContainer window host had reported that it was watching, so the app\u2019s first window was created outside RunContainer and could only be adopted late, if at all. Run now waits for that report before the app\u2019s process exists, which is why the first Run after an update or install is the one that used to fail.',
+        'Fixed installer wizards that never appeared at all. A hidden window that has an owner \u2014 the normal shape of an installer\u2019s wizard, whose owner is a tiny message window \u2014 was left out of hosting and out of the safety net that shows a hidden window, so a setup could be working perfectly with nothing on screen. Owned main windows are hosted and revealed now; tool palettes and helper windows are still ignored.',
+        'Fixed a window that could be moved into a RunContainer window but never shown: the host no longer re-parents anything before it has a real client area, instead of making the app a child of a minimized or mid-resize window and failing to position it.',
+        'An administrator-approved app no longer leaves an empty second RunContainer window behind. The elevated launcher\u2019s own window hosts it, and the medium-integrity window is closed instead of sitting blank.',
+        'How a supported installer is handled is now one Settings choice \u2014 complete it automatically, or show its wizard \u2014 instead of a button on every app. The interface also has a visual pass that matches this site: deeper background, glassy app cards, a floating navigation bar and refreshed controls.',
+      ],
+    },
+    {
+      version: '0.8.6',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.6',
+      notes: [
+        'Owned installer dialogs can be detected by the window host, including in the administrator-approved host. Some Windows windows may still refuse hosting, and RunContainer says so rather than pretending.',
+        'A slow-starting window host stays open and keeps watching. When a splash closes, a remaining app window can fill the host, and a window that its framework moves back to the desktop is watched for re-hosting.',
+        'When background setup is chosen for a supported installer, it receives the unattended switches, restores the app\u2019s launch arguments and starts the discovered app after setup finishes.',
+        'The Info tab links to the GitHub project for anyone who would like to support it with a star.',
+      ],
+    },
+    {
+      version: '0.8.5',
+      date: '2026-10-28',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.5',
+      notes: [
+        'Fixed app sessions continuing to occupy space when switching to another tab, including Virtualise.',
+        'Fixed VM console initialization when the desktop name arrives in separate network packets, and buffered updates are processed without waiting for another packet.',
+      ],
+    },
+    {
+      version: '0.8.4',
+      date: '2026-10-27',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.8.4',
+      notes: [
+        'A virtual machine now really draws inside its RunContainer window. QEMU was started with a USB tablet but no USB controller, so it exited before the guest ran at all; a USB controller is attached, QEMU\u2019s own output is kept in vm-qemu.log, and a machine that fails to open its console reports what QEMU actually said.',
+        'Fixed the console being four bytes out of step with the server: choosing the \u201cNone\u201d security type does not skip the SecurityResult message, so everything after it was read at the wrong offset.',
+        'Fixed the console refusing a guest\u2019s first screen (a palette mode), and a guest with no video mode yet. The client now asks the server for 32-bit true colour, as a real VNC client does.',
+        'Fixed the virtual disk being attached over virtio, which stock installation media cannot see. Virtualise machines attach their disk the way every installer recognises.',
+      ],
+    },
     {
       version: '0.8.3',
       date: '2026-10-27',
