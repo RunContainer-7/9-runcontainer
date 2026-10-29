@@ -22,7 +22,7 @@ RunContainer has **two editions** for Windows:
 | Best for | Everyday use | Early access and testing experimental features |
 | Look | Green and teal | Blue |
 | Updates | Stable releases | Nightly prereleases |
-| Developer mode | Present in the current Stable 0.9.0; planned to move to Nightly in a future Stable update | Available in Settings; enables the experimental Virtualise tab and technical RC-Brain details |
+| Developer mode | Removed in Stable 0.9.1; existing VM files are kept | Available in Settings; enables the experimental Virtualise tab and technical RC-Brain details |
 | Reliability | Recommended for most users | Experimental: bugs and changes are expected |
 
 They install separately and keep **separate app libraries, settings and updates**. Installing Nightly does not automatically copy your Stable apps or virtual machines. Existing Stable VM files are not deleted by installing Nightly.
@@ -40,11 +40,11 @@ They install separately and keep **separate app libraries, settings and updates*
 
 ## Nightly
 
-The first Nightly is **0.9.1-nightly.1**, based on Stable 0.9.0. It establishes the separate experimental edition; future Nightly releases can introduce features early. Expect bugs, particularly in the experimental VM tools.
+The latest Nightly is **0.9.1-nightly.2**. It is an experimental edition; expect bugs, particularly in the VM tools.
 
-[Download RunContainer-Nightly-Setup-0.9.1-nightly.1.exe](https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1-nightly.1/RunContainer-Nightly-Setup-0.9.1-nightly.1.exe) (about 104 MB) · [Nightly release page](https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1-nightly.1)
+[Download RunContainer-Nightly-Setup-0.9.1-nightly.2.exe](https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1-nightly.2/RunContainer-Nightly-Setup-0.9.1-nightly.2.exe) (about 104 MB) · [Nightly release page](https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1-nightly.2)
 
-SHA-256: `14e2a7bbef93ecf55a6f97c539dbb334757bbd652f9ed7bfd40baa4cfab64b04`
+SHA-256: `130ecd4baad11d0a6b7daf84c484edfcf48bc826dbf9ee6585bc6db88b8ca218`
 
 ::: warning Windows may still warn about the installer
 The current Stable and Nightly installers are **not code-signed**, so Windows may show “Unknown publisher” or other warnings. Check the appropriate SHA-256 value above before running a file. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.

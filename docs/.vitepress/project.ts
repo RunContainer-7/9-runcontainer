@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.0',
-    filename: 'RunContainer-Setup-0.9.0.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.0/RunContainer-Setup-0.9.0.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.0',
+    version: '0.9.1',
+    filename: 'RunContainer-Stable-Setup-0.9.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1/RunContainer-Stable-Setup-0.9.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '1208b091a49e5b3882926af8b131a12f2ed4c07ec637d033b4618102a92d09b1',
+    sha256: '36323a97f42e6506f5450be7e34b077a951e23710affb9d56d7c507a7410470c',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.0,
@@ -51,6 +51,16 @@ export const project = {
    * version listed here that was never published is simply a broken link.
    */
   releases: [
+    {
+      version: '0.9.1',
+      date: '2026-10-29',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1',
+      notes: [
+        'Developer mode and Virtualise are now exclusive to Nightly; existing Stable VM files are preserved.',
+        'A clearly labelled Stable installer is provided alongside a compatibility alias for older in-app updaters.',
+      ],
+    },
     {
       version: '0.9.0',
       date: '2026-10-28',

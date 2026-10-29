@@ -13,7 +13,7 @@ RunContainer **{{ latest.version }}** is the current stable release for Windows.
 
 ## Two versions: Stable and Nightly
 
-**Stable** is the green edition recommended for everyday use. **Nightly** is blue and gives early access to experimental features; it may contain more bugs. Nightly has developer mode, including experimental virtual machines and technical RC-Brain details. Stable 0.9.0 still includes developer mode; a future Stable update is intended to move it to Nightly.
+**Stable** is the green edition recommended for everyday use. **Nightly** is blue and gives early access to experimental features; it may contain more bugs. Nightly has developer mode, including experimental virtual machines and technical RC-Brain details. Starting with Stable 0.9.1, developer mode is exclusive to Nightly; existing Stable VM files are kept.
 
 You can install both separately: their apps, settings and updates are separate, and your existing apps are not automatically copied between them. [Compare and download the editions](/downloads#choose-your-version).
 
