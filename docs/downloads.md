@@ -122,25 +122,28 @@ New releases are announced on this page and in the [Changelog](/changelog). Offi
   font-size: 1.25rem;
 }
 .rc-dl-lede { margin: 0 0 18px; color: var(--vp-c-text-2); }
-.rc-dl-button {
+/* .vp-doc a is more specific than a bare class, so the label colour must be
+   set on the same selector or the link colour paints teal on teal. */
+.vp-doc a.rc-dl-button {
   display: block;
   text-align: center;
   padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
-  color: var(--vp-c-bg);
+  color: #05130e;
   background: var(--vp-c-brand-1);
   text-decoration: none;
 }
-.rc-dl-button:hover { background: var(--vp-c-brand-2); }
-.rc-dl-button--quiet {
+.vp-doc a.rc-dl-button:hover { color: #05130e; background: var(--vp-c-brand-2); }
+.vp-doc a.rc-dl-button--quiet {
   color: var(--vp-c-text-1);
   background: transparent;
   border: 1px solid color-mix(in srgb, #2f6fed 55%, var(--vp-c-divider));
 }
-.rc-dl-button--quiet:hover {
-  color: var(--vp-c-bg);
+.vp-doc a.rc-dl-button--quiet:hover {
+  color: #ffffff;
   background: #2f6fed;
+  border-color: #2f6fed;
 }
 .rc-dl-file { margin: 12px 0 0; font-size: 0.82rem; overflow-wrap: anywhere; }
 .rc-dl-meta { margin: 6px 0 0; font-size: 0.82rem; color: var(--vp-c-text-2); }
