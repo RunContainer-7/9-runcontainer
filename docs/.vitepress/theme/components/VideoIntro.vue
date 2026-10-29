@@ -37,15 +37,21 @@ withDefaults(defineProps<{ eyebrow?: string; heading?: string; compact?: boolean
         <a class="rc-btn rc-btn--ghost" :href="project.discordUrl" target="_blank" rel="noreferrer">Join the Discord</a>
       </div>
     </div>
-    <div class="rc-video-frame">
-      <iframe
-        :src="`https://www.youtube-nocookie.com/embed/${videoId}`"
-        title="RunContainer video guide"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      />
+    <div class="rc-video-media">
+      <div class="rc-video-frame">
+        <iframe
+          :src="`https://www.youtube-nocookie.com/embed/${videoId}`"
+          title="RunContainer video guide"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        />
+      </div>
+      <p class="rc-video-note">
+        This video was recorded during early development, so some of the interface and
+        features shown may be out of date.
+      </p>
     </div>
   </section>
 </template>
@@ -66,6 +72,17 @@ withDefaults(defineProps<{ eyebrow?: string; heading?: string; compact?: boolean
 .rc-video--compact {
   margin: 20px 0;
   padding: 18px;
+}
+
+.rc-video-media {
+  min-width: 0;
+}
+
+.rc-video-note {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--vp-c-text-3);
 }
 
 .rc-video-frame {
