@@ -13,6 +13,22 @@ const latest = project.latestDownload
 
 RunContainer is **free and open source**. Its source code is at [github.com/RunContainer-7/runcontainer](https://github.com/RunContainer-7/runcontainer).
 
+## Choose your version
+
+RunContainer has **two editions** for Windows:
+
+| | Stable | Nightly |
+| --- | --- | --- |
+| Best for | Everyday use | Early access and testing experimental features |
+| Look | Green and teal | Blue |
+| Updates | Stable releases | Nightly prereleases |
+| Developer mode | Present in the current Stable 0.9.0; planned to move to Nightly in a future Stable update | Available in Settings; enables the experimental Virtualise tab and technical RC-Brain details |
+| Reliability | Recommended for most users | Experimental: bugs and changes are expected |
+
+They install separately and keep **separate app libraries, settings and updates**. Installing Nightly does not automatically copy your Stable apps or virtual machines. Existing Stable VM files are not deleted by installing Nightly.
+
+## Stable
+
 <div class="rc-dl-status">
   <span class="rc-badge rc-badge--stable">Stable</span>
   <p><strong>RunContainer {{ latest.version }} is available for Windows.</strong></p>
@@ -22,31 +38,25 @@ RunContainer is **free and open source**. Its source code is at [github.com/RunC
   <p>Full notes are on the <a :href="latest.releaseUrl">release page</a>.</p>
 </div>
 
-::: warning Windows may still warn about the installer
-Release installers are **not code-signed**, so Windows shows “Unknown publisher” and you should check the SHA-256 value above before you run the file. Windows may show a blue “Windows protected your PC” box, and Microsoft Defender or your browser may label the download as a virus or “potentially unwanted software”, or remove it from your Downloads folder. That is a reputation false positive for a newly published build, not a detection of known malware.
+## Nightly
 
-Do **not** turn off real-time protection. The exact steps to verify the file, restore it from Protection history and install it anyway are in [Installation → Windows will probably warn you](/getting-started/installation#windows-may-still-warn-you-and-that-is-expected).
+The first Nightly is **0.9.1-nightly.1**, based on Stable 0.9.0. It establishes the separate experimental edition; future Nightly releases can introduce features early. Expect bugs, particularly in the experimental VM tools.
+
+[Download RunContainer-Nightly-Setup-0.9.1-nightly.1.exe](https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1-nightly.1/RunContainer-Nightly-Setup-0.9.1-nightly.1.exe) (about 104 MB) · [Nightly release page](https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1-nightly.1)
+
+SHA-256: `14e2a7bbef93ecf55a6f97c539dbb334757bbd652f9ed7bfd40baa4cfab64b04`
+
+::: warning Windows may still warn about the installer
+The current Stable and Nightly installers are **not code-signed**, so Windows may show “Unknown publisher” or other warnings. Check the appropriate SHA-256 value above before running a file. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
 :::
 
 ::: danger Beware of unofficial downloads
-Any file presented as a RunContainer installer that isn't linked from this page is **not official**. Don't run it.
+Only download RunContainer from official project links. Check the file and its checksum before running it.
 :::
 
 ## How to check your download
 
-Before you run the installer, compare its checksum with the SHA-256 value above. In PowerShell, in the folder with the file:
-
-<code>Get-FileHash .\{{ latest.filename }} -Algorithm SHA256</code>
-
-If the hash doesn't match, delete the file and download it again from this page.
-
-## Release channels
-
-| Channel | Purpose | Status |
-| --- | --- | --- |
-| **Stable** | Recommended for general use | Available: {{ latest.version }} |
-| **Preview** | Early builds for testing, which may contain bugs | Earlier build: 0.5.0 |
-| **Source code** | Browse or build from source | <ProjectLink to="repoUrl" label="Source repository" /> |
+Before running an installer, compare its checksum with the SHA-256 value for the edition you downloaded. In PowerShell, in the folder with the file, use `Get-FileHash` with the installer filename and `-Algorithm SHA256`. If the hash does not match, delete the file and download it again from the official link.
 
 ## Published releases
 
@@ -54,26 +64,11 @@ If the hash doesn't match, delete the file and download it again from this page.
 
 ## Installation requirements
 
-RunContainer's installer is built for **64-bit Windows (x64)** and supports Windows 10 and Windows 11, Home through Education. Virtual-machine environments need a Pro, Enterprise or Education edition plus virtualization support. See [Prerequisites](/getting-started/prerequisites) for details and [Installation](/getting-started/installation) for the steps.
+RunContainer's installer is built for **64-bit Windows (x64)** and supports Windows 10 and Windows 11. See [Prerequisites](/getting-started/prerequisites) for details and [Installation](/getting-started/installation) for the steps.
 
 ## Code signing
 
-**Release installers are not code-signed at the moment.** Windows therefore shows “Unknown publisher”, and the SHA-256 value above is what to check your download against.
-
-RunContainer was built for the [SignPath Foundation](https://signpath.org/) programme, which signs qualifying open-source Windows software at no cost, and the release workflow is ready for it. That application was declined for now: the programme issues its own certificate only to projects that already show public traction, such as stars, contributors and coverage elsewhere, and it invited a reapplication once RunContainer has more of it. Releases therefore publish unsigned rather than failing.
-
-Once a signing service is in place:
-
-- It signs only the installer that the project's release workflow built from the tagged commit, on GitHub-hosted runners. Forks and modified builds are never covered.
-- The signature is read back off the file with `Get-AuthenticodeSignature` before the installer is attached to the release, and a release whose installer is not validly signed fails instead of publishing.
-- Every signing request is approved by a person, so nothing is signed by a machine without review.
-- Signing roles and the privacy statement will be set out in [Policies](/policies).
-
-You can verify a download yourself by comparing its SHA-256 with the value above:
-
-<code>Get-FileHash .\{{ latest.filename }} -Algorithm SHA256</code>
-
-Signing identifies who built the file and proves it has not been altered since. It is not a claim that the software is safe.
+**The current installers are not code-signed.** Windows may show “Unknown publisher”; compare the SHA-256 of your download with the value above. The project's application to the [SignPath Foundation](https://signpath.org/) was declined for now; the project can reapply after gaining broader public recognition. Signing identifies who built a file and helps verify it was not altered; it is not a claim that the software is safe.
 
 ## Stay informed
 
