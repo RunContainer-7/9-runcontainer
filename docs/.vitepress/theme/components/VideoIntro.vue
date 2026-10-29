@@ -18,17 +18,19 @@ withDefaults(defineProps<{ eyebrow?: string; heading?: string; compact?: boolean
     <div class="rc-video-copy">
       <p class="rc-eyebrow">{{ eyebrow }}</p>
       <h2 id="rc-video-heading">{{ heading }}</h2>
-      <p>
-        New to RunContainer? The official video walks through the interface, installing an
-        application, the per-app profiles and the containment backends — in a few minutes.
-      </p>
-      <p>
-        To support the project, subscribe to the
-        <a :href="project.youtubeUrl" target="_blank" rel="noreferrer">RunContainer YouTube channel</a>
-        and join the <a :href="project.discordUrl" target="_blank" rel="noreferrer">Discord server</a>.
-        Subscribing costs nothing and is the easiest way to help; the Discord is where questions,
-        bug reports and compatibility notes get answered.
-      </p>
+      <template v-if="!compact">
+        <p>
+          New to RunContainer? The official video walks through the interface, installing an
+          application, the per-app profiles and the containment backends — in a few minutes.
+        </p>
+        <p>
+          To support the project, subscribe to the
+          <a :href="project.youtubeUrl" target="_blank" rel="noreferrer">RunContainer YouTube channel</a>
+          and join the <a :href="project.discordUrl" target="_blank" rel="noreferrer">Discord server</a>.
+          Subscribing costs nothing and is the easiest way to help; the Discord is where questions,
+          bug reports and compatibility notes get answered.
+        </p>
+      </template>
       <div class="rc-actions">
         <a class="rc-btn" :href="watchUrl" target="_blank" rel="noreferrer">Watch on YouTube</a>
         <a class="rc-btn rc-btn--ghost" :href="project.youtubeUrl" target="_blank" rel="noreferrer">Subscribe</a>

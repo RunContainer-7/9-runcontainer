@@ -11,7 +11,7 @@ If you enjoy RunContainer, you can support the project by [giving RunContainer a
 
 <DiscordCard />
 
-Prefer watching to reading? The video below walks through the app — installing your first application, keeping applications apart, and each feature step by step. Subscribing to the [RunContainer YouTube channel](https://www.youtube.com/@RunContainer) and joining the [Discord server](https://discord.gg/UKTGRMMmC4) is also the simplest way to support the project.
+Prefer watching to reading? The video below walks through the app.
 
 <VideoIntro eyebrow="Video guide" heading="Watch RunContainer instead of reading" compact />
 

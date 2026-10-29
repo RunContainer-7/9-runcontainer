@@ -47,6 +47,3 @@ your own apps with their extracted icons. For the actual interface, watch the
   [Reset and remove](/user-guide/reset-remove) for the difference between keeping and
   deleting an environment's files.
 
-If the animation helped, subscribing to the [YouTube channel](https://www.youtube.com/@RunContainer)
-and joining the [Discord](https://discord.gg/UKTGRMMmC4) is the easiest way to support
-the project.
