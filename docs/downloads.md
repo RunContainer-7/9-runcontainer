@@ -130,11 +130,11 @@ New releases are announced on this page and in the [Changelog](/changelog). Offi
   padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
-  color: #05130e;
+  color: var(--vp-c-bg);
   background: var(--vp-c-brand-1);
   text-decoration: none;
 }
-.vp-doc a.rc-dl-button:hover { color: #05130e; background: var(--vp-c-brand-2); }
+.vp-doc a.rc-dl-button:hover { color: var(--vp-c-bg); background: var(--vp-c-brand-2); }
 .vp-doc a.rc-dl-button--quiet {
   color: var(--vp-c-text-1);
   background: transparent;
