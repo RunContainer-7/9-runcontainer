@@ -69,7 +69,7 @@ Most people want **Stable**. Choose **Nightly** only if you want early access to
 | Developer mode | Not included since Stable 0.9.1; existing VM files are left in place | Included in Settings; enables the experimental Virtualise tab and technical RC-Brain details |
 | Reliability | Recommended for most users | Experimental: bugs and changes are expected |
 
-They install into separate folders and keep **separate app libraries, settings, updates and virtual machines**. Installing Nightly does not copy your Stable apps or machines, and it does not delete them: Stable's files stay in `%APPDATA%\RunContainer`, Nightly's in `%APPDATA%\RunContainer Nightly`.
+They install into separate folders and keep **separate app libraries, settings and updates**. Virtual machines also live in each edition's own data folder, so Nightly starts with none of Stable's. Installing Nightly does not copy your Stable apps or machines, and it does not delete them: Stable's files stay in `%APPDATA%\RunContainer`, Nightly's in `%APPDATA%\RunContainer Nightly`.
 
 ::: warning Windows may still warn about the installer
 The current Stable and Nightly installers are **not code-signed**, so Windows may show “Unknown publisher” or other warnings. Compare the SHA-256 value above with the file you downloaded before running it. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
