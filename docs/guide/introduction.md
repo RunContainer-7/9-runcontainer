@@ -8,8 +8,14 @@ const latest = project.latestDownload
 RunContainer is a **Windows application management and isolation tool**. With it, you install and run Windows applications **inside environments that RunContainer manages**, instead of installing them directly onto your PC as ordinary standalone desktop applications.
 
 ::: info Current release
-RunContainer is available now: **{{ latest.version }}** is the current stable release for Windows. See [Downloads](/downloads) for the installer and its checksum.
+RunContainer **{{ latest.version }}** is the current stable release for Windows. See [Downloads](/downloads) for both editions and their installers.
 :::
+
+## Two versions: Stable and Nightly
+
+**Stable** is the green edition recommended for everyday use. **Nightly** is blue and gives early access to experimental features; it may contain more bugs. Nightly has developer mode, including experimental virtual machines and technical RC-Brain details. Stable 0.9.0 still includes developer mode; a future Stable update is intended to move it to Nightly.
+
+You can install both separately: their apps, settings and updates are separate, and your existing apps are not automatically copied between them. [Compare and download the editions](/downloads#choose-your-version).
 
 <VideoIntro heading="New here? Watch the tour" />
 
@@ -17,12 +23,9 @@ RunContainer is available now: **{{ latest.version }}** is the current stable re
 
 > **RunContainer is an app that opens other apps inside itself.**
 
-You add a Windows application, press **Run**, and it opens in a window inside RunContainer — not as
-another stand-alone app on your desktop — with its own files, settings and limits. That's the whole
-concept; everything else in these docs is detail on top of it.
+You add a Windows application and press **Run**. RunContainer attempts to show the app in its own window, with separate managed files and settings. Some windows or installers cannot be hosted and may appear on the desktop instead. See [Known limitations](/reference/limitations).
 
 <SimulationDemo />
-
 
 ## If you know LiveContainer on iOS
 
