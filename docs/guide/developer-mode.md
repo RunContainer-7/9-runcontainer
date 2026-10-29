@@ -1,6 +1,10 @@
 # Developer mode, and running a virtual machine
 
-RunContainer's normal interface is deliberately plain: what an app is doing, where its files live, and what the supervisor can and cannot do. **Developer mode** is one switch in **Settings** that adds the technical detail and one extra tab.
+::: warning Nightly only
+This page describes **RunContainer Nightly**. From Stable 0.9.1 onward, developer mode is not part of Stable: its **Settings** has no Developer mode card, and there is no Virtualise tab. Virtual machines created in an older Stable build stay in `%APPDATA%\RunContainer`; they are not deleted, and Nightly does not share them.
+:::
+
+RunContainer Nightly's normal interface is deliberately plain: what an app is doing, where its files live, and what the supervisor can and cannot do. **Developer mode** is one switch in **Settings** that adds the technical detail and one extra tab.
 
 It is a development switch, not a different product. The app behaves identically either way, isolation is unchanged, and nothing is hidden that existed before — the same panels are there, with fewer internals on show, when it is off.
 
@@ -84,7 +88,7 @@ The tab is labelled **Experimental** and that is accurate rather than modest. Ex
 
 ### Where the machines live on disk
 
-Each machine gets one `.qcow2` disk image under RunContainer's data directory, in `vms\`, and the list of machines is kept in `runcontainer-vms.json` beside it. Your installation media is never copied, moved or modified. Deleting a machine removes the disk it owns; if Windows will not delete that file, RunContainer says so rather than pretending the machine is gone.
+Each machine gets one `.qcow2` disk image under RunContainer's data directory — `%APPDATA%\RunContainer Nightly` in Nightly — in `vms\`, and the list of machines is kept in `runcontainer-vms.json` beside it. Your installation media is never copied, moved or modified. Deleting a machine removes the disk it owns; if Windows will not delete that file, RunContainer says so rather than pretending the machine is gone.
 
 ## Turning it off again
 

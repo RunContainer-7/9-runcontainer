@@ -6,7 +6,7 @@ A Windows program installed into an environment through RunContainer. → [Insta
 
 ### Developer mode
 
-A switch in Settings that shows RunContainer's technical detail and adds the Virtualise tab. It changes what is displayed, not what the app does. → [Developer mode and virtual machines](/guide/developer-mode)
+A switch in **RunContainer Nightly**'s Settings that shows technical detail and adds the Virtualise tab. It changes what is displayed, not what the app does. Stable from 0.9.1 onward does not include it. → [Developer mode and virtual machines](/guide/developer-mode)
 
 ### Environment
 

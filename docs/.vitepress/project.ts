@@ -46,9 +46,27 @@ export const project = {
   },
 
   /**
-   * Published releases, newest first. Add an entry only once the installer is
-   * attached to that GitHub release: every entry renders a download link, so a
+   * The current Nightly prerelease. Nightly is the experimental blue edition:
+   * it installs separately from Stable, with its own apps and settings, and it
+   * receives prerelease updates. Only list a build whose installer is attached.
+   */
+  latestNightly: {
+    version: '0.9.1-nightly.2',
+    filename: 'RunContainer-Nightly-Setup-0.9.1-nightly.2.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1-nightly.2/RunContainer-Nightly-Setup-0.9.1-nightly.2.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1-nightly.2',
+    // Copied from the published asset's own digest on the GitHub release.
+    sha256: '130ecd4baad11d0a6b7daf84c484edfcf48bc826dbf9ee6585bc6db88b8ca218',
+    // Same CI-built Inno Setup payload as Stable, about 104 MB.
+    sizeMb: 104.0,
+  },
+
+  /**
+   * Published Stable releases, newest first. Add an entry only once the installer
+   * is attached to that GitHub release: every entry renders a download link, so a
    * version listed here that was never published is simply a broken link.
+   * Nightly prereleases are listed on the GitHub releases page instead, so the
+   * changelog on this site stays a record of Stable editions.
    */
   releases: [
     {

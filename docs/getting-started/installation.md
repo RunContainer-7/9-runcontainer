@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { project } from '../.vitepress/project'
 const latest = project.latestDownload
+const nightly = project.latestNightly
 </script>
 
 # Installation
@@ -11,7 +12,11 @@ const latest = project.latestDownload
 
 ## Install on Windows
 
-1. Open the [Downloads](/downloads) page and download <code>{{ latest.filename }}</code>.
+1. Open the [Downloads](/downloads) page and download the installer for your edition:
+   - **Stable** (recommended): <code>{{ latest.filename }}</code>
+   - **Nightly** (experimental, blue): <code>{{ nightly.filename }}</code>
+
+   They install separately, so installing Nightly does not replace Stable or its apps.
 2. Check the file's SHA-256 checksum against the value on that page (see [Downloads](/downloads#how-to-check-your-download)).
 3. Run the installer and follow the setup wizard. You can choose a different install folder. The wizard creates a desktop shortcut. Windows may warn you about the file; the section below explains why, and exactly how to get past it safely.
 4. Open RunContainer from the desktop shortcut or the Start menu.

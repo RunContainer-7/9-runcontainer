@@ -72,13 +72,13 @@ They have not been benchmarked here: no managed sample application was available
 
 ## The Performance card in Settings
 
-With [developer mode](/guide/developer-mode) on, **Settings** shows measured facts from your own machine:
+In **Nightly**, with [developer mode](/guide/developer-mode) on, **Settings** shows measured facts from your own machine:
 
 - the backend in use;
 - the last launch time and the median of recent launches, recorded from Run until containment is confirmed;
 - how often running apps are checked.
 
-The card is part of the detail developer mode reveals; with it off, Settings keeps the summaries a normal run needs. If no launch has been measured yet, the card says so instead of showing a placeholder number. Timings are stored locally in RunContainer's data folder, capped at the last 50 launches, and never uploaded.
+The card is part of the detail developer mode reveals in Nightly; with it off — and in Stable, which has no developer mode — Settings keeps the summaries a normal run needs. If no launch has been measured yet, the card says so instead of showing a placeholder number. Timings are stored locally in RunContainer's data folder, capped at the last 50 launches, and never uploaded.
 
 ## Reproducing the benchmark
 

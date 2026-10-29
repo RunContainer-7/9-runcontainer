@@ -1,13 +1,13 @@
 # Settings and profiles
 
-RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**. With [developer mode](#developer-mode) on there is an eighth, **Virtualise**.
+RunContainer's main window has seven tabs: **Sources**, **Apps**, **Tweaks**, **Settings**, **Profiles**, **Info** and **Updates**. In **Nightly**, with [developer mode](#developer-mode) on, there is an eighth, **Virtualise**; Stable has neither.
 
 | Tab | What it's for |
 | --- | --- |
 | **Sources** | Adding applications: import from a URL, or install a local `.exe` |
 | **Apps** | Your installed applications, with their actions |
 | **Tweaks** | Per-application options: launch arguments, memory limit and CPU limit |
-| **Settings** | Appearance, how apps are kept apart, where their files live, developer mode, and RC-Brain's status and monitoring switch |
+| **Settings** | Appearance, how apps are kept apart, where their files live, RC-Brain's status and monitoring switch, and — in Nightly — developer mode |
 | **Profiles** | Access presets (default, relaxed or locked), assigned per application |
 | **Info** | What RunContainer is, how it works, and its current limits |
 | **Updates** | The installed version, a check-for-updates button and the release notes feed |
@@ -45,13 +45,17 @@ A `locked` profile can only be enforced when the app runs in a virtual machine o
 
 ## Appearance
 
-The first card in **Settings** chooses how the interface looks. **Dark** is the default: graphite surfaces, teal accents and a faint geometric grid. **Light** is the same interface on a pale, high-contrast surface, meant for daylight and projectors.
+The first card in **Settings** chooses how the interface looks. **Dark** is the default: graphite surfaces, a faint geometric grid and an accent colour that identifies the edition — teal in Stable, blue in Nightly. **Light** is the same interface on a pale, high-contrast surface, meant for daylight and projectors.
 
 The choice changes colour only. It does not affect an app, its environment, its files or how anything runs, and it is remembered for this installation across restarts and updates.
 
-## Developer mode
+## Developer mode (Nightly only)
 
-One card sits near the top of **Settings**: **Developer mode**. It is off by default, and with it off nothing a normal user needs is hidden — the app behaves identically either way.
+::: info This is part of RunContainer Nightly
+Developer mode is not included in Stable from 0.9.1 onward. Stable shows no **Developer mode** card and has no **Virtualise** tab. Existing virtual-machine files from an older Stable build are left where they are. [Compare the editions](/downloads#choose-your-version).
+:::
+
+In Nightly, one card sits near the top of **Settings**: **Developer mode**. It is off by default, and with it off nothing a normal user needs is hidden — the app behaves identically either way.
 
 Press **Enable developer mode** to show the detail meant for people who want to see how RunContainer works, and **Turn off developer mode** to put it back. The choice belongs to this installation and survives restarts and updates, so you are not asked again.
 
@@ -72,7 +76,7 @@ RC-Brain reports itself in **Settings**, below the cards about how apps are kept
 - what it may do on its own and what needs your approval;
 - the most recent diagnoses, with the chosen action and outcome.
 
-With developer mode on, the same panel adds the audit detail listed above. The model's full numbers, its tools and its limits are documented once on the RC-Brain page rather than repeated in the app.
+In Nightly, with developer mode on, the same panel adds the audit detail listed above. The model's full numbers, its tools and its limits are documented once on the RC-Brain page rather than repeated in the app.
 
 **Pause monitoring** stops the supervisor until you start it again. Closing RunContainer always stops it: RC-Brain is not a Windows service. If the model is missing or corrupt, **Settings** says **Unavailable** and names the reason, and monitoring will not diagnose or repair anything until it is fixed.
 
@@ -93,7 +97,7 @@ There is nothing to configure. **Settings** says what RunContainer does for this
 - **Each app runs in its own space** — its own files and processes, memory and CPU limits, and a private folder for its data.
 - **Where app files live** — each app has a folder under RunContainer's data directory. **Duplicate** gives a second copy with separate data, and **Delete** removes that folder.
 - **Logs** — launch, stop and exit events, readable from each app's **Logs** button.
-- **Performance on this PC** — the backend in use, the last launch time and the median of recent launches (measured from Run until containment is confirmed), and how often running apps are checked. It says so plainly when nothing has been measured yet. This card appears with [developer mode](#developer-mode) on. [How the numbers are produced](/guide/performance)
+- **Performance on this PC** — the backend in use, the last launch time and the median of recent launches (measured from Run until containment is confirmed), and how often running apps are checked. It says so plainly when nothing has been measured yet. In Nightly this card appears with [developer mode](#developer-mode) on. [How the numbers are produced](/guide/performance)
 
 If a prepared virtual-machine image is already available on the PC, RunContainer uses it automatically for a stronger boundary. Nothing is downloaded, and no Windows licence is included.
 
@@ -101,7 +105,7 @@ If a prepared virtual-machine image is already available on the PC, RunContainer
 
 ## Updates
 
-The **Updates** tab shows the installed version and the release notes for every release. **Check for updates** reads the latest stable GitHub Release: when a newer version exists, a notice appears at the top of the window with **Update…**, **Remind tomorrow** and a dismiss button. Downloads are verified against the published size and checksum before anything runs.
+The **Updates** tab shows the installed version and the release notes for every release. **Check for updates** reads the newest release in your edition's channel — the latest stable GitHub Release in Stable, or the newest Nightly prerelease in Nightly. When a newer version exists, a notice appears at the top of the window with **Update…**, **Remind tomorrow** and a dismiss button. Downloads are verified against the published size and checksum before anything runs.
 
 ![The Updates tab, with the installed version and the release notes feed](/screenshots/updates-panel.png)
 

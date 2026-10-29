@@ -11,9 +11,9 @@ All notable public changes to RunContainer are listed here, newest first, once r
 
 ## How releases will be labelled
 
-- **Stable**: recommended for general use.
-- **Preview**: early builds for testing. They may change or contain bugs.
+- **Stable**: recommended for general use. Every published Stable release is listed above.
+- **Nightly**: the blue early-access edition. Nightly prereleases are published on [GitHub Releases](https://github.com/RunContainer-7/runcontainer/releases) and are not repeated here.
 
-Each entry will list user-facing changes: new features, fixes and anything you need to know before updating.
+Each entry lists user-facing changes: new features, fixes and anything you need to know before updating.
 
 See also: [Downloads](/downloads) · [Known limitations](/reference/limitations)
