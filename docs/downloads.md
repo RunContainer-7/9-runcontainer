@@ -161,9 +161,11 @@ New releases are announced on this page and in the [Changelog](/changelog). Offi
 }
 .rc-dl-links { margin: 16px 0 0; font-size: 0.85rem; display: flex; gap: 8px; flex-wrap: wrap; }
 .rc-dl-links a { font-weight: 500; }
+/* --vp-c-text-1 keeps this legible in both appearances; a fixed pale blue
+   would disappear on the light theme's soft background. */
 .rc-badge--nightly {
-  color: #dce8ff;
-  background: color-mix(in srgb, #2f6fed 28%, transparent);
+  color: var(--vp-c-text-1);
+  background: color-mix(in srgb, #2f6fed 18%, transparent);
   border: 1px solid color-mix(in srgb, #2f6fed 55%, transparent);
 }
 </style>
