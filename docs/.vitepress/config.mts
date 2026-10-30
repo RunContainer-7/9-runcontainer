@@ -23,6 +23,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
   {
     text: 'Getting started',
     items: [
+      { text: 'Quick start', link: '/getting-started/quick-start' },
       { text: 'Prerequisites', link: '/getting-started/prerequisites' },
       { text: 'Installation', link: '/getting-started/installation' },
       { text: 'First launch', link: '/getting-started/first-launch' },

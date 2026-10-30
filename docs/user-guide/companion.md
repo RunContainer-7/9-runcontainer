@@ -1,49 +1,51 @@
 # iPhone companion (experimental)
 
-The iPhone companion lets you see and use an app that is running in RunContainer on your Windows PC, from an iPhone. The phone is a screen and a keyboard for the PC: the app still runs on the PC, in its own environment. Nothing is installed or run on the phone itself.
+The iPhone companion shows an app that is running in RunContainer on your Windows PC on your iPhone. The phone is a screen and keyboard for the PC: the app still runs on the PC, in its own environment. Nothing is installed or run on the phone.
 
 It is a home-screen web app. There is no App Store download and no account. Open one address in Safari, add it to the Home Screen, and it opens full screen like any other app.
 
-The companion arrived in RunContainer 0.9.4. An older build does not have the setting, because the feature did not exist yet.
+::: tip Where the setting lives — inside RunContainer, not Windows Settings
+This is a page inside **RunContainer's own window**. Windows Settings has nothing like it.
+
+1. Open **RunContainer**.
+2. Click **Settings** in RunContainer's left-hand tab list.
+3. The **iPhone companion** card is the first card on that page, above **Appearance**. Press **Turn on**.
+
+If that card is not there, your copy is older than 0.9.4. Check the version on the **Info** tab, or [download the current build](/downloads).
+:::
 
 ::: warning Experimental
 The companion is new. Its behaviour, layout and connection details may change between releases. Remote control depends on your network, and it is not a replacement for being at the PC.
 :::
 
+## Quick start
+
+1. In RunContainer, open **Settings → iPhone companion** and press **Turn on**.
+2. The card shows an address such as `http://192.168.1.20:7878/` and a six-digit **pairing code**. Press **Copy address**.
+3. Send that address to the iPhone — Messages, Notes or email all work — and open it in **Safari**.
+4. Tap **Share**, then **Add to Home Screen**, and keep the suggested name.
+5. Open the companion from the Home Screen, type the six-digit code, name the phone, and tap **Pair with my PC**.
+
+That is the whole setup. The address on the card **is** the install link: there is no separate download and no public URL. It only works while the PC is on and reachable.
+
 ## What you need
 
-- RunContainer on Windows 10 or 11, with the app you want to use already running there.
+- RunContainer 0.9.4 or later on Windows 10 or 11, with the app you want to use already running there.
 - The PC switched on and awake. It does not need to be at the same desk, but it must be running.
 - An iPhone with Safari. Adding a site to the Home Screen works on iOS 16.4 and later; a recent iPad behaves the same way.
-- A way for the phone to reach the PC's address: the same Wi-Fi network, or a private network between the two when you are away.
+- A way for the phone to reach the PC's address: the same Wi-Fi, or a private network between the two when you are away.
 
-## Turn it on
+## If the phone cannot reach the PC
 
-1. On the PC, open **Settings → iPhone companion**.
-2. Choose **Turn on**.
-3. The card shows one or more addresses, such as `http://192.168.1.20:7878/`, and a six-digit **pairing code**.
+The companion is served by the PC itself, so the phone has to be able to reach its address. Pick the row that matches where you are:
 
-If the card shows more than one address, use the one that matches the network the phone is on. An address beginning `100.` is a private-network address, which is the one to use when the phone is not on the same Wi-Fi.
+| Situation | What to use | Notes |
+| --- | --- | --- |
+| Phone and PC on the same Wi-Fi | The `192.168.…` or `10.…` address | Nothing else to install. Allow RunContainer on **Private** networks when Windows asks. |
+| Away from home, on mobile data | An address beginning `100.` | Install [Tailscale](https://tailscale.com/) on the PC and the iPhone, sign both in to the same account, then use the `100.` address. |
+| A VPN that gives the phone a route to the PC | The address on the card that the phone can open | LocalDevVPN and similar apps may work, but they are not tested or supported. |
 
-The companion stays on across restarts once it has been turned on, so the Home Screen shortcut keeps working. **Turn off** stops it and closes any connection.
-
-## Add it to the Home Screen
-
-1. On the iPhone, open the address in **Safari**. (Other browsers can open the page, but only Safari can add it to the Home Screen with its own icon.)
-2. Tap **Share**, then **Add to Home Screen**.
-3. Keep the suggested name, and tap **Add**.
-
-The icon sits on the Home Screen like any other app. Opening it shows the companion without Safari's toolbar.
-
-## Pair the phone
-
-1. Open the companion from the Home Screen.
-2. Type the six-digit code shown on the PC.
-3. Give the phone a name, so you can recognise it later, and tap **Pair with my PC**.
-
-The code is used once and expires after five minutes. A wrong code is refused, and repeated wrong codes stop being accepted until a new code is generated on the PC. **New code** on the PC makes a fresh one.
-
-The phone stays paired until you choose **Forget paired phones** on the PC. That closes its connection and requires the code again.
+**Do not forward the companion's port on your router.** Tailscale or another private network is the supported way to reach the PC from outside; exposing the port to the internet defeats the pairing code.
 
 ## Use an app
 
@@ -57,6 +59,14 @@ Inside an app:
 - **Auto / Sharp / Data saver** changes the picture quality. Data saver is smaller and slower; Sharp is larger and smoother. Use Data saver on mobile data.
 
 While a phone is watching, the app's window on the PC says so. Turning the companion off, leaving the app, or closing RunContainer ends the session.
+
+## Turning it off, and replacing a phone
+
+- **Turn off** stops the companion and closes any connection.
+- **New code** generates a fresh pairing code; the old one stops working.
+- **Forget paired phones** un-pairs every phone. That phone has to enter a new code to connect again.
+
+The companion stays on across restarts once it has been turned on, so the Home Screen shortcut keeps working.
 
 ## What it cannot do
 
@@ -72,13 +82,15 @@ While a phone is watching, the app's window on the PC says so. Turning the compa
 - **Off by default.** The companion only starts when you turn it on.
 - **One window at a time.** It shares the app window you open, not your screen.
 - **A code only the PC shows.** Pairing needs that code, it is single use, and it expires. A phone that is not paired can do nothing.
-- **Only your network.** The page is served by the PC itself. On your own Wi-Fi, that traffic stays on your network. Away from home, use a private network such as Tailscale rather than exposing the port on your router: **do not forward this port to the internet.**
+- **Only your network.** The page is served by the PC itself. On your own Wi-Fi, that traffic stays on your network. Away from home, use Tailscale rather than exposing the port on your router.
 - **Anyone using a paired phone can use the app** while it is connected, exactly as if they were at the keyboard. Remove a phone you no longer trust with **Forget paired phones**.
 - **Traffic is not end-to-end encrypted by RunContainer.** It is only as private as the network it crosses.
 
 ## Troubleshooting
 
-**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one.
+**I cannot find the iPhone companion setting.** It is in RunContainer, under **Settings** — not in Windows Settings. It arrived in 0.9.4; on an older build, update first.
+
+**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
 
 **The pairing code was refused or has expired.** Generate a new code on the PC and type it again.
 
