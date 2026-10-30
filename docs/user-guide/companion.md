@@ -4,6 +4,8 @@ The iPhone companion lets you see and use an app that is running in RunContainer
 
 It is a home-screen web app. There is no App Store download and no account. Open one address in Safari, add it to the Home Screen, and it opens full screen like any other app.
 
+The companion arrived in RunContainer 0.9.4. An older build does not have the setting, because the feature did not exist yet.
+
 ::: warning Experimental
 The companion is new. Its behaviour, layout and connection details may change between releases. Remote control depends on your network, and it is not a replacement for being at the PC.
 :::
