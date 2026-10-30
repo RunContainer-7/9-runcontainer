@@ -22,8 +22,8 @@ More: [Installing applications](/user-guide/applications) and [Running & stoppin
 ## 3. Use an app from an iPhone (optional)
 
 1. In RunContainer, open **Settings → iPhone companion** and press **Turn on**.
-2. Press **Copy address**, send it to the iPhone, and open it in **Safari**.
-3. Tap **Share → Add to Home Screen**.
+2. Point the **iPhone camera** at the QR code on the card and tap the link.
+3. In Safari, tap **Share → Add to Home Screen**.
 4. Open the companion and enter the six-digit code shown on the PC.
 
 The full guide, including Tailscale for when you are away from home, is on the [iPhone companion](/user-guide/companion) page.

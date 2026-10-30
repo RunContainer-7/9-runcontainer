@@ -116,6 +116,7 @@ export default defineConfig({
     nav: [
       { text: 'Docs', link: '/guide/introduction', activeMatch: '^/(guide|getting-started|user-guide|troubleshooting|safety|reference)/' },
       { text: 'Simulation', link: '/guide/simulation' },
+      { text: 'iPhone companion', link: '/user-guide/companion' },
       { text: 'Downloads', link: '/downloads' },
       { text: 'Changelog', link: '/changelog' },
       { text: 'Policies', link: '/policies' },

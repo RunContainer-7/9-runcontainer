@@ -11,7 +11,7 @@ This is a page inside **RunContainer's own window**. Windows Settings has nothin
 2. Click **Settings** in RunContainer's left-hand tab list.
 3. The **iPhone companion** card is the first card on that page, above **Appearance**. Press **Turn on**.
 
-If that card is not there, your copy is older than 0.9.4. Check the version on the **Info** tab, or [download the current build](/downloads).
+If that card is not there, your copy is older than 0.9.4. If it is there but shows an address instead of a QR code, your copy is older than 0.9.6. Check the version on the **Info** tab, or [download the current build](/downloads).
 :::
 
 ::: warning Experimental
@@ -21,16 +21,17 @@ The companion is new. Its behaviour, layout and connection details may change be
 ## Quick start
 
 1. In RunContainer, open **Settings → iPhone companion** and press **Turn on**.
-2. The card shows an address such as `http://192.168.1.20:7878/` and a six-digit **pairing code**. Press **Copy address**.
-3. Send that address to the iPhone — Messages, Notes or email all work — and open it in **Safari**.
-4. Tap **Share**, then **Add to Home Screen**, and keep the suggested name.
-5. Open the companion from the Home Screen, type the six-digit code, name the phone, and tap **Pair with my PC**.
+2. Point the **iPhone camera** at the QR code on the card, then tap the link the camera offers.
+3. In Safari, tap **Share**, then **Add to Home Screen**, and keep the suggested name.
+4. Open the companion from the Home Screen, type the six-digit pairing code shown on the PC, name the phone, and tap **Pair with my PC**.
 
-That is the whole setup. The address on the card **is** the install link: there is no separate download and no public URL. It only works while the PC is on and reachable.
+There is no port to type and no separate download. The QR code opens the companion page, and the Home Screen icon opens the real interface from then on. If a camera is not handy, **Copy link instead** copies the same address to send to the phone.
+
+The companion is served by the PC itself, so it only works while the PC is on and the phone can reach it.
 
 ## What you need
 
-- RunContainer 0.9.4 or later on Windows 10 or 11, with the app you want to use already running there.
+- RunContainer 0.9.6 or later on Windows 10 or 11, with the app you want to use already running there. The companion itself arrived in 0.9.4; the QR code arrived in 0.9.6.
 - The PC switched on and awake. It does not need to be at the same desk, but it must be running.
 - An iPhone with Safari. Adding a site to the Home Screen works on iOS 16.4 and later; a recent iPad behaves the same way.
 - A way for the phone to reach the PC's address: the same Wi-Fi, or a private network between the two when you are away.
@@ -88,7 +89,7 @@ The companion stays on across restarts once it has been turned on, so the Home S
 
 ## Troubleshooting
 
-**I cannot find the iPhone companion setting.** It is in RunContainer, under **Settings** — not in Windows Settings. It arrived in 0.9.4; on an older build, update first.
+**I cannot find the iPhone companion setting.** It is in RunContainer, under **Settings** — not in Windows Settings. It arrived in 0.9.4; the QR code arrived in 0.9.6. On an older build, update first.
 
 **The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
 
