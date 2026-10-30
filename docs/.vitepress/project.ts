@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.1',
-    filename: 'RunContainer-Stable-Setup-0.9.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1/RunContainer-Stable-Setup-0.9.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1',
+    version: '0.9.3',
+    filename: 'RunContainer-Stable-Setup-0.9.3.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.3/RunContainer-Stable-Setup-0.9.3.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.3',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '36323a97f42e6506f5450be7e34b077a951e23710affb9d56d7c507a7410470c',
+    sha256: 'a5820d2f7e0419cf64b4971f3116366c9edd7015011131dd5756590ac740ee30',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.0,
@@ -69,6 +69,16 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.3',
+      date: '2026-10-30',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.3',
+      notes: [
+        'The Stable installer is self-signed. Windows may still warn because the certificate is not publicly trusted; Nightly remains unsigned.',
+        'Older release notes in the app are collapsed to make Updates easier to browse.',
+      ],
+    },
     {
       version: '0.9.1',
       date: '2026-10-29',

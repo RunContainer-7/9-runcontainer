@@ -29,7 +29,7 @@ No. When a newer release is published, RunContainer shows a notice at the top of
 
 ### How do I install RunContainer if I don't have it yet?
 
-Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Windows may still warn that a new build is unrecognised, because release installers are not code-signed yet: Windows shows “Unknown publisher”, and SmartScreen reputation is built over time. The installation page explains how to check the file and get past the warning safely.
+Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Stable 0.9.3 is self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.
 
 ### I am on 0.6.5 and it stops with a JavaScript error
 

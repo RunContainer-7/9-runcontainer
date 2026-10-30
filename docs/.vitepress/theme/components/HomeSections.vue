@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Where can I download it?',
-    a: `Yes. Two installers are published: RunContainer ${project.latestDownload.version} (Stable, recommended) and RunContainer Nightly ${project.latestNightly.version} (blue, experimental). They install separately, with their own apps and settings, and the Downloads page links each one with its own SHA-256 checksum so you can verify the file. Release installers are not code-signed yet, so Windows shows “Unknown publisher” and SmartScreen may warn before the installer runs. A very new version can still prompt even once signing is in place, because SmartScreen reputation is built from clean downloads over time.`
+    a: `Yes. Two installers are published: RunContainer ${project.latestDownload.version} (Stable, recommended) and RunContainer Nightly ${project.latestNightly.version} (blue, experimental). They install separately, with their own apps and settings, and the Downloads page links each one with its own SHA-256 checksum so you can verify the file. Stable 0.9.3 is self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.`
   }
 ]
 </script>

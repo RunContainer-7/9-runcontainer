@@ -45,15 +45,9 @@ Building from source is the strongest way to check that the installer matches th
 
 ## Code signing
 
-**Release installers are not code-signed at the moment.** Windows shows “Unknown publisher”, and the SHA-256 checksum on [Downloads](/downloads) is what to verify a download against.
+Stable 0.9.3 is self-signed. Older Stable installers and Nightly remain unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish publisher identity, so Windows may warn for either edition.
 
-RunContainer was built for the SignPath Foundation programme, which signs qualifying open-source Windows software without charge, and the release workflow is ready for it. That application was declined for now, because the programme issues its own certificate only to projects with established public traction, and it invited a reapplication. Releases therefore publish unsigned rather than failing, and this section will describe signing again once it is in place.
-
-- **What you can check while releases are unsigned.** The SHA-256 checksum on [Downloads](/downloads), the public source, and the release workflow that produced the build.
-- **What a signature would mean.** That the file came from this project's own build of a tagged release and has not been changed since. It is not a claim that the software is safe, and it does not replace the checksum.
-- **What would be signed.** Only the installer produced by this project's release workflow, on GitHub-hosted runners, from the tagged commit. Forks and modified builds are never covered.
-
-RunContainer's own privacy practices are described in the [privacy policy](#privacy-policy) above; signing adds no tracking either way.
+Compare each download with the SHA-256 checksum on [Downloads](/downloads). A matching checksum or signature is not a guarantee that the software is safe.
 
 ## Use of applications
 

@@ -56,7 +56,7 @@ Two editions are published for 64-bit Windows 10 and 11. They install separately
 </div>
 
 ::: tip Which one should I download?
-Most people want **Stable**. Choose **Nightly** only if you want early access to experimental features and are comfortable with bugs and changes between builds. Both are unsigned; check the checksum for the file you downloaded.
+Most people want **Stable**. Choose **Nightly** only if you want early access to experimental features and are comfortable with bugs and changes between builds. Check the checksum for the file you downloaded.
 :::
 
 ## Choose your version
@@ -72,7 +72,7 @@ Most people want **Stable**. Choose **Nightly** only if you want early access to
 They install into separate folders and keep **separate app libraries, settings and updates**. Virtual machines also live in each edition's own data folder, so Nightly starts with none of Stable's. Installing Nightly does not copy your Stable apps or machines, and it does not delete them: Stable's files stay in `%APPDATA%\RunContainer`, Nightly's in `%APPDATA%\RunContainer Nightly`.
 
 ::: warning Windows may still warn about the installer
-The current Stable and Nightly installers are **not code-signed**, so Windows may show “Unknown publisher” or other warnings. Compare the SHA-256 value above with the file you downloaded before running it. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
+Stable 0.9.3 is **self-signed**; older Stable installers and Nightly are unsigned. Windows may still warn for either: a self-signed certificate is not publicly trusted. Compare the SHA-256 value above with the file you downloaded before running it. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
 :::
 
 ::: danger Beware of unofficial downloads
@@ -95,7 +95,7 @@ RunContainer's installer is built for **64-bit Windows (x64)** and supports Wind
 
 ## Code signing
 
-**The current installers are not code-signed.** Windows may show “Unknown publisher”; compare the SHA-256 of your download with the value above. The project's application to the [SignPath Foundation](https://signpath.org/) was declined for now; the project can reapply after gaining broader public recognition. Signing identifies who built a file and helps verify it was not altered; it is not a claim that the software is safe.
+Stable 0.9.3 is self-signed. Older Stable installers and Nightly installers are unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish the publisher's identity. Windows may still show an untrusted-publisher or SmartScreen warning. Compare the SHA-256 of your download with the value above; neither a signature nor a matching checksum alone proves that software is safe.
 
 ## Stay informed
 
