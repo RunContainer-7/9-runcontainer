@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.4',
-    filename: 'RunContainer-Stable-Setup-0.9.4.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.4/RunContainer-Stable-Setup-0.9.4.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.4',
+    version: '0.9.5',
+    filename: 'RunContainer-Stable-Setup-0.9.5.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.5/RunContainer-Stable-Setup-0.9.5.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.5',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '01027077bfc5d3343ad3392f48ee70f73c6381d59472f38c3c8373815c097c64',
+    sha256: '78a74b7f339df6b77dd26b0851fb8b8830f6c4b104da47f2351358914353ea42',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.1,
@@ -51,14 +51,14 @@ export const project = {
    * receives prerelease updates. Only list a build whose installer is attached.
    */
   latestNightly: {
-    version: '0.9.1-nightly.2',
-    filename: 'RunContainer-Nightly-Setup-0.9.1-nightly.2.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.1-nightly.2/RunContainer-Nightly-Setup-0.9.1-nightly.2.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.1-nightly.2',
+    version: '0.9.5-nightly.1',
+    filename: 'RunContainer-Nightly-Setup-0.9.5-nightly.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.5-nightly.1/RunContainer-Nightly-Setup-0.9.5-nightly.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.5-nightly.1',
     // Copied from the published asset's own digest on the GitHub release.
-    sha256: '130ecd4baad11d0a6b7daf84c484edfcf48bc826dbf9ee6585bc6db88b8ca218',
+    sha256: '4f05ef280967132616a1123b135682a4189a689759a6cfff4a215a998cb2f2b1',
     // Same CI-built Inno Setup payload as Stable, about 104 MB.
-    sizeMb: 104.0,
+    sizeMb: 104.1,
   },
 
   /**
@@ -69,6 +69,17 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.5',
+      date: '2026-10-30',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.5',
+      notes: [
+        'The iPhone companion card is now the first thing on Settings. It shows the address with a Copy address button, the Add to Home Screen steps, and the pairing code together.',
+        'The companion page has a light and dark switch that follows the phone until you choose, then remembers the choice.',
+        'The first-run tour names the companion, and its final step asks for a GitHub star as well as the channel and Discord.',
+      ],
+    },
     {
       version: '0.9.4',
       date: '2026-10-30',
