@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.6',
-    filename: 'RunContainer-Stable-Setup-0.9.6.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.6/RunContainer-Stable-Setup-0.9.6.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.6',
+    version: '0.9.7',
+    filename: 'RunContainer-Stable-Setup-0.9.7.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.7/RunContainer-Stable-Setup-0.9.7.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.7',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'a61a9517c06dec0666670dd7bf9f7e09259d0577d361e966534f30b41ccf2412',
+    sha256: 'beba711bf39f30ffb2aac3700238fb446c04e339aae055781a5e4300f1bb3aa9',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.2,
@@ -51,12 +51,12 @@ export const project = {
    * receives prerelease updates. Only list a build whose installer is attached.
    */
   latestNightly: {
-    version: '0.9.6-nightly.1',
-    filename: 'RunContainer-Nightly-Setup-0.9.6-nightly.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.6-nightly.1/RunContainer-Nightly-Setup-0.9.6-nightly.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.6-nightly.1',
+    version: '0.9.7-nightly.1',
+    filename: 'RunContainer-Nightly-Setup-0.9.7-nightly.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.7-nightly.1/RunContainer-Nightly-Setup-0.9.7-nightly.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.7-nightly.1',
     // Copied from the published asset's own digest on the GitHub release.
-    sha256: '934246f2944e813f24eb1cc922376e82c8e584eaf5ff3defa24717710d90ac50',
+    sha256: 'fd5cb8dbcabd243ef136a10a37f63fb0d890afba7f7fd98bd2257ea882b1f38c',
     // Same CI-built Inno Setup payload as Stable, about 104 MB.
     sizeMb: 104.2,
   },
@@ -69,6 +69,17 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.7',
+      date: '2026-10-30',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.7',
+      notes: [
+        'The iPhone companion can open a real https://…ts.net address through Tailscale Funnel. It has no port, works away from home, and becomes the address in the QR code and Copy link.',
+        'The web address is opened only on request and closes when the companion is turned off or RunContainer quits. It is public while it is on, and pairing is still required.',
+        'Home-screen icons are full squares in the edition’s colour; Nightly gets the blue icon.',
+      ],
+    },
     {
       version: '0.9.6',
       date: '2026-10-30',
