@@ -115,7 +115,7 @@ The companion stays on across restarts once it has been turned on, so the Home S
 
 **The web address says the site cannot be reached.** Check that the companion is on and RunContainer is still running; the address closes with the app. If Tailscale was restarted, press **Turn off web address** and open it again.
 
-**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
+**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. A web address (`https://…ts.net`) also needs Tailscale signed in on the PC and on the iPhone, with the Tailscale VPN turned on on the iPhone. If the phone is offline in Tailscale, Safari shows "Safari can't connect to the server" or a security warning. Sign in on both devices, turn on **Open web address** again, and rescan the code. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
 
 **The pairing code was refused or has expired.** Generate a new code on the PC and type it again.
 
