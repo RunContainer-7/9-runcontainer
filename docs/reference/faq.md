@@ -29,7 +29,7 @@ No. When a newer release is published, RunContainer shows a notice at the top of
 
 ### How do I install RunContainer if I don't have it yet?
 
-Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Stable 0.9.3 is self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.
+Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the [latest GitHub release](https://github.com/RunContainer-7/runcontainer/releases/latest), then follow [Installation](/getting-started/installation). Stable installers from 0.9.3 onward are self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.
 
 ### I am on 0.6.5 and it stops with a JavaScript error
 
@@ -37,7 +37,9 @@ Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the 
 
 ### Is there an iPhone companion?
 
-Not yet. An iPhone companion is planned as a home-screen web app that connects to RunContainer on a Windows PC; it would not run Windows executables or iOS apps on the phone itself. Remote access requires the PC to be running and a secure, authorised connection. The existing documentation website is not a remote-control app.
+Yes, as an experimental feature. An iPhone companion is a home-screen web app that connects to RunContainer on a Windows PC and shows an app that is already running there. It does not run Windows executables or iOS apps on the phone itself, and it cannot start an app: start it on the PC first. Remote access needs the PC switched on and a network path between the two, either the same Wi-Fi or a private network such as Tailscale. → [iPhone companion](/user-guide/companion)
+
+The documentation website is not the companion. It describes RunContainer; it does not connect to your PC.
 
 ## Using RunContainer
 

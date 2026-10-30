@@ -32,17 +32,17 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.3',
-    filename: 'RunContainer-Stable-Setup-0.9.3.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.3/RunContainer-Stable-Setup-0.9.3.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.3',
+    version: '0.9.4',
+    filename: 'RunContainer-Stable-Setup-0.9.4.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.4/RunContainer-Stable-Setup-0.9.4.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.4',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'a5820d2f7e0419cf64b4971f3116366c9edd7015011131dd5756590ac740ee30',
+    sha256: '01027077bfc5d3343ad3392f48ee70f73c6381d59472f38c3c8373815c097c64',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
-    sizeMb: 104.0,
+    sizeMb: 104.1,
   },
 
   /**
@@ -69,6 +69,17 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.4',
+      date: '2026-10-30',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.4',
+      notes: [
+        'Settings can turn on an iPhone companion: a home-screen web app that shows an app already running on the PC and sends taps, typing and scrolling to it.',
+        'Pairing uses a six-digit code shown on the PC. It works once, expires after five minutes, and a paired phone can be forgotten at any time.',
+        'The companion is off until it is turned on, shares one app window rather than the screen, and needs the phone to be able to reach the PC: the same Wi-Fi, or a private network such as Tailscale.',
+      ],
+    },
     {
       version: '0.9.3',
       date: '2026-10-30',

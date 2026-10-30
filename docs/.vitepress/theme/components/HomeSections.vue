@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Where can I download it?',
-    a: `Yes. Two installers are published: RunContainer ${project.latestDownload.version} (Stable, recommended) and RunContainer Nightly ${project.latestNightly.version} (blue, experimental). They install separately, with their own apps and settings, and the Downloads page links each one with its own SHA-256 checksum so you can verify the file. Stable 0.9.3 is self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.`
+    a: `Yes. Two installers are published: RunContainer ${project.latestDownload.version} (Stable, recommended) and RunContainer Nightly ${project.latestNightly.version} (blue, experimental). They install separately, with their own apps and settings, and the Downloads page links each one with its own SHA-256 checksum so you can verify the file. Stable installers from 0.9.3 onward are self-signed; older Stable installers and Nightly are unsigned. Windows may warn for either, because self-signed certificates are not publicly trusted.`
   }
 ]
 </script>

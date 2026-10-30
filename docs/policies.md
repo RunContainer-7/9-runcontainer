@@ -45,7 +45,7 @@ Building from source is the strongest way to check that the installer matches th
 
 ## Code signing
 
-Stable 0.9.3 is self-signed. Older Stable installers and Nightly remain unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish publisher identity, so Windows may warn for either edition.
+Stable installers from 0.9.3 onward are self-signed. Older Stable installers and Nightly remain unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish publisher identity, so Windows may warn for either edition.
 
 Compare each download with the SHA-256 checksum on [Downloads](/downloads). A matching checksum or signature is not a guarantee that the software is safe.
 

@@ -72,7 +72,7 @@ Most people want **Stable**. Choose **Nightly** only if you want early access to
 They install into separate folders and keep **separate app libraries, settings and updates**. Virtual machines also live in each edition's own data folder, so Nightly starts with none of Stable's. Installing Nightly does not copy your Stable apps or machines, and it does not delete them: Stable's files stay in `%APPDATA%\RunContainer`, Nightly's in `%APPDATA%\RunContainer Nightly`.
 
 ::: warning Windows may still warn about the installer
-Stable 0.9.3 is **self-signed**; older Stable installers and Nightly are unsigned. Windows may still warn for either: a self-signed certificate is not publicly trusted. Compare the SHA-256 value above with the file you downloaded before running it. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
+Stable installers from 0.9.3 onward are **self-signed**; older Stable installers and Nightly are unsigned. Windows may still warn for either: a self-signed certificate is not publicly trusted. Compare the SHA-256 value above with the file you downloaded before running it. A warning alone does not establish whether a download is safe. Do not turn off real-time protection. See [Installation](/getting-started/installation) for more information.
 :::
 
 ::: danger Beware of unofficial downloads
@@ -95,7 +95,7 @@ RunContainer's installer is built for **64-bit Windows (x64)** and supports Wind
 
 ## Code signing
 
-Stable 0.9.3 is self-signed. Older Stable installers and Nightly installers are unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish the publisher's identity. Windows may still show an untrusted-publisher or SmartScreen warning. Compare the SHA-256 of your download with the value above; neither a signature nor a matching checksum alone proves that software is safe.
+Stable installers from 0.9.3 onward are self-signed. Older Stable installers and Nightly installers are unsigned. A self-signed certificate is not trusted by Windows by default and does not independently establish the publisher's identity. Windows may still show an untrusted-publisher or SmartScreen warning. Compare the SHA-256 of your download with the value above; neither a signature nor a matching checksum alone proves that software is safe.
 
 ## Stay informed
 

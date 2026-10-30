@@ -23,7 +23,7 @@ const nightly = project.latestNightly
 
 ## Windows may still warn you (and that is expected)
 
-Stable 0.9.3 is self-signed. Older Stable installers and Nightly remain unsigned. Windows does not trust a self-signed certificate by default, so it may still show an unknown-publisher or untrusted-certificate warning. SmartScreen can also warn about files without an established reputation.
+Stable installers from 0.9.3 onward are self-signed. Older Stable installers and Nightly remain unsigned. Windows does not trust a self-signed certificate by default, so it may still show an unknown-publisher or untrusted-certificate warning. SmartScreen can also warn about files without an established reputation.
 
 Compare the file's SHA-256 with the checksum for your edition on [Downloads](/downloads). A match confirms the file matches that listing, but does not establish that the file is safe. If your browser or security software flags it, do not assume the warning is a false positive or disable protection; investigate or ask for help before proceeding.
 

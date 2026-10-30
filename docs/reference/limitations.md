@@ -4,7 +4,7 @@ These are the known limits on what it does and doesn't do.
 
 ## Availability
 
-- **Signing does not silence Windows.** Stable 0.9.3 is self-signed, while older Stable installers and Nightly remain unsigned. Self-signed certificates are not publicly trusted, so Windows may warn for either. See [Code signing](/downloads#code-signing).
+- **Signing does not silence Windows.** Stable installers from 0.9.3 onward are self-signed, while older Stable installers and Nightly remain unsigned. Self-signed certificates are not publicly trusted, so Windows may warn for either. See [Code signing](/downloads#code-signing).
 - **System requirements aren't confirmed yet.** See [Prerequisites](/getting-started/prerequisites).
 - **Some features may not be in every build.** Pages note where a feature's availability isn't yet confirmed.
 
@@ -48,6 +48,16 @@ The [RC-Brain page](/guide/ai-brain#which-model-your-build-has) lists which mode
 - **Model availability is reported, never faked.** If the model cannot load, Settings says so and there is no fallback to rule-based diagnosis.
 - **Some installers refuse process containment.** A few bootstrappers (for example the MSYS2 Qt Installer Framework setup) exit with code 1 as soon as they are placed in a Job Object, before they draw anything. RunContainer reports that exit code, keeps nothing running, and does not fall back to an uncontained launch. Use a virtual machine environment for those installers.
 - **JIT cannot be switched on for native code.** A native `.exe` is already machine code. Only managed runtimes (.NET, Java, V8) compile at run time, and they already do so; [Performance and JIT](/guide/performance) covers what RunContainer can and cannot change.
+
+## iPhone companion (experimental)
+
+- **It is a remote view of one app window, not a remote desktop.** It shows the window RunContainer is hosting for the app you open on the phone, and sends taps and keys to it. Other windows, dialogs and Windows security prompts are not visible or answerable from the phone.
+- **It cannot start or install anything.** The app must already be running on the PC, in its own RunContainer window. An app whose window Windows refused to host cannot be shown on the phone.
+- **It does not run apps on the phone.** An iPhone does not run Windows executables, and the companion does not install or run `.ipa` files. The app runs on the PC.
+- **Both the PC and the network path must be up.** The PC must be running and the phone must reach its address: the same Wi-Fi, or a private network such as Tailscale. RunContainer does not relay the connection or provide an account.
+- **Privacy depends on the network.** RunContainer does not add end-to-end encryption on top of the network it crosses, and it does not protect the port from anything that can already reach it. Do not forward the companion's port on a router.
+- **Picture quality is a trade-off.** Frames are compressed pictures, not a tuned display protocol, so a busy app or a slow connection can look delayed and use noticeable data at the higher quality.
+- **A paired phone acts as the keyboard.** Anyone using that phone while it is connected can use the app; remove a phone you no longer trust with **Forget paired phones**.
 
 ## Developer mode and virtual machines (Nightly)
 
