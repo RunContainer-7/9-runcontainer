@@ -35,6 +35,10 @@ Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the 
 
 0.6.5 could fail before its window opened, so its own update notice never appeared and it cannot update itself. Download the current installer from [Downloads](/downloads) and run it once by hand. It replaces the broken files, keeps your apps and environments, and closes the leftover 0.6.5 process (including its error window) before installing. Later releases update from the in-app notice as usual.
 
+### Is there an iPhone companion?
+
+Not yet. An iPhone companion is planned as a home-screen web app that connects to RunContainer on a Windows PC; it would not run Windows executables or iOS apps on the phone itself. Remote access requires the PC to be running and a secure, authorised connection. The existing documentation website is not a remote-control app.
+
 ## Using RunContainer
 
 ### Can I use applications I already have installed?
