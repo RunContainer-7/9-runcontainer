@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.7',
-    filename: 'RunContainer-Stable-Setup-0.9.7.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.7/RunContainer-Stable-Setup-0.9.7.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.7',
+    version: '0.9.8',
+    filename: 'RunContainer-Stable-Setup-0.9.8.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.8/RunContainer-Stable-Setup-0.9.8.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.8',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'beba711bf39f30ffb2aac3700238fb446c04e339aae055781a5e4300f1bb3aa9',
+    sha256: '754cfddb02cf8acf752abbdafb1ef37ad3671913347fa604b9a5bd251af4ba2a',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.2,
@@ -51,12 +51,12 @@ export const project = {
    * receives prerelease updates. Only list a build whose installer is attached.
    */
   latestNightly: {
-    version: '0.9.7-nightly.1',
-    filename: 'RunContainer-Nightly-Setup-0.9.7-nightly.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.7-nightly.1/RunContainer-Nightly-Setup-0.9.7-nightly.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.7-nightly.1',
+    version: '0.9.8-nightly.1',
+    filename: 'RunContainer-Nightly-Setup-0.9.8-nightly.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.8-nightly.1/RunContainer-Nightly-Setup-0.9.8-nightly.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.8-nightly.1',
     // Copied from the published asset's own digest on the GitHub release.
-    sha256: 'fd5cb8dbcabd243ef136a10a37f63fb0d890afba7f7fd98bd2257ea882b1f38c',
+    sha256: 'f0be1f8325cc7c22bcd7db9669679993070c4ae5b62c032457f5ba35aab4b005',
     // Same CI-built Inno Setup payload as Stable, about 104 MB.
     sizeMb: 104.2,
   },
@@ -69,6 +69,15 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.8',
+      date: '2026-10-30',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.8',
+      notes: [
+        'The companion’s pairing screen uses the edition’s own logo, so Nightly no longer shows the green Stable mark.',
+      ],
+    },
     {
       version: '0.9.7',
       date: '2026-10-30',
