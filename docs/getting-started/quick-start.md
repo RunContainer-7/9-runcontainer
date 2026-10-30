@@ -22,11 +22,12 @@ More: [Installing applications](/user-guide/applications) and [Running & stoppin
 ## 3. Use an app from an iPhone (optional)
 
 1. In RunContainer, open **Settings → iPhone companion** and press **Turn on**.
-2. Point the **iPhone camera** at the QR code on the card and tap the link.
-3. In Safari, tap **Share → Add to Home Screen**.
-4. Open the companion and enter the six-digit code shown on the PC.
+2. Press **Open web address** for an HTTPS address that works away from home. This needs Tailscale signed in on the PC. Without it, the local QR code still works on the same Wi-Fi.
+3. Point the **iPhone camera** at the QR code and tap the link.
+4. In Safari, tap **Share → Add to Home Screen**.
+5. Open the companion and enter the six-digit code shown on the PC.
 
-The full guide, including Tailscale for when you are away from home, is on the [iPhone companion](/user-guide/companion) page.
+The full guide, including what the web address exposes and how to turn it off, is on the [iPhone companion](/user-guide/companion) page.
 
 ## Where everything is
 
