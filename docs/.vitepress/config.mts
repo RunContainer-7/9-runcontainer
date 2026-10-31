@@ -104,7 +104,7 @@ export default defineConfig({
       'meta',
       {
         property: 'og:description',
-        content: 'Install and run Windows applications inside environments managed by RunContainer.'
+        content: 'Install and run Windows applications directly inside RunContainer itself.'
       }
     ]
   ],
