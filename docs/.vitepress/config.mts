@@ -90,7 +90,7 @@ export default defineConfig({
   lang: 'en-GB',
   title: project.name,
   description:
-    'RunContainer is a Windows application management and isolation tool for installing and running Windows applications inside managed environments.',
+    'RunContainer is a Windows application management and isolation tool for installing and running Windows applications directly inside RunContainer itself.',
   cleanUrls: true,
   lastUpdated: false,
   appearance: 'dark',
