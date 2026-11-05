@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.8',
-    filename: 'RunContainer-Stable-Setup-0.9.8.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.8/RunContainer-Stable-Setup-0.9.8.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.8',
+    version: '0.9.9',
+    filename: 'RunContainer-Stable-Setup-0.9.9.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.9/RunContainer-Stable-Setup-0.9.9.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.9',
     // The published asset's own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: '754cfddb02cf8acf752abbdafb1ef37ad3671913347fa604b9a5bd251af4ba2a',
+    sha256: 'c5feba4615ad252969bd4e314f24360e287476188103c15724e6a0ac4a85b6c7',
     // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 104.2,
@@ -69,6 +69,18 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.9.9',
+      date: '2026-11-05',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.9',
+      notes: [
+        'The iPhone companion is grey now: its Home Screen icon, pairing screen and app list match each other, rather than borrowing the desktop app’s green. The desktop app keeps its own colour.',
+        'Closing RunContainer’s window no longer stops the companion. While it is on, the app keeps running in the notification area, so a Home Screen shortcut still reaches the PC; right-click that icon to reopen the window or to stop the companion and quit.',
+        'When the PC is asleep, or RunContainer is not running, the companion shows the last list of apps it knew about and says the PC is unreachable instead of showing an empty page.',
+        'The companion page, its styles and its icons carry a version, so an update reaches a shortcut that was added earlier instead of serving the old page.',
+      ],
+    },
     {
       version: '0.9.8',
       date: '2026-10-30',
