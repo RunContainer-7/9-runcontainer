@@ -86,6 +86,10 @@ While a phone is watching, the app's window on the PC says so. Turning the compa
 
 The companion stays on across restarts once it has been turned on, so the Home Screen shortcut keeps working.
 
+While it is on, closing RunContainer's window does not stop it: the app keeps running in the notification area, and the phone can still connect. Click the notification-area icon to reopen the window, or right-click it and choose **Stop the companion and quit**. With the companion off, closing the window quits as usual.
+
+If the PC is switched off or asleep, the shortcut opens the companion but there is nothing behind it. The page says the PC is not reachable and shows the last list of apps it knew about, so you can see what was running without being able to open it.
+
 ## What it cannot do
 
 - **It does not run apps on the phone.** It cannot open `.exe` files on an iPhone, and it cannot install or run `.ipa` files. The app runs on the PC.
@@ -115,9 +119,11 @@ The companion stays on across restarts once it has been turned on, so the Home S
 
 **The web address says the site cannot be reached.** Check that the companion is on and RunContainer is still running; the address closes with the app. If Tailscale was restarted, press **Turn off web address** and open it again.
 
-**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. A web address (`https://…ts.net`) also needs Tailscale signed in on the PC and on the iPhone, with the Tailscale VPN turned on on the iPhone. If the phone is offline in Tailscale, Safari shows "Safari can't connect to the server" or a security warning. Sign in on both devices, turn on **Open web address** again, and rescan the code. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
+**The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. A web address (`https://…ts.net`) needs Tailscale signed in on the **PC** with Funnel on; the phone does not need Tailscale for it, only an internet connection. If Tailscale is signed out on the PC, or Funnel is off, the address keeps pointing at a name that serves nothing, and Safari shows "Safari can't connect to the server" or a certificate warning. Sign in on the PC, press **Open web address** again, then reopen the link or rescan the code. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
 
 **The pairing code was refused or has expired.** Generate a new code on the PC and type it again.
+
+**The Home Screen icon still has its old colour after an update.** iOS keeps an installed icon until the shortcut is replaced. Touch and hold the icon, remove it, then open the address in Safari again and choose **Share → Add to Home Screen**. The page itself updates on its own; only the icon is cached.
 
 **An app says it is not available to open.** The app must be running in its own RunContainer window. Start it on the PC; if Windows refused to host its window, the phone cannot show it.
 
