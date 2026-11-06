@@ -51,12 +51,12 @@ export const project = {
    * receives prerelease updates. Only list a build whose installer is attached.
    */
   latestNightly: {
-    version: '0.9.8-nightly.1',
-    filename: 'RunContainer-Nightly-Setup-0.9.8-nightly.1.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.8-nightly.1/RunContainer-Nightly-Setup-0.9.8-nightly.1.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.8-nightly.1',
+    version: '0.9.9-nightly.1',
+    filename: 'RunContainer-Nightly-Setup-0.9.9-nightly.1.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.9-nightly.1/RunContainer-Nightly-Setup-0.9.9-nightly.1.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.9-nightly.1',
     // Copied from the published asset's own digest on the GitHub release.
-    sha256: 'f0be1f8325cc7c22bcd7db9669679993070c4ae5b62c032457f5ba35aab4b005',
+    sha256: '634df887987d8f7181492b4bc76a4b51ed5e26128ac863fbd7ee45fae21c8476',
     // Same CI-built Inno Setup payload as Stable, about 104 MB.
     sizeMb: 104.2,
   },
