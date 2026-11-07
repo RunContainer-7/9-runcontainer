@@ -23,4 +23,22 @@ Where that cannot be promised, the entry says **Get installer** and opens the pu
 
 ## Submitting an app
 
-Submissions are not open yet. When they are, a submitted installer will be reviewed before it appears in the list.
+Submissions go through the repository's issue form, not through RunContainer itself.
+
+1. Press **Submit an app** at the bottom of the store, or open the [submission form](https://github.com/RunContainer-7/RunContainer/issues/new?template=submit-app.yml) directly.
+2. Fill in the app name, the publisher, the official download page and, if the publisher has one, a direct installer link over https.
+3. Submit. **Do not attach the installer.** An issue cannot carry a 100 MB setup file, and the store never hosts or mirrors one — the entry links to the publisher's own file.
+
+The form asks whether the link is the publisher's own, and it will not submit without that confirmation. A direct link is optional: a page-only submission is a normal one, and most entries in the store are page-only.
+
+### What happens after you submit
+
+Every submission is reviewed by hand. The reviewer:
+
+- fetches the link the way the app would (`npm run store:verify`), and reads the status after redirects, the content type, the size and the SHA-256 that come back;
+- checks that the address belongs to the publisher rather than a mirror, a repack, a crack or a patch;
+- checks the licence, and whether the installer is something a contained app can actually run — an installer that requires a driver or a reboot is a poor fit even when the link works.
+
+An approved app appears when a published release includes it, with **Install** if the link answered with an installer and **Get installer** if it does not. Declining an app is not a claim that it is unsafe: the store is a short list, not a directory, and entries are only added where the link can be kept working.
+
+Review is manual and no turnaround is promised. A submission is a suggestion, not a listing.
