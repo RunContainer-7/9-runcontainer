@@ -32,17 +32,17 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.9.9',
-    filename: 'RunContainer-Stable-Setup-0.9.9.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.9.9/RunContainer-Stable-Setup-0.9.9.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.9',
-    // The published asset's own SHA-256 digest, copied from the GitHub release.
+    version: '0.10.0',
+    filename: 'RunContainer-Stable-Setup-0.10.0.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.10.0/RunContainer-Stable-Setup-0.10.0.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.10.0',
+    // The published asset’s own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'c5feba4615ad252969bd4e314f24360e287476188103c15724e6a0ac4a85b6c7',
-    // The published CI-built installer (Inno Setup) is ~104 MB; it is not the
+    sha256: 'b4f72c655c29f5568c0af23c0e966058e0e926927fb2161e31f2b57aca885d00',
+    // The published CI-built installer (Inno Setup) is ~99 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
-    sizeMb: 104.2,
+    sizeMb: 99.4,
   },
 
   /**
@@ -69,6 +69,28 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.10.0',
+      date: '2026-11-07',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.10.0',
+      notes: [
+        'An EXE Store now sits beside the + button on Apps. Install downloads the publisher’s installer into RunContainer, so the app appears under My Apps with its own folder, its own data and its own limits instead of being installed into Windows.',
+        'Where a publisher’s download file name changes with every release, the entry says Get installer and opens the official page rather than offering a link that may have moved. Nothing is mirrored or bundled: every download comes from the publisher.',
+        'A one-press Install is only offered for a link that was fetched and answered with a Windows installer before release, and the beginner walkthrough has a tenth step for the store.',
+      ],
+    },
+    {
+      version: '0.9.10',
+      date: '2026-11-07',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.9.10',
+      notes: [
+        'Launch arguments, the memory limit, the CPU limit and the .NET JIT choice are now checked against the app that actually starts, not only against what was saved. The running app reports the limits Windows is enforcing on it, so a tweak that never reached the launch can no longer look applied.',
+        'The documentation screenshots show the current interface again: the Apps, Sources, Tweaks, Profiles, Settings, Updates and Info panels were captured from this build instead of an older one.',
+        'The iPhone companion, window hosting, containment and deletion paths were re-checked end to end on Windows as part of this release; nothing in them had to change.',
+      ],
+    },
     {
       version: '0.9.9',
       date: '2026-11-05',
