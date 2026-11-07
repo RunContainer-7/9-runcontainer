@@ -5,3 +5,8 @@ docs/.vitepress/cache/
 .netlify/*
 !.netlify/results.md
 .DS_Store
+
+# VitePress build output and local preview logs
+.vitepress/cache
+.vitepress/dist
+*.log
