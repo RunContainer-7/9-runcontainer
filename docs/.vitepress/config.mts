@@ -35,6 +35,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     items: [
       { text: 'Managing environments', link: '/user-guide/environments' },
       { text: 'Installing applications', link: '/user-guide/applications' },
+      { text: 'EXE Store', link: '/user-guide/exe-store' },
       { text: 'Running & stopping', link: '/user-guide/running' },
       { text: 'Settings & profiles', link: '/user-guide/settings' },
       { text: 'iPhone companion', link: '/user-guide/companion' },

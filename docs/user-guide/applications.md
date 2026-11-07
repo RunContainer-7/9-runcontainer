@@ -14,6 +14,12 @@ The **Sources** tab has the same two options as the **+** menu: a **Source URL**
 
 ![The Sources tab with the Source URL field and the Import from URL and Install local EXE buttons](/screenshots/sources-panel.png)
 
+## Adding an app from the EXE Store
+
+The store button next to **+** on the **Apps** tab lists programs you can add in one press. **Install** downloads the publisher's installer into RunContainer, so the app appears under **My Apps** in its own folder rather than being installed into Windows. Where a publisher's file name changes with every release, the entry says **Get installer** and opens the official download page instead. → [EXE Store](/user-guide/exe-store)
+
+![The EXE Store, listing programs with Install and Get installer](/screenshots/exe-store.png)
+
 ## Installing an application from an EXE
 
 1. Open the **Apps** tab (My Apps).
