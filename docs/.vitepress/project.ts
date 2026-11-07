@@ -32,14 +32,14 @@ export const project = {
 
   /** The current Stable installer. Used by the Downloads and Installation pages. */
   latestDownload: {
-    version: '0.10.0',
-    filename: 'RunContainer-Stable-Setup-0.10.0.exe',
-    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.10.0/RunContainer-Stable-Setup-0.10.0.exe',
-    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.10.0',
+    version: '0.11.0',
+    filename: 'RunContainer-Stable-Setup-0.11.0.exe',
+    url: 'https://github.com/RunContainer-7/runcontainer/releases/download/v0.11.0/RunContainer-Stable-Setup-0.11.0.exe',
+    releaseUrl: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.11.0',
     // The published asset’s own SHA-256 digest, copied from the GitHub release.
     // Only set this once the installer is actually published: a stale or guessed
     // checksum tells readers their correct download has been tampered with.
-    sha256: 'b4f72c655c29f5568c0af23c0e966058e0e926927fb2161e31f2b57aca885d00',
+    sha256: 'd7c1139af9c3c6317968f9b143a47db44db4b36c406b65975f0055252a8b74d1',
     // The published CI-built installer (Inno Setup) is ~99 MB; it is not the
     // same artefact as a local electron-builder NSIS run of npm run dist.
     sizeMb: 99.4,
@@ -69,6 +69,17 @@ export const project = {
    * changelog on this site stays a record of Stable editions.
    */
   releases: [
+    {
+      version: '0.11.0',
+      date: '2026-11-07',
+      channel: 'stable',
+      url: 'https://github.com/RunContainer-7/runcontainer/releases/tag/v0.11.0',
+      notes: [
+        'The EXE Store has a Submit an app button. It opens a submission form in your browser, and a submission is a publisher’s link and its details — never an uploaded installer, because the store does not collect or redistribute one.',
+        'Every submission is reviewed by hand before it appears. The reviewer fetches the submitted address the way the app does, and the status, the size and the SHA-256 that come back decide between a one-press Install and a Get installer entry that opens the publisher’s page.',
+        'Reviewing is a repeatable step rather than a judgement call: npm run store:verify fetches a submitted address without saving it and prints the catalogue entry it would produce.',
+      ],
+    },
     {
       version: '0.10.0',
       date: '2026-11-07',
