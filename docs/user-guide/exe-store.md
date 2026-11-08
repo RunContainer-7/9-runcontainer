@@ -31,6 +31,50 @@ Submissions go through the repository's issue form, not through RunContainer its
 
 The form asks whether the link is the publisher's own, and it will not submit without that confirmation. A direct link is optional: a page-only submission is a normal one, and most entries in the store are page-only.
 
+If you want to ask before submitting — whether an app fits at all, or why an entry says
+**Get installer** — ask on the [Discord server](https://discord.gg/rvMjMZJykE). Submissions
+still go through the form: a message or a DM is easy to lose, and the issue is the record of
+what was checked and what was decided.
+
+### What an app must meet
+
+The store is a short list, so every submission is measured against the same bar. The
+criteria are published here so you can check your app against them before you send it —
+and so a decision can be argued with rather than guessed at.
+
+**It must**
+
+- link to the publisher’s own download over https: their installer, or their download page
+  when there is no stable installer link;
+- install and run inside its own environment, with no reboot, no driver, no kernel service,
+  and nothing installed into the rest of Windows;
+- be free to download without an account, a survey, a coupon or a wait;
+- be a real program a person can describe in one sentence, not a downloader for something else;
+- still be obtainable from the publisher, and still maintained — or at least still
+  downloadable from their own page.
+
+**It must not**
+
+- be a mirror, repack, crack, patch, key generator or any other tool whose point is getting
+  around a licence;
+- carry bundled offers, adware, toolbars, or a third-party installer that downloads more
+  software after it starts;
+- need a reboot, an anti-cheat or VPN driver, a virtual drive, or machine-wide administrator
+  changes in order to work;
+- sit behind a link shortener, an ad gateway, or a file host re-hosting someone else’s file;
+- be a paid download, or one that only starts after signing up.
+
+**It is discouraged** — these are decided case by case, and usually end up page-only:
+
+- an installer whose address changes with every version, so the store cannot offer **Install**;
+- an app that updates itself by installing into Windows, outside its environment;
+- an installer hundreds of megabytes large that downloads most of itself again when it runs;
+- a second entry that does the same job as one already listed.
+
+A decline is not a statement that an app is unsafe: it means the entry could not be kept
+working, or did not fit a short list. The reasons are given in the issue, and the submitter
+can answer them there.
+
 ### What happens after you submit
 
 Every submission is reviewed by hand. The reviewer:
