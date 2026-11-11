@@ -4,7 +4,7 @@ The iPhone companion shows an app that is running in RunContainer on your Window
 
 It is a home-screen web app. There is no App Store download and no account. Open one address in Safari, add it to the Home Screen, and it opens full screen like any other app.
 
-There are two ways to reach it. The **web address** is an ordinary `https://…ts.net` URL opened through Tailscale Funnel: it has no port and works away from home. The **local address** works on the same Wi-Fi without Tailscale. Both are installed the same way, and the web address is the one to use if you want it to behave like a real web app.
+There are two ways to reach it. The **web address** is an ordinary `https://…ts.net` URL opened through Tailscale Funnel: it has no port and works away from home. The **local address** works on the same Wi-Fi without Tailscale. Both are installed the same way, and the web address is the one to use if you want it to behave like a real web app: an icon added from it still opens, with the last state it knew, when the PC is off. An icon added from the local address is tied to that address — it stops opening when the router gives the PC a new one, and iOS shows its own error page instead of the companion.
 
 ::: tip Where the setting lives — inside RunContainer, not Windows Settings
 This is a page inside **RunContainer's own window**. Windows Settings has nothing like it.
@@ -88,7 +88,9 @@ The companion stays on across restarts once it has been turned on, so the Home S
 
 While it is on, closing RunContainer's window does not stop it: the app keeps running in the notification area, and the phone can still connect. Click the notification-area icon to reopen the window, or right-click it and choose **Stop the companion and quit**. With the companion off, closing the window quits as usual.
 
-If the PC is switched off or asleep, the shortcut opens the companion but there is nothing behind it. The page says the PC is not reachable and shows the last list of apps it knew about, so you can see what was running without being able to open it.
+If the PC is switched off or asleep, a shortcut added from the **web address** still opens: the companion keeps its own copy of the page, says the PC is not reachable, and shows the last list of apps it knew about — so you can see what was running, without being able to open it.
+
+A shortcut added from a local `http://` address cannot do that. iOS only allows a page to keep a copy of itself on a secure address, and a local address is not one, so the icon is tied to an address that is not there and Safari shows its own error page instead.
 
 ## What it cannot do
 
@@ -120,6 +122,8 @@ If the PC is switched off or asleep, the shortcut opens the companion but there 
 **The web address says the site cannot be reached.** Check that the companion is on and RunContainer is still running; the address closes with the app. If Tailscale was restarted, press **Turn off web address** and open it again.
 
 **The address will not open on the phone.** Check that both devices are on the same network, or that the private network is connected on both. A web address (`https://…ts.net`) needs Tailscale signed in on the **PC** with Funnel on; the phone does not need Tailscale for it, only an internet connection. If Tailscale is signed out on the PC, or Funnel is off, the address keeps pointing at a name that serves nothing, and Safari shows "Safari can't connect to the server" or a certificate warning. Sign in on the PC, press **Open web address** again, then reopen the link or rescan the code. On Windows, allow RunContainer through the firewall for **Private** networks; a prompt usually appears the first time the companion starts. If the PC's address changed, the Settings card shows the current one. A `localhost` address only works on the PC itself, so use one of the other addresses listed.
+
+**The Home Screen icon says Safari cannot open the page.** The icon is tied to the exact address it was added from, and Safari will not fall back to anything of its own. That happens when the PC is off, the companion is off, or the router has given the PC a new local address. A shortcut added from the **web address** (`https://…ts.net`) keeps its own copy of the page, so it opens anyway and says the PC is not reachable. If yours was added from a local `192.168.…` address, remove it, open the web address in Safari and add it again from there; the local one cannot be repaired.
 
 **The pairing code was refused or has expired.** Generate a new code on the PC and type it again.
 
