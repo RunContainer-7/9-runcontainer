@@ -41,6 +41,12 @@ Yes, as an experimental feature. An iPhone companion is a home-screen web app th
 
 The documentation website is not the companion. It describes RunContainer; it does not connect to your PC.
 
+### Is the iPhone companion iOS-only?
+
+Yes, today. The companion is a web page rather than a native app, and it has only been built and tested against Safari on iPhone and iPad — including Add to Home Screen, the offline copy and the keyboard. There is no Android version, and Android browsers are not officially supported or tested. The same address may open in Chrome on Android, but we cannot promise that the Home Screen icon, the offline copy or pairing will behave the way they do on iOS.
+
+We are sorry if that leaves you out. It is not a deliberate exclusion; it is simply the platform this was designed around, and saying so is fairer than letting you spend an evening on something that may not work. If you would like Android support, telling us on [Discord](/support) or [opening an issue](https://github.com/RunContainer-7/runcontainer/issues) helps us see how many people want it. → [iPhone companion](/user-guide/companion)
+
 ## Using RunContainer
 
 ### Can I use applications I already have installed?
