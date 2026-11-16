@@ -71,6 +71,12 @@ No. Applications that need drivers, system services, anti-cheat or deep system a
 
 No. Isolation reduces the impact an application has on the rest of your PC, but it isn't malware protection or a guarantee of safety. → [Isolation is not a guarantee](/safety/not-a-guarantee)
 
+### Is RC-Brain a chatbot or a large language model?
+
+No. RC-Brain is a small neural network trained by RunContainer, not a language model and not a cloud assistant. It has 13,632 parameters and chooses among 19 fixed diagnoses and 13 fixed actions from a 75-number evidence vector. It does not hold a conversation, answer arbitrary questions, read your log text as prose, or send anything to ChatGPT or another service. Inference runs locally in the app, and its weights never change while RunContainer is running.
+
+That is also why it can only recognise the failure families it was trained on: when the evidence does not fit, it says “unknown, gather evidence” rather than inventing an explanation. → [RC-Brain](/guide/ai-brain)
+
 ### Is it safe to sign into accounts inside an environment?
 
 Only as safe as the application itself. The application can see whatever you type into it. → [Privacy & credentials](/safety/privacy)
