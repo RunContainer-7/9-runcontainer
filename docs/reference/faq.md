@@ -39,6 +39,10 @@ Download <code>{{ latest.filename }}</code> from [Downloads](/downloads) or the 
 
 Yes, as an experimental feature. An iPhone companion is a home-screen web app that connects to RunContainer on a Windows PC and shows an app that is already running there. It does not run Windows executables or iOS apps on the phone itself, and it cannot start an app: start it on the PC first. Remote access needs the PC switched on and a network path between the two, either the same Wi-Fi or a private network such as Tailscale. → [iPhone companion](/user-guide/companion)
 
+### Is the companion an app I install, or a website?
+
+It is a website. There is no App Store download. The permanent address is [runcontainer-companion-x7z9m3.freebuff.page](https://runcontainer-companion-x7z9m3.freebuff.page/); open it in Safari, paste the PC’s `https://…ts.net` address from **Settings → iPhone companion → Web address**, and pair with the code shown on the PC. Adding that page to the Home Screen gives you the icon. The PC also serves the same page at its own address for local use, but the hosted copy is the one whose address does not change.
+
 The documentation website is not the companion. It describes RunContainer; it does not connect to your PC.
 
 ### Is the iPhone companion iOS-only?

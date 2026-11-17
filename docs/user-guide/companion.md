@@ -2,7 +2,9 @@
 
 The iPhone companion shows an app that is running in RunContainer on your Windows PC on your iPhone. The phone is a screen and keyboard for the PC: the app still runs on the PC, in its own environment. Nothing is installed or run on the phone.
 
-It is a home-screen web app. There is no App Store download and no account. Open one address in Safari, add it to the Home Screen, and it opens full screen like any other app.
+It is a website. There is no App Store download and no account. Its permanent address is [runcontainer-companion-x7z9m3.freebuff.page](https://runcontainer-companion-x7z9m3.freebuff.page/). Open it in Safari, paste the PC’s `https://…ts.net` web address from **Settings → iPhone companion → Web address**, and type the pairing code shown on the PC. Add the hosted page to the Home Screen and it opens full screen like any other app.
+
+The PC also serves the same page at its own address. The hosted copy is the one to add to the Home Screen: its address never changes, and a Home Screen icon added from it survives the PC’s local address changing or the PC being off.
 
 There are two ways to reach it. The **web address** is an ordinary `https://…ts.net` URL opened through Tailscale Funnel: it has no port and works away from home. The **local address** works on the same Wi-Fi without Tailscale. Both are installed the same way, and the web address is the one to use if you want it to behave like a real web app: an icon added from it still opens, with the last state it knew, when the PC is off. An icon added from the local address is tied to that address — it stops opening when the router gives the PC a new one, and iOS shows its own error page instead of the companion.
 
@@ -23,8 +25,8 @@ The companion is new. Its behaviour, layout and connection details may change be
 ## Quick start
 
 1. In RunContainer, open **Settings → iPhone companion** and press **Turn on**.
-2. For a real web address, press **Open web address**. Tailscale must be installed and signed in on the PC; the card says so if it is not. The QR code becomes `https://…ts.net/`.
-3. Point the **iPhone camera** at the QR code, then tap the link the camera offers.
+2. For a real web address, press **Open web address**. Tailscale must be installed and signed in on the PC; the card says so if it is not. The card shows the PC’s `https://…ts.net/` address; the hosted companion asks for that address once.
+3. Open [runcontainer-companion-x7z9m3.freebuff.page](https://runcontainer-companion-x7z9m3.freebuff.page/) in Safari. If the page did not arrive with the PC address filled in, paste the `https://…ts.net/` address there. Scanning the QR code also opens the companion; newer builds attach the address for you.
 4. In Safari, tap **Share**, then **Add to Home Screen**, and keep the suggested name.
 5. Open the companion from the Home Screen, type the six-digit pairing code shown on the PC, name the phone, and tap **Pair with my PC**.
 
